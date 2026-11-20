@@ -26,6 +26,8 @@ Qwen3.5-Plus + Pi 1.5.0 on EvoAgentBench: baseline reproduction and failure anal
 
 v2 扩展批次为 20/20 题通过、281/281 测试组通过、0/60 次工具调用错误、845.4 秒、516693 Tokens。20 题包含前述 5 道 v2 题目。本批是小样本基线与环境适配诊断，不能代表全量基准表现；v1/v2 不是自进化前后对照。
 
+在官方 test 划分另选三题完成 Vanilla 与 ReasoningBank 同题对照，两组均为 1/3，通过率差为 0 个百分点。五道训练轨迹生成 8 条冻结记忆。详见 [ReasoningBank 实测结果与失败诊断](baseline-code/REASONINGBANK.md#2026-11-20-实测结果)。
+
 ## 复现入口
 
 在 Windows 主机准备 Python 3.12、Git、Node.js 和 Docker Desktop（Linux 容器），并在私有 Pi 配置中配置 `thingo/qwen3.5-plus`。进入代码目录后执行：
