@@ -6,6 +6,7 @@ from reasoning_bank import (
     MemoryIndex,
     inject,
     parse_cards,
+    sanitize_excerpt,
     training_evidence,
     write_json,
 )
@@ -16,6 +17,14 @@ def test_distillation_rejects_held_out_trajectories(tmp_path):
     write_json(tmp_path / "attempt" / "result.json", {"task_name": "held-out"})
     with pytest.raises(ValueError, match="outside the train split"):
         training_evidence(tmp_path, {"train": ["training"], "test": ["held-out"]})
+
+
+def test_training_excerpt_removes_local_path_and_token():
+    text = r"python C:\Users\Student\work\solution.py; using token " + "ghp_" + "x" * 29
+    assert (
+        sanitize_excerpt(text)
+        == "python [local path]; using token [credential removed]"
+    )
 
 
 def test_only_ranked_training_card_is_injected():

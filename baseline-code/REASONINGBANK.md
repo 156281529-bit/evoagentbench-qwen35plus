@@ -28,7 +28,7 @@ python -X utf8 run_reasoning_bank.py evaluate
 python -X utf8 run_reasoning_bank.py report
 ```
 
-提炼预览与运行产物保存在 `runs/reasoningbank-pilot/`。可在当前 PowerShell 会话中配置 Thingo 凭据。提炼调用发送训练回答和工具轨迹片段及判题摘要。评测调用发送公开题面，并在记忆组附带检索记忆。仓库保留代码、方案和可分享的汇总，完整轨迹与题目数据存于本地运行目录。使用 `--pi-command` 指定 Pi 启动器，使用 `--lcb-repo` 复用已检出到固定版本的判题器。
+提炼预览与运行产物保存在 `runs/reasoningbank-pilot/`。可在当前 PowerShell 会话中配置 Thingo 凭据。提炼调用发送训练回答和工具轨迹片段及判题摘要。程序先遮盖本机用户路径和常见令牌格式，运行前可通过 `--review-only` 在本地检查完整请求。评测调用发送公开题面，并在记忆组附带检索记忆。仓库保留代码、方案和可分享的汇总，完整轨迹与题目数据存于本地运行目录。使用 `--pi-command` 指定 Pi 启动器，使用 `--lcb-repo` 复用已检出到固定版本的判题器。
 
 ## 验证状态
 

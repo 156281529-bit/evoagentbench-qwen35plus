@@ -8,6 +8,8 @@ from collections import Counter
 from pathlib import Path
 
 FIELDS = ("title", "description", "content")
+LOCAL_PATH = re.compile(r"""(?i)\b[a-z]:[/\\]users[/\\][^\s"'|<>;]+""")
+CREDENTIAL = re.compile(r"(?i)\b(?:ghp_|github_pat_|sk-)[a-z0-9_-]{25,}")
 HEADER = (
     "\n\n### Retrieved reasoning memories (training experience)\n"
     "Apply these suggestions only when relevant. The current task and output "
@@ -99,8 +101,10 @@ def training_evidence(directory, split):
                 "tool_errors": (result.get("token_usage") or {}).get(
                     "tool_error_count", 0
                 ),
-                "trace_excerpt": "\n".join(trace)[-3500:],
-                "submitted_response": agent.get("response", "")[:2200],
+                "trace_excerpt": sanitize_excerpt("\n".join(trace))[-3500:],
+                "submitted_response": sanitize_excerpt(agent.get("response", ""))[
+                    :2200
+                ],
                 "result_sha256": digest(raw),
                 "session_sha256": digest(session_raw) if session_raw else None,
             }
@@ -110,6 +114,10 @@ def training_evidence(directory, split):
     if len({row["task"] for row in records}) != len(records):
         raise ValueError("Use a directory with one scored trial per training task")
     return records
+
+
+def sanitize_excerpt(text):
+    return CREDENTIAL.sub("[credential removed]", LOCAL_PATH.sub("[local path]", text))
 
 
 def extraction_prompt(records):
