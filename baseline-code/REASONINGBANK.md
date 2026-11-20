@@ -38,7 +38,7 @@ python -X utf8 run_reasoning_bank.py report
 | 训练轨迹提炼 | 五道训练题的轨迹生成并冻结 8 条记忆 |
 | 独立测试题目 | 已冻结 abc319_c、abc320_a、abc324_f，见 [题号与数据哈希](results/reasoningbank-selection.json) |
 | Vanilla 与 ReasoningBank 实测对照 | 六次评测全部完成，三组同题配对均有效 |
-| RSI-Flow 中验证 skills | 等待原项目依赖恢复及实际集成验证 |
+| RSI-Flow 中验证 skills | 3/3 道题的离线检索与提示注入核验通过，判题沿用既有记录。[任务二回放](../task2/README.md) |
 
 ## 2026-11-20 实测结果
 

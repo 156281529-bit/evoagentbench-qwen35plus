@@ -67,8 +67,10 @@ final class FlowScheduleNodeHolder extends FlowNodeHolder {
     print(destination)
 
 
-def execute(source, easyfile, cache, work):
+def execute(source, easyfile, cache, work, skill_fixture=None):
     source, easyfile, cache, work = (p.resolve() for p in (source, easyfile, cache, work))
+    if work == source or source in work.parents or work == easyfile or easyfile in work.parents:
+        raise SystemExit("Use a verification work directory outside the source checkouts.")
     if not (source / "flow-core/pom.xml").is_file():
         raise SystemExit(f"RSI-Flow source directory not found: {source}")
     if not (source / "flow-test/src/test/resources/flow/FLOW_LOOP").is_dir():
@@ -93,18 +95,30 @@ def execute(source, easyfile, cache, work):
     prepare(source, verify)
     # Keep Docker's compile outputs outside both source checkouts.
     shutil.copytree(easyfile, dependency, ignore=shutil.ignore_patterns(".git", "target"))
+    mounts = []
+    test_options = f"-Dtest={TESTS} -Dsurefire.failIfNoSpecifiedTests=false"
+    if skill_fixture is not None:
+        skill_fixture = skill_fixture.resolve(strict=True)
+        mounts.extend(["--mount", f"type=bind,source={skill_fixture},target=/skill-input.json,readonly"])
+        test_options = (
+            f"-Dtest={TESTS},SkillReplayTest -Dsurefire.failIfNoSpecifiedTests=false "
+            "-Drsi.skills.fixture=/skill-input.json -Drsi.skills.output=/workspace/skill-replay-results.json"
+        )
     command = [
         docker, "run", "--rm",
+        *mounts,
         "--mount", f"type=bind,source={verify},target=/workspace",
         "--mount", f"type=bind,source={dependency},target=/easyfile",
         "--mount", f"type=bind,source={cache},target=/root/.m2",
         "--workdir", "/workspace", "maven:3.9-eclipse-temurin-8", "sh", "-c",
         "mvn -B -ntp -f /easyfile/pom.xml -Dmaven.javadoc.skip=true install && "
-        f"mvn -B -ntp -pl flow-test -am -Dtest={TESTS} -Dsurefire.failIfNoSpecifiedTests=false test",
+        f"mvn -B -ntp -pl flow-test -am {test_options} test",
     ]
     print("Running loop and regression tests in Docker with Java 8.", flush=True)
     subprocess.run(command, check=True)
     print(f"Test reports: {verify / 'flow-test/target/surefire-reports'}")
+    if skill_fixture is not None:
+        print(f"Skill replay evidence: {verify / 'skill-replay-results.json'}")
 
 
 if __name__ == "__main__":
@@ -113,8 +127,9 @@ if __name__ == "__main__":
     parser.add_argument("--easyfile", type=Path, default=TASK_ROOT / "work/rsi-easyfile")
     parser.add_argument("--cache", type=Path, default=TASK_ROOT / "work/maven-cache")
     parser.add_argument("--work", type=Path, default=TASK_ROOT / "work")
+    parser.add_argument("--skill-fixture", type=Path, help="Also verify the locally generated skill replay fixture")
     args = parser.parse_args()
     try:
-        execute(args.source, args.easyfile, args.cache, args.work)
+        execute(args.source, args.easyfile, args.cache, args.work, args.skill_fixture)
     except subprocess.CalledProcessError as error:
         raise SystemExit(error.returncode) from None

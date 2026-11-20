@@ -1,0 +1,39 @@
+{
+  "mode": "offline_replay",
+  "model_calls": 0,
+  "memory_items": 8,
+  "bank_sha256": "ed8c495e180dacb2244fcb1989dbaef8ab8e7de207d290840bfbd6b9fa9c88da",
+  "verified_prompt_matches": 3,
+  "rows": [
+    {
+      "score": 0.28878393397838387,
+      "promptSha256": "34ec3ef4979c0d19834845ac6f8617ce2ce75b5363f3bad76addf24ce60b141e",
+      "task": "abc319_c",
+      "archivedReasoningBankReward": 0,
+      "archivedVanillaReward": 0,
+      "memoryIndex": 1
+    },
+    {
+      "score": 0.30908487063705403,
+      "promptSha256": "483a5b0461e3aa297ebdc5c8c570e751adddc6112c7c58d3c7a5baeec31cf61c",
+      "task": "abc320_a",
+      "archivedReasoningBankReward": 1,
+      "archivedVanillaReward": 1,
+      "memoryIndex": 1
+    },
+    {
+      "score": 0.23111485901115392,
+      "promptSha256": "a83e5b4d1634cec6bb91b750a8a0ee317ed413545109a0762560699aec44c9c0",
+      "task": "abc324_f",
+      "archivedReasoningBankReward": 0,
+      "archivedVanillaReward": 0,
+      "memoryIndex": 1
+    }
+  ],
+  "maven_test_suite": {
+    "tests": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
