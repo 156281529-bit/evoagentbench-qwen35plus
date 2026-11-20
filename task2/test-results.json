@@ -1,0 +1,23 @@
+{
+  "source_commit": "93cc223de5bc8f0510801796a46a8ae391725be9",
+  "build": "Docker Java 8 / Maven 3.9, isolated dependency compatibility copy",
+  "tests": 13,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "cases": [
+    "cc.eamon.open.flow.FLOW_ASYNC_ALL.FlowAsyncAllTest.caseAsyncAll",
+    "cc.eamon.open.flow.FLOW_ASYNC_ANY.FlowAsyncAnyTest.caseAsyncAny",
+    "cc.eamon.open.flow.FLOW_ASYNC_VOID.FlowAsyncVoidTest.caseAsyncVoid",
+    "cc.eamon.open.flow.FLOW_CONDITION_SIMPLE.FlowConditionTest.caseConditionAdult",
+    "cc.eamon.open.flow.FLOW_CONDITION_SIMPLE.FlowConditionTest.caseConditionChild",
+    "cc.eamon.open.flow.FLOW_LOOP.FlowLoopTest.builderPreservesLoopFieldsAndEscapesExpression",
+    "cc.eamon.open.flow.FLOW_LOOP.FlowLoopTest.falseAtEntryKeepsInitialValue",
+    "cc.eamon.open.flow.FLOW_LOOP.FlowLoopTest.limitStopsBeforeNextIterationAndEngineCanRunAgain",
+    "cc.eamon.open.flow.FLOW_LOOP.FlowLoopTest.nonBooleanConditionFails",
+    "cc.eamon.open.flow.FLOW_LOOP.FlowLoopTest.repeatsNestedBodyAndRoutesWithLatestCount",
+    "cc.eamon.open.flow.FLOW_NEST.FlowNestTest.caseNest",
+    "cc.eamon.open.flow.FLOW_NODE_MULTI.FlowMultiNodeTest.caseMultiNode",
+    "cc.eamon.open.flow.FLOW_NODE_SINGLE.FlowSingleNodeTest.caseSingleNode"
+  ]
+}

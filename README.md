@@ -12,6 +12,7 @@ Qwen3.5-Plus + Pi 1.5.0 on EvoAgentBench: baseline reproduction and failure anal
 - [原始运行证据的 SHA256 清单](baseline-code/results/evidence-hashes.json)
 - [五类问题的人工分析](baseline-code/data/tasks-metadata.json)
 - [ReasoningBank 接入、独立测试对照与当前进度](baseline-code/REASONINGBANK.md)
+- [任务二：RSI-Flow 循环结构设计、实现与验收](task2/README.md)
 
 ## 第一个实验表
 

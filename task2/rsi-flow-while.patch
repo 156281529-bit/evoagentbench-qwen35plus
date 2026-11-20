@@ -1,0 +1,563 @@
+diff --git a/flow-config/src/main/java/cc/eamon/open/flow/config/builder/flow/FlowNodeConfigBuilder.java b/flow-config/src/main/java/cc/eamon/open/flow/config/builder/flow/FlowNodeConfigBuilder.java
+index 0ebfe3c5ea0e0cd72c7f408761f0077198093ebb..c7bc22a03ee3fbdc9a1a35d215a3ca67a731c915 100644
+--- a/flow-config/src/main/java/cc/eamon/open/flow/config/builder/flow/FlowNodeConfigBuilder.java
++++ b/flow-config/src/main/java/cc/eamon/open/flow/config/builder/flow/FlowNodeConfigBuilder.java
+@@ -4,6 +4,7 @@ import cc.eamon.open.flow.config.constants.FlowConstants;
+ import cc.eamon.open.flow.config.flow.FlowNodeConfig;
+ import cc.eamon.open.flow.config.flow.node.FlowParamConfig;
+ import cc.eamon.open.flow.config.flow.node.FlowResultConfig;
++import com.alibaba.fastjson.JSON;
+ import org.springframework.util.Assert;
+ import org.springframework.util.CollectionUtils;
+ import org.springframework.util.StringUtils;
+@@ -48,6 +49,8 @@ public class FlowNodeConfigBuilder {
+      * 具体调用的FlowNode或Flow的Id
+      */
+     private String reference;
++    private String loopCondition;
++    private Integer maxIterations;
+ 
+     /**
+      * 流程参数
+@@ -68,6 +71,8 @@ public class FlowNodeConfigBuilder {
+         flowNodeConfig.setAsync(async);
+         flowNodeConfig.setMethod(method);
+         flowNodeConfig.setReference(reference);
++        flowNodeConfig.setLoopCondition(loopCondition);
++        flowNodeConfig.setMaxIterations(maxIterations);
+         flowNodeConfig.setParams(params);
+         flowNodeConfig.setResults(results);
+         return flowNodeConfig;
+@@ -87,6 +92,10 @@ public class FlowNodeConfigBuilder {
+             builder.append(TAB).append(TAB).append(TAB).append("\"async\":").append("\"").append(config.getAsync()).append("\",\n");
+         if (!StringUtils.isEmpty(config.getReference()))
+             builder.append(TAB).append(TAB).append(TAB).append("\"reference\":").append("\"").append(config.getReference()).append("\",\n");
++        if (config.getLoopCondition() != null)
++            builder.append(TAB).append(TAB).append(TAB).append("\"loopCondition\":").append(JSON.toJSONString(config.getLoopCondition())).append(",\n");
++        if (config.getMaxIterations() != null)
++            builder.append(TAB).append(TAB).append(TAB).append("\"maxIterations\":").append(config.getMaxIterations()).append(",\n");
+         if (!CollectionUtils.isEmpty(config.getParams())) {
+             builder.append(TAB).append(TAB).append(TAB).append("\"params\":[\n");
+             for (FlowParamConfig param : config.getParams()) {
+@@ -140,6 +149,8 @@ public class FlowNodeConfigBuilder {
+                 .addAsync(config.getAsync())
+                 .addMethod(config.getMethod())
+                 .addReference(config.getReference())
++                .addLoopCondition(config.getLoopCondition())
++                .addMaxIterations(config.getMaxIterations())
+                 ;
+     }
+ 
+@@ -174,6 +185,16 @@ public class FlowNodeConfigBuilder {
+         return this;
+     }
+ 
++    public FlowNodeConfigBuilder addLoopCondition(String loopCondition) {
++        this.loopCondition = loopCondition;
++        return this;
++    }
++
++    public FlowNodeConfigBuilder addMaxIterations(Integer maxIterations) {
++        this.maxIterations = maxIterations;
++        return this;
++    }
++
+     public FlowNodeConfigBuilder addParams(FlowParamConfig... params) {
+         this.params.addAll(Arrays.asList(params));
+         return this;
+diff --git a/flow-config/src/main/java/cc/eamon/open/flow/config/flow/FlowNodeConfig.java b/flow-config/src/main/java/cc/eamon/open/flow/config/flow/FlowNodeConfig.java
+index d0347f0ee0ec11cbd9d51c28673e07b8fc9a8bf9..fdfb431482388d98d51935f3f307b1058d237f3f 100644
+--- a/flow-config/src/main/java/cc/eamon/open/flow/config/flow/FlowNodeConfig.java
++++ b/flow-config/src/main/java/cc/eamon/open/flow/config/flow/FlowNodeConfig.java
+@@ -83,6 +83,28 @@ public class FlowNodeConfig implements Serializable {
+     @JSONField(ordinal = 11)
+     private List<ImportConfig> contentImports;
+ 
++    @JSONField(ordinal = 12)
++    private String loopCondition;
++
++    @JSONField(ordinal = 13)
++    private Integer maxIterations;
++
++    public String getLoopCondition() {
++        return loopCondition;
++    }
++
++    public void setLoopCondition(String loopCondition) {
++        this.loopCondition = loopCondition;
++    }
++
++    public Integer getMaxIterations() {
++        return maxIterations;
++    }
++
++    public void setMaxIterations(Integer maxIterations) {
++        this.maxIterations = maxIterations;
++    }
++
+ 
+     public String getId() {
+         return id;
+diff --git a/flow-core/src/main/java/cc/eamon/open/flow/core/context/FlowContextHolder.java b/flow-core/src/main/java/cc/eamon/open/flow/core/context/FlowContextHolder.java
+index 494ad16e8f0c837f604dd64824bbaaa30d2df301..535468f6d457203382ef69f0f48719067d1e2515 100644
+--- a/flow-core/src/main/java/cc/eamon/open/flow/core/context/FlowContextHolder.java
++++ b/flow-core/src/main/java/cc/eamon/open/flow/core/context/FlowContextHolder.java
+@@ -26,4 +26,8 @@ public class FlowContextHolder {
+         local.remove();
+     }
+ 
++    public static void set(FlowContext context) {
++        local.set(context);
++    }
++
+ }
+diff --git a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/holder/FlowHolder.java b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/holder/FlowHolder.java
+index 44a523b94b0d9ff89bc529cf426ca13754f5a34e..a5f7ba1d6c5f510fe03df8c085f1a4c88d0d2495 100644
+--- a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/holder/FlowHolder.java
++++ b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/holder/FlowHolder.java
+@@ -11,6 +11,7 @@ import cc.eamon.open.flow.core.error.FlowNodeDuplicateDefineException;
+ import cc.eamon.open.flow.core.error.FlowParamNotExistException;
+ import cc.eamon.open.flow.core.error.FlowResultNotExistException;
+ import cc.eamon.open.flow.core.stereotype.execute.Executable;
++import cc.eamon.open.flow.core.stereotype.support.route.Executor;
+ import cc.eamon.open.flow.core.stereotype.support.route.ExecutorHolder;
+ import cc.eamon.open.flow.model.ModelEngine;
+ import cc.eamon.open.flow.model.enums.TypeEnums;
+@@ -196,10 +197,17 @@ public class FlowHolder implements Executable {
+     }
+ 
+     private void execute(Source source, Map<String, Object> paramMap) throws Exception {
+-        ExecutorHolder.get().setRoutes(routes);
+-        ExecutorHolder.get().addExecuteNode(source);
+-        ExecutorHolder.get().execute(paramMap);
+-        ExecutorHolder.get().recoverRoutes();
++        Executor parent = ExecutorHolder.get();
++        Executor frame = new Executor();
++        frame.setParentExecutor(parent.getParentExecutor());
++        frame.setRoutes(routes);
++        ExecutorHolder.set(frame);
++        try {
++            frame.addExecuteNode(source);
++            frame.execute(paramMap);
++        } finally {
++            ExecutorHolder.set(parent);
++        }
+     }
+ 
+     public List<FlowParamHolder> getParams() {
+diff --git a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/enums/ExecutableEnums.java b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/enums/ExecutableEnums.java
+index 83d49bba5add5c1d4998b8fe93aca2d8af37d3cc..ba33e27ce3f74b7903b67eea942ed5ac73cdb31a 100644
+--- a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/enums/ExecutableEnums.java
++++ b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/enums/ExecutableEnums.java
+@@ -5,6 +5,7 @@ import cc.eamon.open.flow.core.stereotype.support.execute.EventExecutable;
+ import cc.eamon.open.flow.core.stereotype.execute.Executable;
+ import cc.eamon.open.flow.core.stereotype.execute.FlowExecutable;
+ import cc.eamon.open.flow.core.stereotype.support.execute.HttpExecutable;
++import cc.eamon.open.flow.core.stereotype.execute.WhileExecutable;
+ 
+ /**
+  * Author: eamon
+@@ -17,6 +18,7 @@ public enum ExecutableEnums {
+      * 流程执行项
+      */
+     FLOW("flow", FlowExecutable.class),
++    WHILE("while", WhileExecutable.class),
+ 
+     /**
+      * 事件执行项
+diff --git a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/route/ExecutorHolder.java b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/route/ExecutorHolder.java
+index 30514e2952bf9425631209f7af878f0432ff292f..1828df25c25946d60e923111764236fdfc7112be 100644
+--- a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/route/ExecutorHolder.java
++++ b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/support/route/ExecutorHolder.java
+@@ -36,4 +36,8 @@ public class ExecutorHolder {
+         executeQueue.remove();
+     }
+ 
++    public static void set(Executor executor) {
++        executeQueue.set(executor);
++    }
++
+ }
+diff --git a/flow-route/src/main/java/cc/eamon/open/flow/route/util/JexlUtils.java b/flow-route/src/main/java/cc/eamon/open/flow/route/util/JexlUtils.java
+index 6dfc92fac051303dbda428ae4e7ca0a382ccc11f..18029d9031152b537ea15c39e819b0ec7bfe435a 100644
+--- a/flow-route/src/main/java/cc/eamon/open/flow/route/util/JexlUtils.java
++++ b/flow-route/src/main/java/cc/eamon/open/flow/route/util/JexlUtils.java
+@@ -19,6 +19,16 @@ public class JexlUtils {
+ 
+     private static Logger logger = LoggerFactory.getLogger(JexlUtils.class);
+ 
++    public static boolean evaluateBoolean(String expression, Map<String, Object> variables) {
++        JexlEngine engine = new JexlEngine();
++        engine.setSilent(false);
++        engine.setLenient(false);
++        Object result = engine.createExpression(expression).evaluate(new MapContext(variables));
++        if (!(result instanceof Boolean)) {
++            throw new IllegalArgumentException("Loop condition must return a boolean");
++        }
++        return (Boolean) result;
++    }
+     /**
+      * 根据环境执行java表达式
+      *
+diff --git a/flow-core/src/main/java/cc/eamon/open/flow/core/error/FlowLoopLimitException.java b/flow-core/src/main/java/cc/eamon/open/flow/core/error/FlowLoopLimitException.java
+new file mode 100644
+index 0000000..63157c2
+--- /dev/null
++++ b/flow-core/src/main/java/cc/eamon/open/flow/core/error/FlowLoopLimitException.java
+@@ -0,0 +1,7 @@
++package cc.eamon.open.flow.core.error;
++
++public class FlowLoopLimitException extends RuntimeException {
++    public FlowLoopLimitException(String nodeId, int maxIterations) {
++        super("Loop '" + nodeId + "' is still true after " + maxIterations + " iterations");
++    }
++}
+diff --git a/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/WhileExecutable.java b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/WhileExecutable.java
+new file mode 100644
+index 0000000..ece4b23
+--- /dev/null
++++ b/flow-core/src/main/java/cc/eamon/open/flow/core/stereotype/execute/WhileExecutable.java
+@@ -0,0 +1,150 @@
++package cc.eamon.open.flow.core.stereotype.execute;
++
++import cc.eamon.open.flow.config.flow.FlowConfig;
++import cc.eamon.open.flow.config.flow.FlowNodeConfig;
++import cc.eamon.open.flow.config.flow.node.FlowParamConfig;
++import cc.eamon.open.flow.config.flow.node.FlowResultConfig;
++import cc.eamon.open.flow.core.context.FlowContext;
++import cc.eamon.open.flow.core.context.FlowContextHolder;
++import cc.eamon.open.flow.core.context.Initializer;
++import cc.eamon.open.flow.core.context.InitializerEnums;
++import cc.eamon.open.flow.core.error.FlowLoopLimitException;
++import cc.eamon.open.flow.core.error.FlowNotFoundException;
++import cc.eamon.open.flow.core.stereotype.execute.holder.FlowHolder;
++import cc.eamon.open.flow.model.enums.TypeEnums;
++import cc.eamon.open.flow.route.util.JexlUtils;
++
++import java.util.HashMap;
++import java.util.HashSet;
++import java.util.LinkedHashMap;
++import java.util.List;
++import java.util.Map;
++import java.util.Objects;
++import java.util.Set;
++
++public class WhileExecutable implements Executable {
++    private final FlowNodeConfig config;
++    private final FlowExecutable body;
++    private final int limit;
++
++    public WhileExecutable(FlowNodeConfig config) {
++        this.config = config;
++        if (config.getReference() == null || config.getReference().trim().isEmpty()) {
++            throw configurationError("reference must name the body flow");
++        }
++        if (config.getLoopCondition() == null || config.getLoopCondition().trim().isEmpty()
++                || config.getMaxIterations() == null || config.getMaxIterations() < 1) {
++            throw configurationError("loopCondition and a positive maxIterations are required");
++        }
++        if (Boolean.TRUE.equals(config.getAsync()) || config.getSchedule() != null) {
++            throw configurationError("while nodes must run synchronously");
++        }
++        this.limit = config.getMaxIterations();
++        Map<String, FlowParamConfig> inputs = new HashMap<>();
++        for (FlowParamConfig param : config.getParams()) {
++            if (inputs.put(param.getName(), param) != null) {
++                throw configurationError("loop parameter names must be unique");
++            }
++        }
++        Set<String> outputs = new HashSet<>();
++        for (FlowResultConfig result : config.getResults()) {
++            FlowParamConfig input = inputs.get(result.getName());
++            if (input == null || !Objects.equals(input.getScope(), result.getScope())
++                    || !Objects.equals(input.getType(), result.getType()) || !outputs.add(result.getName())) {
++                throw configurationError("each result must match a unique input name, scope and type");
++            }
++        }
++        body = new FlowExecutable(config);
++    }
++
++    @Override
++    public List<TypeEnums> getParamsTypes() {
++        return body.getParamsTypes();
++    }
++
++    @Override
++    public void execute() throws Exception {
++        Initializer initializer = InitializerEnums.DEFAULT.getInitializer();
++        FlowHolder holder = getBodyHolder(initializer, config.getReference());
++        if (config.getResults().size() != holder.getResults().size()) {
++            throw configurationError("the body must declare one result per loop output, in the same order");
++        }
++        Set<String> active = new HashSet<>();
++        FlowConfig owner = initializer.getFlowNodeConfigFlowConfigs().get(config);
++        if (owner != null) {
++            active.add(owner.getId());
++        }
++        validateBody(initializer, holder.getFlowConfig(), active, new HashSet<>());
++
++        FlowContext parent = FlowContextHolder.get();
++        for (int iteration = 0; condition(parent); iteration++) {
++            if (iteration == limit) {
++                throw new FlowLoopLimitException(config.getId(), limit);
++            }
++            runIteration(parent);
++        }
++    }
++
++    private boolean condition(FlowContext parent) {
++        Map<String, Object> variables = new HashMap<>();
++        for (FlowParamConfig input : config.getParams()) {
++            variables.put(input.getName(), parent.retrieveVariable(input.getScope(), input.getName()));
++        }
++        try {
++            return JexlUtils.evaluateBoolean(config.getLoopCondition(), variables);
++        } catch (RuntimeException failure) {
++            throw new IllegalArgumentException("Invalid condition for while node '" + config.getId() + "'", failure);
++        }
++    }
++
++    private void runIteration(FlowContext parent) throws Exception {
++        FlowContext iteration = new FlowContext();
++        for (FlowParamConfig input : config.getParams()) {
++            iteration.registerVariable(input.getScope(), input.getName(),
++                    parent.retrieveVariable(input.getScope(), input.getName()));
++        }
++        Map<FlowResultConfig, Object> updates = new LinkedHashMap<>();
++        FlowContextHolder.set(iteration);
++        try {
++            body.execute();
++            for (FlowResultConfig output : config.getResults()) {
++                Object value = iteration.retrieveVariables(output.getScope()).get(output.getName());
++                updates.put(output, value);
++            }
++        } finally {
++            FlowContextHolder.set(parent);
++        }
++        updates.forEach((output, value) -> parent.registerVariable(output.getScope(), output.getName(), value));
++    }
++
++    private void validateBody(Initializer initializer, FlowConfig flow, Set<String> active, Set<String> checked) {
++        if (checked.contains(flow.getId())) return;
++        if (!active.add(flow.getId())) {
++            throw configurationError("recursive flow reference in body: " + flow.getId());
++        }
++        if (flow.getSchedule() != null || flow.getStrategies().stream().anyMatch(s -> !"normal".equals(s.getStrategy()))) {
++            throw configurationError("body flows must use synchronous routing: " + flow.getId());
++        }
++        for (FlowNodeConfig node : flow.getNodes()) {
++            if (Boolean.TRUE.equals(node.getAsync()) || node.getSchedule() != null) {
++                throw configurationError("body node must be synchronous: " + node.getId());
++            }
++            if ("flow".equals(node.getType()) || "while".equals(node.getType())) {
++                FlowHolder nested = getBodyHolder(initializer, node.getReference());
++                validateBody(initializer, nested.getFlowConfig(), active, checked);
++            }
++        }
++        active.remove(flow.getId());
++        checked.add(flow.getId());
++    }
++
++    private static FlowHolder getBodyHolder(Initializer initializer, String id) {
++        FlowHolder holder = initializer.getFlowHolder(id);
++        if (holder == null) throw new FlowNotFoundException(id);
++        return holder;
++    }
++
++    private IllegalArgumentException configurationError(String message) {
++        return new IllegalArgumentException("Invalid while node '" + config.getId() + "': " + message);
++    }
++}
+diff --git a/flow-test/src/test/java/cc/eamon/open/flow/FLOW_LOOP/FlowLoopTest.java b/flow-test/src/test/java/cc/eamon/open/flow/FLOW_LOOP/FlowLoopTest.java
+new file mode 100644
+index 0000000..b11cfff
+--- /dev/null
++++ b/flow-test/src/test/java/cc/eamon/open/flow/FLOW_LOOP/FlowLoopTest.java
+@@ -0,0 +1,71 @@
++package cc.eamon.open.flow.FLOW_LOOP;
++
++import cc.eamon.open.flow.config.builder.flow.FlowNodeConfigBuilder;
++import cc.eamon.open.flow.config.constants.FlowConstants;
++import cc.eamon.open.flow.config.flow.FlowNodeConfig;
++import cc.eamon.open.flow.core.FlowEngine;
++import cc.eamon.open.flow.core.error.FlowLoopLimitException;
++import cc.eamon.open.flow.route.util.JexlUtils;
++import com.alibaba.fastjson.JSON;
++import org.testng.Assert;
++import org.testng.annotations.AfterMethod;
++import org.testng.annotations.Test;
++
++import java.util.Collections;
++
++public class FlowLoopTest {
++    private static final String SCOPE = FlowConstants.SCOPE_DEFAULT;
++
++    private FlowEngine start(int count, int stopAt) {
++        return FlowEngine.instance().register(SCOPE, "count", count).register(SCOPE, "stopAt", stopAt);
++    }
++
++    @AfterMethod
++    public void release() {
++        FlowEngine.instance().release();
++    }
++
++    @Test
++    public void repeatsNestedBodyAndRoutesWithLatestCount() throws Exception {
++        FlowEngine engine = start(0, 3).run("FLOW_LOOP_COUNTER");
++        Assert.assertEquals(engine.retrieve(SCOPE, "finished"), "count=3");
++        Assert.assertNull(engine.retrieve(SCOPE, "nextCount"));
++    }
++
++    @Test
++    public void falseAtEntryKeepsInitialValue() throws Exception {
++        FlowEngine engine = start(5, 3).run("FLOW_LOOP_COUNTER");
++        Assert.assertEquals(engine.retrieve(SCOPE, "finished"), "count=5");
++    }
++
++    @Test
++    public void limitStopsBeforeNextIterationAndEngineCanRunAgain() throws Exception {
++        FlowEngine engine = start(0, 4);
++        try {
++            engine.run("FLOW_LOOP_COUNTER");
++            Assert.fail("a true condition after three iterations must fail");
++        } catch (FlowLoopLimitException error) {
++            Assert.assertTrue(error.getMessage().contains("COUNT_WHILE"));
++        }
++        Assert.assertEquals(engine.retrieve(SCOPE, "count"), Integer.valueOf(3));
++        Assert.assertNull(engine.retrieve(SCOPE, "finished"));
++        start(0, 2).run("FLOW_LOOP_COUNTER");
++        Assert.assertEquals(engine.retrieve(SCOPE, "finished"), "count=2");
++    }
++
++    @Test(expectedExceptions = IllegalArgumentException.class)
++    public void nonBooleanConditionFails() {
++        JexlUtils.evaluateBoolean("1", Collections.emptyMap());
++    }
++
++    @Test
++    public void builderPreservesLoopFieldsAndEscapesExpression() {
++        FlowNodeConfig config = new FlowNodeConfigBuilder()
++                .addId("guard").addType("while").addReference("BODY")
++                .addLoopCondition("state == \"ready\"").addMaxIterations(7).build();
++        FlowNodeConfig copy = new FlowNodeConfigBuilder().addConfig(config).build();
++        FlowNodeConfig decoded = JSON.parseObject(FlowNodeConfigBuilder.toJSONString(copy), FlowNodeConfig.class);
++        Assert.assertEquals(decoded.getLoopCondition(), config.getLoopCondition());
++        Assert.assertEquals(decoded.getMaxIterations(), Integer.valueOf(7));
++    }
++}
+diff --git a/flow-test/src/test/java/cc/eamon/open/flow/code/FlowLoopCode.java b/flow-test/src/test/java/cc/eamon/open/flow/code/FlowLoopCode.java
+new file mode 100644
+index 0000000..417a536
+--- /dev/null
++++ b/flow-test/src/test/java/cc/eamon/open/flow/code/FlowLoopCode.java
+@@ -0,0 +1,16 @@
++package cc.eamon.open.flow.code;
++
++import cc.eamon.open.flow.core.FlowEngine;
++import cc.eamon.open.flow.core.stereotype.Flow;
++
++public class FlowLoopCode {
++    @Flow("LOOP_INCREMENT")
++    public void increment(Integer count) {
++        FlowEngine.instance().register("nextCount", count + 1);
++    }
++
++    @Flow("LOOP_FINISH")
++    public void finish(Integer count) {
++        FlowEngine.instance().register("finished", "count=" + count);
++    }
++}
+diff --git a/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-body.json b/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-body.json
+new file mode 100644
+index 0000000..ce22ac1
+--- /dev/null
++++ b/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-body.json
+@@ -0,0 +1,22 @@
++{
++  "id": "FLOW_LOOP_BODY",
++  "type": "flow",
++  "params": [
++    { "name": "count", "type": "Integer" },
++    { "name": "stopAt", "type": "Integer" }
++  ],
++  "results": [{ "name": "nextCount", "type": "Integer" }],
++  "nodes": [
++    {
++      "id": "NESTED_STEP",
++      "type": "flow",
++      "reference": "FLOW_LOOP_STEP",
++      "params": [{ "name": "count", "type": "Integer" }],
++      "results": [{ "name": "nextCount", "type": "Integer" }]
++    }
++  ],
++  "routes": [
++    { "source": "start", "target": "NESTED_STEP" },
++    { "source": "NESTED_STEP", "target": "end" }
++  ]
++}
+diff --git a/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-counter.json b/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-counter.json
+new file mode 100644
+index 0000000..28aaaf3
+--- /dev/null
++++ b/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-counter.json
+@@ -0,0 +1,35 @@
++{
++  "id": "FLOW_LOOP_COUNTER",
++  "type": "flow",
++  "params": [
++    { "name": "count", "type": "Integer" },
++    { "name": "stopAt", "type": "Integer" }
++  ],
++  "results": [{ "name": "finished", "type": "String" }],
++  "nodes": [
++    {
++      "id": "COUNT_WHILE",
++      "type": "while",
++      "reference": "FLOW_LOOP_BODY",
++      "loopCondition": "count < stopAt",
++      "maxIterations": 3,
++      "params": [
++        { "name": "count", "type": "Integer" },
++        { "name": "stopAt", "type": "Integer" }
++      ],
++      "results": [{ "name": "count", "type": "Integer" }]
++    },
++    {
++      "id": "FINISH",
++      "type": "event",
++      "reference": "LOOP_FINISH",
++      "params": [{ "name": "count", "type": "Integer" }],
++      "results": [{ "name": "finished", "type": "String" }]
++    }
++  ],
++  "routes": [
++    { "source": "start", "target": "COUNT_WHILE" },
++    { "source": "COUNT_WHILE", "target": "FINISH", "condition": "count >= stopAt" },
++    { "source": "FINISH", "target": "end" }
++  ]
++}
+diff --git a/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-step.json b/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-step.json
+new file mode 100644
+index 0000000..9aff99e
+--- /dev/null
++++ b/flow-test/src/test/resources/flow/FLOW_LOOP/flow-loop-step.json
+@@ -0,0 +1,19 @@
++{
++  "id": "FLOW_LOOP_STEP",
++  "type": "flow",
++  "params": [{ "name": "count", "type": "Integer" }],
++  "results": [{ "name": "nextCount", "type": "Integer" }],
++  "nodes": [
++    {
++      "id": "INCREMENT",
++      "type": "event",
++      "reference": "LOOP_INCREMENT",
++      "params": [{ "name": "count", "type": "Integer" }],
++      "results": [{ "name": "nextCount", "type": "Integer" }]
++    }
++  ],
++  "routes": [
++    { "source": "start", "target": "INCREMENT" },
++    { "source": "INCREMENT", "target": "end" }
++  ]
++}
