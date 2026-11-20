@@ -1,0 +1,62 @@
+[
+  {
+    "task_id": "1883_C",
+    "title": "C. Raspberries",
+    "platform": "codeforces",
+    "difficulty": "medium",
+    "category": "整除与最小代价",
+    "method": "按因子结构分类讨论",
+    "complexity_of_v2_submission": "最坏O(n log n)，k=4分支排序；其他分支O(n)",
+    "risk": "k=4时两个偶数也能使乘积被4整除",
+    "public_test_groups": 1,
+    "private_test_groups": 12
+  },
+  {
+    "task_id": "1899_A",
+    "title": "A. Game with Integers",
+    "platform": "codeforces",
+    "difficulty": "easy",
+    "category": "模不变量与博弈",
+    "method": "用n mod 3决定先后手",
+    "complexity_of_v2_submission": "每组O(1)",
+    "risk": "需要解释最优对手下的结论，而非仅枚举样例",
+    "public_test_groups": 1,
+    "private_test_groups": 12
+  },
+  {
+    "task_id": "2757",
+    "title": "count-of-integers",
+    "platform": "leetcode",
+    "difficulty": "hard",
+    "category": "数位动态规划",
+    "method": "上下界计数差与数位和约束",
+    "complexity_of_v2_submission": "O(L S 10)，S为可达数位和上界",
+    "risk": "上下界闭区间、tight状态、前导零与取模",
+    "public_test_groups": 2,
+    "private_test_groups": 12
+  },
+  {
+    "task_id": "2777",
+    "title": "find-the-distinct-difference-array",
+    "platform": "leetcode",
+    "difficulty": "easy",
+    "category": "前后缀去重统计",
+    "method": "逐位置计算前缀和后缀集合大小",
+    "complexity_of_v2_submission": "本次提交O(n²)，空间O(n)；可用双向扫描优化",
+    "risk": "后缀从i+1开始且最后一个后缀为空",
+    "public_test_groups": 2,
+    "private_test_groups": 12
+  },
+  {
+    "task_id": "2800",
+    "title": "minimum-string-length-after-removing-substrings",
+    "platform": "leetcode",
+    "difficulty": "easy",
+    "category": "栈与字符串消除",
+    "method": "维护无法继续消除的前缀栈",
+    "complexity_of_v2_submission": "摊还O(n)，空间O(n)",
+    "risk": "删除后新相邻的字符可能继续触发消除",
+    "public_test_groups": 2,
+    "private_test_groups": 12
+  }
+]

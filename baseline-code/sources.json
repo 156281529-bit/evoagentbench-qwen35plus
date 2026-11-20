@@ -1,0 +1,60 @@
+{
+  "evoagentbench_commit": "948a17288782d5120778da16b4cf1cad9305d8b4",
+  "livecodebench_commit": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+  "dataset_revision": "0fe84c3912ea0c4d4a78037083943e8f0c4dd505",
+  "dataset_file": "test.jsonl",
+  "selection_sha256": "a68b029c1801d72b60718db39e8d9560f7c7114989065c73aa977884e444b21f",
+  "task_ids": [
+    "1883_C",
+    "1899_A",
+    "2757",
+    "2777",
+    "2800"
+  ],
+  "framework_files": [
+    {
+      "path": "framework/src/config.py",
+      "sha256": "101d4f9ed1162cbdf2e239ebbc1e7ce93ad66b7413144409b5637600e247eb1b"
+    },
+    {
+      "path": "framework/src/runner.py",
+      "sha256": "af3583f286273ed511cfe7afa5062097d73df484d6a34e5fe756a7a255ab0026"
+    },
+    {
+      "path": "framework/src/agents/__init__.py",
+      "sha256": "cd16c89af8e76e6115713f611010f735bc0d56d3d9397a70434d3de19593b1ed"
+    },
+    {
+      "path": "framework/src/agents/base.py",
+      "sha256": "3975ce2a61861d637e314ad8ac8392cbd094a29c306f7637e72d3027bfcde3bd"
+    },
+    {
+      "path": "framework/src/domains/__init__.py",
+      "sha256": "ac3f4e632c6aef308a49efda5d85858194c03b89a69cfa41bfc6d3ff0952afa3"
+    },
+    {
+      "path": "framework/src/domains/base.py",
+      "sha256": "04da024215ae7b90980039855a26734360efa8189cfcd6991fe19eb07b437002"
+    },
+    {
+      "path": "framework/src/domains/code_implementation/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "framework/src/domains/code_implementation/livecode.py",
+      "sha256": "8e8aee5bfa1f4c29f41f9a4d6c43a6cb112b7d68d0e3cfea10468f89d3df3243"
+    },
+    {
+      "path": "framework/src/domains/code_implementation/prompt.md",
+      "sha256": "f51f3440740387c4efb71a46b513f28de4699af61cf889861b9255a536917bf3"
+    },
+    {
+      "path": "framework/src/utils/__init__.py",
+      "sha256": "af20c9ccc15c54308c7f7cb3d41b5cfb85211928587126e9385ebf86b8b8a6e5"
+    },
+    {
+      "path": "framework/src/utils/summary.py",
+      "sha256": "42ac2ae12b1b9fca8e2eaf331d96d406737a236fd69fdaf6f9c97c724a916d7e"
+    }
+  ]
+}

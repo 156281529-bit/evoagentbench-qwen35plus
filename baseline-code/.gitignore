@@ -1,0 +1,10 @@
+.deps/
+data/selected-tasks.json
+runs/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env
+auth.json
+models.json
+*.log
