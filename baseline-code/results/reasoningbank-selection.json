@@ -1,0 +1,24 @@
+{
+  "revision": "0fe84c3912ea0c4d4a78037083943e8f0c4dd505",
+  "policy": "First official test ID of each difficulty, in release shard and row order",
+  "quotas": {
+    "easy": 1,
+    "medium": 1,
+    "hard": 1
+  },
+  "tasks": [
+    {
+      "id": "abc319_c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "abc320_a",
+      "difficulty": "easy"
+    },
+    {
+      "id": "abc324_f",
+      "difficulty": "hard"
+    }
+  ],
+  "data_sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8"
+}

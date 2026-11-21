@@ -1,0 +1,257 @@
+diff --git a/flow-test/src/test/java/cc/eamon/open/flow/FLOW_SKILL_REPLAY/SkillReplayTest.java b/flow-test/src/test/java/cc/eamon/open/flow/FLOW_SKILL_REPLAY/SkillReplayTest.java
+new file mode 100644
+index 0000000..b5dc7c2
+--- /dev/null
++++ b/flow-test/src/test/java/cc/eamon/open/flow/FLOW_SKILL_REPLAY/SkillReplayTest.java
+@@ -0,0 +1,63 @@
++package cc.eamon.open.flow.FLOW_SKILL_REPLAY;
++
++import cc.eamon.open.flow.config.constants.FlowConstants;
++import cc.eamon.open.flow.core.FlowEngine;
++import com.alibaba.fastjson.JSON;
++import com.alibaba.fastjson.JSONArray;
++import com.alibaba.fastjson.JSONObject;
++import org.testng.Assert;
++import org.testng.SkipException;
++import org.testng.annotations.Test;
++
++import java.nio.charset.StandardCharsets;
++import java.nio.file.Files;
++import java.nio.file.Paths;
++
++public class SkillReplayTest {
++    @Test
++    public void frozenBankRetrievesAndInjectsEveryHeldOutTask() throws Exception {
++        String fixturePath = System.getProperty("rsi.skills.fixture");
++        if (fixturePath == null) {
++            throw new SkipException("Provide the locally prepared fixture via -Drsi.skills.fixture");
++        }
++        String fixture = new String(Files.readAllBytes(Paths.get(fixturePath)), StandardCharsets.UTF_8);
++        JSONObject data = JSON.parseObject(fixture);
++        JSONArray tasks = data.getJSONArray("tasks");
++        Assert.assertEquals(tasks.size(), 3);
++        Assert.assertEquals(data.getJSONArray("cards").size(), 8);
++        String scope = FlowConstants.SCOPE_DEFAULT;
++        FlowEngine engine = FlowEngine.instance();
++        JSONArray rows;
++        try {
++            engine.register(scope, "fixture", fixture).register(scope, "cursor", 0)
++                    .register(scope, "taskCount", tasks.size()).register(scope, "rows", "[]")
++                    .run("FLOW_SKILL_REPLAY_BATCH");
++            Assert.assertEquals(engine.retrieve(scope, "cursor"), Integer.valueOf(tasks.size()));
++            rows = JSON.parseArray((String) engine.retrieve(scope, "rows"));
++        } finally {
++            engine.release();
++        }
++        Assert.assertEquals(rows.size(), tasks.size());
++        for (int i = 0; i < tasks.size(); i++) {
++            JSONObject task = tasks.getJSONObject(i);
++            JSONObject row = rows.getJSONObject(i);
++            Assert.assertEquals(row.getString("task"), task.getString("id"));
++            Assert.assertEquals(row.getIntValue("memoryIndex"), task.getIntValue("expectedMemoryIndex"));
++            Assert.assertEquals(row.getDoubleValue("score"), task.getDoubleValue("expectedScore"), 0.000001);
++            Assert.assertEquals(row.getString("promptSha256"), task.getString("expectedPromptSha256"));
++            Assert.assertEquals(row.getIntValue("archivedVanillaReward"), task.getIntValue("archivedVanillaReward"));
++            Assert.assertEquals(row.getIntValue("archivedReasoningBankReward"), task.getIntValue("archivedReasoningBankReward"));
++        }
++        JSONObject evidence = new JSONObject(true);
++        evidence.put("mode", "offline_replay");
++        evidence.put("model_calls", 0);
++        evidence.put("memory_items", data.getJSONArray("cards").size());
++        evidence.put("bank_sha256", data.getString("bankSha256"));
++        evidence.put("verified_prompt_matches", rows.size());
++        evidence.put("rows", rows);
++        String output = System.getProperty("rsi.skills.output");
++        if (output != null) {
++            Files.write(Paths.get(output), (JSON.toJSONString(evidence, true) + "\n").getBytes(StandardCharsets.UTF_8));
++        }
++    }
++}
+diff --git a/flow-test/src/test/java/cc/eamon/open/flow/code/SkillReplayCode.java b/flow-test/src/test/java/cc/eamon/open/flow/code/SkillReplayCode.java
+new file mode 100644
+index 0000000..9939580
+--- /dev/null
++++ b/flow-test/src/test/java/cc/eamon/open/flow/code/SkillReplayCode.java
+@@ -0,0 +1,73 @@
++package cc.eamon.open.flow.code;
++
++import cc.eamon.open.flow.core.FlowEngine;
++import cc.eamon.open.flow.core.stereotype.Flow;
++import com.alibaba.fastjson.JSON;
++import com.alibaba.fastjson.JSONArray;
++import com.alibaba.fastjson.JSONObject;
++
++import java.nio.charset.StandardCharsets;
++import java.security.MessageDigest;
++import java.security.NoSuchAlgorithmException;
++import java.util.Map;
++
++/** Java nodes for the offline skill replay, driven by the existing Python TF-IDF vectors. */
++public class SkillReplayCode {
++    @Flow("SKILL_REPLAY_RETRIEVE")
++    public void retrieve(String fixture, Integer cursor) {
++        JSONObject data = JSON.parseObject(fixture);
++        JSONObject query = task(data, cursor).getJSONObject("vector");
++        JSONArray cards = data.getJSONArray("cards");
++        int bestIndex = -1;
++        double bestScore = 0.0;
++        for (int i = 0; i < cards.size(); i++) {
++            JSONObject weights = cards.getJSONObject(i).getJSONObject("vector");
++            double score = 0.0;
++            for (Map.Entry<String, Object> term : query.entrySet()) {
++                score += ((Number) term.getValue()).doubleValue() * weights.getDoubleValue(term.getKey());
++            }
++            if (score > bestScore) {
++                bestScore = score;
++                bestIndex = i;
++            }
++        }
++        FlowEngine.instance().register("memoryIndex", bestIndex).register("score", bestScore);
++    }
++
++    @Flow("SKILL_REPLAY_INJECT")
++    public void inject(String fixture, Integer cursor, Integer memoryIndex) throws NoSuchAlgorithmException {
++        JSONObject data = JSON.parseObject(fixture);
++        String prompt = task(data, cursor).getString("basePrompt");
++        if (memoryIndex >= 0) {
++            JSONObject card = data.getJSONArray("cards").getJSONObject(memoryIndex);
++            prompt += data.getString("header") + "#### " + card.getString("title") + "\n"
++                    + card.getString("description") + "\n" + card.getString("content");
++        }
++        byte[] bytes = MessageDigest.getInstance("SHA-256").digest(prompt.getBytes(StandardCharsets.UTF_8));
++        StringBuilder hash = new StringBuilder(64);
++        for (byte value : bytes) {
++            hash.append(String.format("%02x", value & 0xff));
++        }
++        FlowEngine.instance().register("promptSha256", hash.toString());
++    }
++
++    @Flow("SKILL_REPLAY_RECORD")
++    public void record(String fixture, Integer cursor, Integer memoryIndex, Double score,
++                       String promptSha256, String rows) {
++        JSONObject input = task(JSON.parseObject(fixture), cursor);
++        JSONObject row = new JSONObject(true);
++        row.put("task", input.getString("id"));
++        row.put("memoryIndex", memoryIndex);
++        row.put("score", score);
++        row.put("promptSha256", promptSha256);
++        row.put("archivedVanillaReward", input.getIntValue("archivedVanillaReward"));
++        row.put("archivedReasoningBankReward", input.getIntValue("archivedReasoningBankReward"));
++        JSONArray results = JSON.parseArray(rows);
++        results.add(row);
++        FlowEngine.instance().register("nextCursor", cursor + 1).register("updatedRows", results.toJSONString());
++    }
++
++    private static JSONObject task(JSONObject data, int cursor) {
++        return data.getJSONArray("tasks").getJSONObject(cursor);
++    }
++}
+diff --git a/flow-test/src/test/resources/flow/FLOW_SKILL_REPLAY/flow-skill-replay-batch.json b/flow-test/src/test/resources/flow/FLOW_SKILL_REPLAY/flow-skill-replay-batch.json
+new file mode 100644
+index 0000000..f64c573
+--- /dev/null
++++ b/flow-test/src/test/resources/flow/FLOW_SKILL_REPLAY/flow-skill-replay-batch.json
+@@ -0,0 +1,34 @@
++{
++  "id": "FLOW_SKILL_REPLAY_BATCH",
++  "type": "flow",
++  "params": [
++    {"name": "fixture", "type": "String"},
++    {"name": "cursor", "type": "Integer"},
++    {"name": "taskCount", "type": "Integer"},
++    {"name": "rows", "type": "String"}
++  ],
++  "results": [{"name": "rows", "type": "String"}],
++  "nodes": [
++    {
++      "id": "REVIEW_CASES",
++      "type": "while",
++      "reference": "FLOW_SKILL_REPLAY_STEP",
++      "loopCondition": "cursor < taskCount",
++      "maxIterations": 3,
++      "params": [
++        {"name": "fixture", "type": "String"},
++        {"name": "cursor", "type": "Integer"},
++        {"name": "taskCount", "type": "Integer"},
++        {"name": "rows", "type": "String"}
++      ],
++      "results": [
++        {"name": "cursor", "type": "Integer"},
++        {"name": "rows", "type": "String"}
++      ]
++    }
++  ],
++  "routes": [
++    {"source": "start", "target": "REVIEW_CASES"},
++    {"source": "REVIEW_CASES", "target": "end"}
++  ]
++}
+diff --git a/flow-test/src/test/resources/flow/FLOW_SKILL_REPLAY/flow-skill-replay-step.json b/flow-test/src/test/resources/flow/FLOW_SKILL_REPLAY/flow-skill-replay-step.json
+new file mode 100644
+index 0000000..1d42019
+--- /dev/null
++++ b/flow-test/src/test/resources/flow/FLOW_SKILL_REPLAY/flow-skill-replay-step.json
+@@ -0,0 +1,63 @@
++{
++  "id": "FLOW_SKILL_REPLAY_STEP",
++  "type": "flow",
++  "params": [
++    {"name": "fixture", "type": "String"},
++    {"name": "cursor", "type": "Integer"},
++    {"name": "taskCount", "type": "Integer"},
++    {"name": "rows", "type": "String"}
++  ],
++  "results": [
++    {"name": "nextCursor", "type": "Integer"},
++    {"name": "updatedRows", "type": "String"}
++  ],
++  "nodes": [
++    {
++      "id": "RETRIEVE",
++      "type": "event",
++      "reference": "SKILL_REPLAY_RETRIEVE",
++      "params": [
++        {"name": "fixture", "type": "String"},
++        {"name": "cursor", "type": "Integer"}
++      ],
++      "results": [
++        {"name": "memoryIndex", "type": "Integer"},
++        {"name": "score", "type": "Double"}
++      ]
++    },
++    {
++      "id": "INJECT",
++      "type": "event",
++      "reference": "SKILL_REPLAY_INJECT",
++      "params": [
++        {"name": "fixture", "type": "String"},
++        {"name": "cursor", "type": "Integer"},
++        {"name": "memoryIndex", "type": "Integer"}
++      ],
++      "results": [{"name": "promptSha256", "type": "String"}]
++    },
++    {
++      "id": "RECORD",
++      "type": "event",
++      "reference": "SKILL_REPLAY_RECORD",
++      "params": [
++        {"name": "fixture", "type": "String"},
++        {"name": "cursor", "type": "Integer"},
++        {"name": "memoryIndex", "type": "Integer"},
++        {"name": "score", "type": "Double"},
++        {"name": "promptSha256", "type": "String"},
++        {"name": "rows", "type": "String"}
++      ],
++      "results": [
++        {"name": "nextCursor", "type": "Integer"},
++        {"name": "updatedRows", "type": "String"}
++      ]
++    }
++  ],
++  "routes": [
++    {"source": "start", "target": "RETRIEVE"},
++    {"source": "RETRIEVE", "target": "INJECT"},
++    {"source": "INJECT", "target": "RECORD"},
++    {"source": "RECORD", "target": "end"}
++  ]
++}

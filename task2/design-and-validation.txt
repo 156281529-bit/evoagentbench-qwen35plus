@@ -1,0 +1,43 @@
+RSI-Flow 任务二　循环结构设计与验收
+基于 ymxiong/rsi-flow 的 dev_rsi，基准提交 93cc223de5bc8f0510801796a46a8ae391725be9。
+
+一、设计与讨论（5 分）
+
+新增 type 为 while 的流程节点。reference 引用已经注册的同步子流程作为循环体。loopCondition 是用声明的参数计算的 JEXL 布尔表达式。maxIterations 必须是正整数。
+
+执行路径：进入 while → 判断条件 → 条件为真且次数未达上限时执行子流程 → 按结果声明写回变量 → 重新判断。条件为假时走 while 节点的普通出边。若连续执行到上限且条件仍为真，抛出包含节点 ID 和上限的异常。判断发生在执行前，所以可以零次执行。正好用完配额并使条件变为假时正常退出。
+
+变量规则：每轮只把声明的 inputs 放入新的循环上下文。循环体采用现有的嵌套流程参数和结果映射，子流程的结果按声明顺序写回。while 的每个结果必须有同名、同作用域、同类型的输入，因而既能在下一轮读取新值，也能在零次循环时使用初值。其他变量仍在父流程中。循环体中的临时变量保留在本轮上下文，节点异常也会恢复调用方上下文。变量是按 Java 对象引用传递的，可变对象不做深复制。
+
+讨论时建议确认三点：
+1. 条件不满足就跳过循环体，即先判断的 while。
+2. 通过显式 params/results 传递循环变量，复用已有顺序、分支和嵌套能力。
+3. 第一版采用同步子流程。达到上限还未结束时报告异常，便于定位配置或更新逻辑。上限控制循环体调用次数，子流程自身应能结束。
+
+二、实现（5 分）
+
+配置类 FlowNodeConfig 和构建器支持 loopCondition、maxIterations。ExecutableEnums 注册 while，WhileExecutable 负责判断、迭代和写回。子流程复用 FlowExecutable，FlowHolder 给每次子流程调用分配独立的路由执行队列，并在退出时恢复调用方队列。循环体允许同步条件分支和普通嵌套，拒绝递归引用、异步路由和定时节点。
+
+计数演示的配置位于 flow-test/src/test/resources/flow/FLOW_LOOP/。
+父流程 FLOW_LOOP_COUNTER 的条件是 count < stopAt，上限为 3。循环体 FLOW_LOOP_BODY 再嵌套 FLOW_LOOP_STEP，每轮计算 nextCount = count + 1，返回后映射到父流程 count。结束节点读取最新 count 并输出 finished。
+
+输入 count=0, stopAt=3：子流程执行三次，后续节点输出 finished=count=3。
+输入 count=5, stopAt=3：循环体执行零次，后续节点输出 finished=count=5。
+输入 count=0, stopAt=4：执行三次后仍满足条件，抛出 FlowLoopLimitException；恢复后同一线程可再次运行。
+另外检查了条件必须返回布尔值，以及 JSON 配置能保留两个循环字段。
+
+实测记录（2026-11-20）
+原代码的顺序、条件、嵌套回归共 5 项全部通过。
+交付入口在全新的隔离副本完成构建，5 项新增测试及 8 项既有回归共 13 项全部通过，0 失败、0 错误、0 跳过。
+既有回归包括单节点、多节点、两项条件分支、普通嵌套及三种异步路由。
+
+三、复现与交付
+
+当前电脑上已准备源码和依赖缓存。在 PowerShell 中使用交付的 Python 验证入口，程序通过 Docker 启动 Java 8 + Maven，并打印测试报告位置。入口通过 Python 执行，无需修改 PowerShell 执行策略。
+
+在独立的原始仓库副本应用代码时，先用 git apply --check 检查 rsi-flow-while.patch，再用 git apply 应用。当前工作区的 RSI-Flow 源码已经包含此补丁。
+
+在具备原始 Maven 依赖的环境中，从项目根目录运行：
+  mvn -pl flow-test -am "-Dtest=FlowLoopTest,FlowSingleNodeTest,FlowMultiNodeTest,FlowConditionTest,FlowNestTest,FlowAsyncAllTest,FlowAsyncAnyTest,FlowAsyncVoidTest" "-Dsurefire.failIfNoSpecifiedTests=false" test
+
+验证机器无法从原私服取得 auto-config 和 scheduler-core。为运行同步流程回归，验证入口用作者的公开 easyfile 0.0.3 源码构建依赖，并在隔离副本中替换未用到的内联模型类型、停用调度代码和示例。循环补丁不含这些临时适配。此次验收只覆盖所列流程用例，原私服完整构建与定时调度未验证。

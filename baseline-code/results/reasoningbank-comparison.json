@@ -1,0 +1,215 @@
+{
+  "date": "2026-11-20",
+  "method": "Offline ReasoningBank adaptation (judge labels, sparse TF-IDF cosine, top-1)",
+  "model": "thingo/qwen3.5-plus",
+  "pi_version": "1.5.0",
+  "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+  "bank_sha256": "ed8c495e180dacb2244fcb1989dbaef8ab8e7de207d290840bfbd6b9fa9c88da",
+  "selection": {
+    "revision": "0fe84c3912ea0c4d4a78037083943e8f0c4dd505",
+    "policy": "First official test ID of each difficulty, in release shard and row order",
+    "quotas": {
+      "easy": 1,
+      "medium": 1,
+      "hard": 1
+    },
+    "tasks": [
+      {
+        "id": "abc319_c",
+        "difficulty": "medium"
+      },
+      {
+        "id": "abc320_a",
+        "difficulty": "easy"
+      },
+      {
+        "id": "abc324_f",
+        "difficulty": "hard"
+      }
+    ],
+    "data_sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8"
+  },
+  "distillation": {
+    "training_tasks": [
+      "1883_C",
+      "1899_A",
+      "2757",
+      "2777",
+      "2800"
+    ],
+    "memory_items": 8,
+    "total_tokens": 12178,
+    "agent_seconds": 23.8
+  },
+  "transfer_gain_percentage_points": 0.0,
+  "arms": {
+    "vanilla": {
+      "passed_tasks": 1,
+      "total_tasks": 3,
+      "total_tokens": 131495,
+      "agent_seconds": 187.4,
+      "tool_calls": 15,
+      "tool_errors": 0
+    },
+    "reasoningbank": {
+      "passed_tasks": 1,
+      "total_tasks": 3,
+      "total_tokens": 132098,
+      "agent_seconds": 167.6,
+      "tool_calls": 15,
+      "tool_errors": 0
+    }
+  },
+  "pairs": [
+    {
+      "id": "abc319_c",
+      "difficulty": "medium",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.288784,
+          "title": "Sample Case Pattern Verification",
+          "source_tasks": [
+            "1899_A",
+            "2777",
+            "2800"
+          ]
+        }
+      ],
+      "vanilla": {
+        "status": "completed",
+        "reward": 0.0,
+        "passed": 0,
+        "groups_reached": 1,
+        "elapsed_sec": 109.6,
+        "total_tokens": 50639,
+        "tool_calls": 4,
+        "tool_errors": 0,
+        "judge_diagnostic": {
+          "error_code": -2,
+          "first_failed_group_abs_error": "6.6666666666667E-17",
+          "statement_tolerance": "1E-8",
+          "within_statement_tolerance": true
+        },
+        "result_sha256": "4c223cad017d777b73993700bac87608d9f057ec43edc6b9e4f379a58248c6e8",
+        "session_sha256": "081dddb3ebab06801c30532929fa367aa173a9212ca724e3d2378092e39d5a2c"
+      },
+      "reasoningbank": {
+        "status": "completed",
+        "reward": 0.0,
+        "passed": 0,
+        "groups_reached": 1,
+        "elapsed_sec": 95.0,
+        "total_tokens": 52927,
+        "tool_calls": 4,
+        "tool_errors": 0,
+        "judge_diagnostic": {
+          "error_code": -2,
+          "first_failed_group_abs_error": "6.6666666666667E-17",
+          "statement_tolerance": "1E-8",
+          "within_statement_tolerance": true
+        },
+        "result_sha256": "abc9332b56f6b4928cf82d2a9495956f01907078531ade457c97eb80e61b5272",
+        "session_sha256": "cf426e77f4d891ee728656eba2c7c81f1607a1ee25a596a8103a313a1e6687ca"
+      }
+    },
+    {
+      "id": "abc320_a",
+      "difficulty": "easy",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.309085,
+          "title": "Sample Case Pattern Verification",
+          "source_tasks": [
+            "1899_A",
+            "2777",
+            "2800"
+          ]
+        }
+      ],
+      "vanilla": {
+        "status": "completed",
+        "reward": 1.0,
+        "passed": 9,
+        "groups_reached": 9,
+        "elapsed_sec": 17.0,
+        "total_tokens": 19925,
+        "tool_calls": 4,
+        "tool_errors": 0,
+        "judge_diagnostic": {
+          "error_code": null
+        },
+        "result_sha256": "cbe667a3b88db8fd5867c39fbd157f201880c8558b01e2d67a0d032a45c47368",
+        "session_sha256": "4e97cf6c44b5c926c16f50f1fa6ca10c88d2f9efb2531fcb03e98e32545a0444"
+      },
+      "reasoningbank": {
+        "status": "completed",
+        "reward": 1.0,
+        "passed": 9,
+        "groups_reached": 9,
+        "elapsed_sec": 12.7,
+        "total_tokens": 19836,
+        "tool_calls": 4,
+        "tool_errors": 0,
+        "judge_diagnostic": {
+          "error_code": null
+        },
+        "result_sha256": "117c5440ed54a191196a55b34ae14f41e06574fdfedf6a80a391edca7dd63e09",
+        "session_sha256": "29632f2b113ac1905a7fdb9f6704f08e31144fad033db66012f05d8ebe019cd8"
+      }
+    },
+    {
+      "id": "abc324_f",
+      "difficulty": "hard",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.231115,
+          "title": "Sample Case Pattern Verification",
+          "source_tasks": [
+            "1899_A",
+            "2777",
+            "2800"
+          ]
+        }
+      ],
+      "vanilla": {
+        "status": "completed",
+        "reward": 0.0,
+        "passed": 6,
+        "groups_reached": 7,
+        "elapsed_sec": 60.8,
+        "total_tokens": 60931,
+        "tool_calls": 7,
+        "tool_errors": 0,
+        "judge_diagnostic": {
+          "error_code": -2,
+          "first_failed_group_abs_error": "4.197E-13",
+          "statement_tolerance": "1E-9",
+          "within_statement_tolerance": true
+        },
+        "result_sha256": "4fa9387d9c85fe92d2fef81b048c7f6d42d8ff3c97d91e667b6c75adf279506f",
+        "session_sha256": "5cc40db5ea83d1c81ed818e3b1bb68f7e5bba3800ad9361b58b23a38f001cabf"
+      },
+      "reasoningbank": {
+        "status": "completed",
+        "reward": 0.0,
+        "passed": 2,
+        "groups_reached": 3,
+        "elapsed_sec": 59.9,
+        "total_tokens": 59335,
+        "tool_calls": 7,
+        "tool_errors": 0,
+        "judge_diagnostic": {
+          "error_code": -2,
+          "first_failed_group_abs_error": "3E-16",
+          "statement_tolerance": "1E-9",
+          "within_statement_tolerance": true
+        },
+        "result_sha256": "fe73ecb39bbb50cef8e52f2de7a54d48e06d4e8b7f38f989cf3a1152584ef44a",
+        "session_sha256": "b025c33b28c5709b71fb97b7807eb9cbebab7207657b28ab7208bafb1ac8900d"
+      }
+    }
+  ]
+}

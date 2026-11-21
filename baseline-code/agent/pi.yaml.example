@@ -1,0 +1,6 @@
+name: pi
+command: pi
+provider: thingo
+model: qwen3.5-plus
+# Configure the endpoint and ${THINGO_API_KEY} in your private Pi models.json.
+# Never put credentials in this repository or CLI arguments.

@@ -1,0 +1,7 @@
+This submission reuses a minimal subset of EvoAgentBench under Apache-2.0.
+Upstream: https://github.com/EverMind-AI/EvoAgentBench
+Commit: 948a17288782d5120778da16b4cf1cad9305d8b4
+Files under framework/src are unmodified upstream files except agents/pi,
+which is the new Pi adapter written for this experiment.
+The LiveCodeBench judge is fetched separately at the revision in sources.json.
+Original license and third-party notices are included.
