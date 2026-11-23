@@ -67,7 +67,7 @@ final class FlowScheduleNodeHolder extends FlowNodeHolder {
     print(destination)
 
 
-def execute(source, easyfile, cache, work, skill_fixture=None):
+def execute(source, easyfile, cache, work, skill_fixture=None, offline=False):
     source, easyfile, cache, work = (p.resolve() for p in (source, easyfile, cache, work))
     if work == source or source in work.parents or work == easyfile or easyfile in work.parents:
         raise SystemExit("Use a verification work directory outside the source checkouts.")
@@ -104,15 +104,17 @@ def execute(source, easyfile, cache, work, skill_fixture=None):
             f"-Dtest={TESTS},SkillReplayTest -Dsurefire.failIfNoSpecifiedTests=false "
             "-Drsi.skills.fixture=/skill-input.json -Drsi.skills.output=/workspace/skill-replay-results.json"
         )
+    maven = "mvn -B -ntp -o -Dmaven.repo.local=/root/.m2/repository" if offline else "mvn -B -ntp"
     command = [
         docker, "run", "--rm",
+        *(["--network", "none"] if offline else []),
         *mounts,
         "--mount", f"type=bind,source={verify},target=/workspace",
         "--mount", f"type=bind,source={dependency},target=/easyfile",
         "--mount", f"type=bind,source={cache},target=/root/.m2",
         "--workdir", "/workspace", "maven:3.9-eclipse-temurin-8", "sh", "-c",
-        "mvn -B -ntp -f /easyfile/pom.xml -Dmaven.javadoc.skip=true install && "
-        f"mvn -B -ntp -pl flow-test -am {test_options} test",
+        f"{maven} -f /easyfile/pom.xml -Dmaven.javadoc.skip=true install && "
+        f"{maven} -pl flow-test -am {test_options} test",
     ]
     print("Running loop and regression tests in Docker with Java 8.", flush=True)
     subprocess.run(command, check=True)
@@ -128,8 +130,9 @@ if __name__ == "__main__":
     parser.add_argument("--cache", type=Path, default=TASK_ROOT / "work/maven-cache")
     parser.add_argument("--work", type=Path, default=TASK_ROOT / "work")
     parser.add_argument("--skill-fixture", type=Path, help="Also verify the locally generated skill replay fixture")
+    parser.add_argument("--offline", action="store_true", help="Use a populated Maven cache and disable container networking")
     args = parser.parse_args()
     try:
-        execute(args.source, args.easyfile, args.cache, args.work, args.skill_fixture)
+        execute(args.source, args.easyfile, args.cache, args.work, args.skill_fixture, args.offline)
     except subprocess.CalledProcessError as error:
         raise SystemExit(error.returncode) from None

@@ -45,21 +45,29 @@ def freeze(path, value):
     write_json(path, value)
 
 
-def select(job):
+def select(job, per_difficulty=1, excluded=()):
     import requests
 
+    quotas = dict.fromkeys(QUOTAS, per_difficulty)
+    excluded = sorted(set(excluded))
     path = job / "selected-test-tasks.json"
     if path.exists() and (job / "selection.json").exists():
         _, selection = read_selection(job)
+        if selection["quotas"] != quotas or selection.get("excluded", []) != excluded:
+            raise ValueError("Selection settings changed; use a new run directory")
         print(json.dumps(selection, indent=2))
         return
     source = read_json(ROOT / "sources.json")
-    test = set(split_data()["test"])
+    official_test = set(split_data()["test"])
+    if set(excluded) - official_test:
+        raise ValueError("Excluded task IDs must belong to the official test split")
+    test = official_test - set(excluded)
     revision = source["dataset_revision"]
+    endpoint = os.environ.get("HF_ENDPOINT", "https://huggingface.co").rstrip("/")
     rows, seen, counts = [], set(), Counter()
     for shard in SHARDS:
         url = (
-            "https://huggingface.co/datasets/livecodebench/code_generation_lite/"
+            f"{endpoint}/datasets/livecodebench/code_generation_lite/"
             f"resolve/{revision}/{shard}"
         )
         with requests.get(url, stream=True, timeout=(20, 90)) as response:
@@ -72,27 +80,33 @@ def select(job):
                 if (
                     task in test
                     and task not in seen
-                    and counts[level] < QUOTAS.get(level, 0)
+                    and counts[level] < quotas.get(level, 0)
                 ):
                     rows.append(row)
                     seen.add(task)
                     counts[level] += 1
-                if counts == QUOTAS:
+                if counts == quotas:
                     break
-        if counts == QUOTAS:
+        if counts == quotas:
             break
-    if counts != QUOTAS:
+    if counts != quotas:
         raise ValueError(f"Could not fill the fixed difficulty quotas: {dict(counts)}")
     write_json(path, rows)
     selection = {
         "revision": revision,
-        "policy": "First official test ID of each difficulty, in release shard and row order",
-        "quotas": QUOTAS,
+        "policy": (
+            "First official test ID of each difficulty, in release shard and row order"
+            if per_difficulty == 1 and not excluded
+            else "First eligible official test IDs per difficulty, in release shard and row order"
+        ),
+        "quotas": quotas,
         "tasks": [
             {"id": r["question_id"], "difficulty": r["difficulty"]} for r in rows
         ],
         "data_sha256": digest(path.read_bytes()),
     }
+    if excluded:
+        selection["excluded"] = excluded
     freeze(job / "selection.json", selection)
     print(json.dumps(selection, indent=2))
 
@@ -108,13 +122,20 @@ def read_selection(job):
     rows = json.loads(raw)
     tasks = [{"id": r["question_id"], "difficulty": r["difficulty"]} for r in rows]
     ids = {r["id"] for r in tasks}
+    official_test = set(split_data()["test"])
+    quotas = selection["quotas"]
+    excluded = set(selection.get("excluded", []))
     if (
         len(ids) != len(rows)
-        or ids - set(split_data()["test"])
-        or Counter(r["difficulty"] for r in tasks) != QUOTAS
+        or ids - official_test
+        or excluded - official_test
+        or ids & excluded
+        or quotas.keys() != QUOTAS.keys()
+        or any(type(value) is not int or value < 1 for value in quotas.values())
+        or Counter(r["difficulty"] for r in tasks) != quotas
         or tasks != selection["tasks"]
     ):
-        raise ValueError("Selection is outside the official test split or pilot quotas")
+        raise ValueError("Selection is outside the official test split or frozen quotas")
     return rows, selection
 
 
@@ -416,12 +437,18 @@ def main():
     parser.add_argument("--train-results", type=Path)
     parser.add_argument("--lcb-repo", type=Path, default=ROOT / ".deps/LiveCodeBench")
     parser.add_argument("--pi-command", default="pi")
+    parser.add_argument("--per-difficulty", type=int, default=1)
+    parser.add_argument("--exclude-selection", type=Path, help="Exclude IDs in a prior selection manifest")
     parser.add_argument(
         "--review-only",
         action="store_true",
         help="Freeze and write the exact training prompt locally without calling Pi",
     )
     args = parser.parse_args()
+    if args.per_difficulty < 1:
+        parser.error("--per-difficulty must be positive")
+    if args.stage != "select" and (args.per_difficulty != 1 or args.exclude_selection):
+        parser.error("Selection options apply only to select")
     if args.review_only and args.stage != "distill":
         parser.error("--review-only applies only to distill")
     if (
@@ -434,7 +461,12 @@ def main():
     elif args.stage == "evaluate":
         evaluate(job, args)
     elif args.stage == "select":
-        select(job)
+        excluded = (
+            [task["id"] for task in read_json(args.exclude_selection)["tasks"]]
+            if args.exclude_selection
+            else ()
+        )
+        select(job, args.per_difficulty, excluded)
     else:
         report(job)
 

@@ -14,6 +14,7 @@
 | 首批训练基线 | v1 和 v2 均通过 5/5 道题 | [基线报告 PDF](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/reports/baseline-report.pdf) |
 | 扩展训练基线 | 20/20 道题、281/281 个测试组通过，含首批 v2 五题 | [逐题指标](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/baseline-code/results/metrics.json) |
 | 三题独立测试对照 | Vanilla 与 ReasoningBank 均通过 1/3 道题，迁移增益为 0 个百分点 | [逐题对照记录](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/baseline-code/results/reasoningbank-comparison.json) |
+| 新增九题独立测试对照 | Vanilla 通过 7 题、判题失败 2 题。ReasoningBank 通过 7 题、判题失败 1 题、未判题 1 题 | [逐题对照及完整性说明](baseline-code/REASONINGBANK.md#九题扩样) |
 
 三题试跑验证了检索和提示注入流程，样本量有限。两道小数输出题的首个失败记录涉及判题器的精确比较，表中保留原判分。 [方法、复现步骤与判题诊断](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/baseline-code/REASONINGBANK.md)
 

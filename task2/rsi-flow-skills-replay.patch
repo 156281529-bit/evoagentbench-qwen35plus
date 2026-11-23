@@ -29,7 +29,7 @@ index 0000000..b5dc7c2
 +        String fixture = new String(Files.readAllBytes(Paths.get(fixturePath)), StandardCharsets.UTF_8);
 +        JSONObject data = JSON.parseObject(fixture);
 +        JSONArray tasks = data.getJSONArray("tasks");
-+        Assert.assertEquals(tasks.size(), 3);
++        Assert.assertFalse(tasks.isEmpty());
 +        Assert.assertEquals(data.getJSONArray("cards").size(), 8);
 +        String scope = FlowConstants.SCOPE_DEFAULT;
 +        FlowEngine engine = FlowEngine.instance();
@@ -51,11 +51,11 @@ index 0000000..b5dc7c2
 +            Assert.assertEquals(row.getIntValue("memoryIndex"), task.getIntValue("expectedMemoryIndex"));
 +            Assert.assertEquals(row.getDoubleValue("score"), task.getDoubleValue("expectedScore"), 0.000001);
 +            Assert.assertEquals(row.getString("promptSha256"), task.getString("expectedPromptSha256"));
-+            Assert.assertEquals(row.getIntValue("archivedVanillaReward"), task.getIntValue("archivedVanillaReward"));
-+            Assert.assertEquals(row.getIntValue("archivedReasoningBankReward"), task.getIntValue("archivedReasoningBankReward"));
++            Assert.assertEquals(row.getInteger("archivedVanillaReward"), task.getInteger("archivedVanillaReward"));
++            Assert.assertEquals(row.getInteger("archivedReasoningBankReward"), task.getInteger("archivedReasoningBankReward"));
 +        }
 +        JSONObject evidence = new JSONObject(true);
-+        evidence.put("mode", "offline_replay");
++        evidence.put("mode", data.getOrDefault("mode", "offline_replay"));
 +        evidence.put("model_calls", 0);
 +        evidence.put("memory_items", data.getJSONArray("cards").size());
 +        evidence.put("bank_sha256", data.getString("bankSha256"));
@@ -135,8 +135,8 @@ index 0000000..9939580
 +        row.put("memoryIndex", memoryIndex);
 +        row.put("score", score);
 +        row.put("promptSha256", promptSha256);
-+        row.put("archivedVanillaReward", input.getIntValue("archivedVanillaReward"));
-+        row.put("archivedReasoningBankReward", input.getIntValue("archivedReasoningBankReward"));
++        row.put("archivedVanillaReward", input.getInteger("archivedVanillaReward"));
++        row.put("archivedReasoningBankReward", input.getInteger("archivedReasoningBankReward"));
 +        JSONArray results = JSON.parseArray(rows);
 +        results.add(row);
 +        FlowEngine.instance().register("nextCursor", cursor + 1).register("updatedRows", results.toJSONString());
@@ -168,7 +168,7 @@ index 0000000..f64c573
 +      "type": "while",
 +      "reference": "FLOW_SKILL_REPLAY_STEP",
 +      "loopCondition": "cursor < taskCount",
-+      "maxIterations": 3,
++      "maxIterations": 86,
 +      "params": [
 +        {"name": "fixture", "type": "String"},
 +        {"name": "cursor", "type": "Integer"},

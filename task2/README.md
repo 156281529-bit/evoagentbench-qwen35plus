@@ -41,3 +41,11 @@ python -X utf8 task2/verify.py --source PATH_TO_RSI_FLOW --easyfile PATH_TO_EASY
 ```
 
 回放输入包含提示与冻结记忆，建议保存在本地。逐题记录仅包含任务号、哈希、相似度和既有分数。
+
+## 新增九题工作流验证
+
+在原三题之外，从官方测试划分按发布顺序取易、中、难各三题，复用同一份冻结记忆。禁网 Java 容器实际执行了九轮检索、注入和记录，九题的检索索引、相似度和提示 SHA-256 均与 Python 参考结果一致。该批次没有模型调用或判题成绩。
+
+[冻结选题](../baseline-code/results/reasoningbank-heldout-9-selection.json) · [九题工作流记录](skill-workflow-heldout-9-results.json)
+
+同批模型实跑结束后，另用 `--completed-pairs-only` 回放了两组都有正式判题的八道题。RSI-Flow 重建的八份提示哈希均与模型原会话一致，保留了两组原始判分。该回放调用模型 0 次，Java 测试批次 14 项通过，0 失败、0 错误、0 跳过。 [八题正式会话回放记录](skill-replay-heldout-8-results.json)

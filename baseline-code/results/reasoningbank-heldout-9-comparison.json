@@ -1,0 +1,305 @@
+{
+  "method": "Offline ReasoningBank adaptation (judge labels, sparse TF-IDF cosine, top-1)",
+  "planned_pairs": 9,
+  "complete": false,
+  "transfer_gain_percentage_points": null,
+  "arms": {
+    "vanilla": {
+      "recorded": 9,
+      "passed": 7,
+      "outcomes": {
+        "passed": 7,
+        "failed": 2
+      },
+      "tokens": 410594,
+      "agent_seconds": 491.5,
+      "tool_calls": 44,
+      "tool_errors": null
+    },
+    "reasoningbank": {
+      "recorded": 9,
+      "passed": 7,
+      "outcomes": {
+        "passed": 7,
+        "infrastructure_error": 1,
+        "failed": 1
+      },
+      "tokens": 408034,
+      "agent_seconds": 564.1,
+      "tool_calls": 44,
+      "tool_errors": null
+    }
+  },
+  "pairs": [
+    {
+      "id": "abc320_c",
+      "difficulty": "medium",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.287341
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 53339,
+        "agent_seconds": 95.5,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "d7f24469a49fa6d49f5fe0e16f54abf574de4ea4ffa9740bdc70dc3b304d0aa8"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 124504,
+        "agent_seconds": 135.9,
+        "tool_calls": 10,
+        "tool_errors": null,
+        "result_sha256": "ca13ee69d01e135498cad2506b313ba3953eba94fd631bf406da99265adb65f0"
+      }
+    },
+    {
+      "id": "abc322_c",
+      "difficulty": "medium",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.273703
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 14,
+        "test_groups_total": 14,
+        "tokens": 20819,
+        "agent_seconds": 25.9,
+        "tool_calls": 3,
+        "tool_errors": null,
+        "result_sha256": "de1cb415b2f6f2e39a9a74bf7ebd6c6082fe980821c03dc5b5eb539dc09aebc6"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 14,
+        "test_groups_total": 14,
+        "tokens": 42585,
+        "agent_seconds": 40.4,
+        "tool_calls": 6,
+        "tool_errors": 1,
+        "result_sha256": "be44648a87f7a66afd1e9a2751b1bac9eb347cac6edaaf55cce26c42e420c9a6"
+      }
+    },
+    {
+      "id": "abc324_a",
+      "difficulty": "easy",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.270333
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 20840,
+        "agent_seconds": 16.5,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "247290144041f172be7836ffec75cb9c147b885207533b205864f6498b67be55"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 21510,
+        "agent_seconds": 16.7,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "1cc4e455b0696557dbc640d67c3e47befcc3b61411f46ef8e08d11b51f8a8668"
+      }
+    },
+    {
+      "id": "abc325_e",
+      "difficulty": "hard",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.286499
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 71900,
+        "agent_seconds": 79.7,
+        "tool_calls": 7,
+        "tool_errors": null,
+        "result_sha256": "589223d5dabb47c94b722795fd953eb23a977a9d91276282a5e92863a1f89d58"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 79533,
+        "agent_seconds": 78.7,
+        "tool_calls": 8,
+        "tool_errors": 1,
+        "result_sha256": "7c1bc5c4b0750b0fea9230998173ba1fd1a76a1d16f3f5a02401e3829684cf6c"
+      }
+    },
+    {
+      "id": "abc327_c",
+      "difficulty": "medium",
+      "retrieved": [
+        {
+          "index": 3,
+          "score": 0.256544
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 28352,
+        "agent_seconds": 31.5,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "404e121ddea737cf990f6759cbd6b7c07f569608f75f2179e12607d7fa7e7dba"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 29249,
+        "agent_seconds": 32.0,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "625a1357848d1269a1a17866c1923bc9a20c4eab5875644cd6b824a52a04236e"
+      }
+    },
+    {
+      "id": "abc327_e",
+      "difficulty": "hard",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.265387
+        }
+      ],
+      "vanilla": {
+        "outcome": "failed",
+        "test_groups_passed": 0,
+        "test_groups_total": 1,
+        "tokens": 49471,
+        "agent_seconds": 70.7,
+        "tool_calls": 5,
+        "tool_errors": null,
+        "result_sha256": "1bc5ebecae730f687e7492746cc8da3f3a8a0518ade2e0e209f7ceb0796a7707"
+      },
+      "reasoningbank": {
+        "outcome": "infrastructure_error",
+        "test_groups_passed": 0,
+        "test_groups_total": 0,
+        "tokens": 14559,
+        "agent_seconds": 132.2,
+        "tool_calls": 0,
+        "tool_errors": null,
+        "result_sha256": "efa10e3af80a856f06eb7a3446ec247fd84363c994166e4ebea146260194e585"
+      }
+    },
+    {
+      "id": "abc328_b",
+      "difficulty": "easy",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.256604
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 26005,
+        "agent_seconds": 27.7,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "79b2772baa245abe7617d683785429ce5a6d3c18f04b6d3d55f3b2dfe087cce5"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 27723,
+        "agent_seconds": 30.5,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "6fb7ad364c6387eb05a70ab00e26f6338bd732fe03c35ec5951cf873a31c33ac"
+      }
+    },
+    {
+      "id": "abc330_a",
+      "difficulty": "easy",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.306597
+        }
+      ],
+      "vanilla": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 21384,
+        "agent_seconds": 17.2,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "809508e1a18a4dc84b26dd1aee4d47ae352e583e094e9205f2141e382c887497"
+      },
+      "reasoningbank": {
+        "outcome": "passed",
+        "test_groups_passed": 15,
+        "test_groups_total": 15,
+        "tokens": 21854,
+        "agent_seconds": 17.0,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "d6575cb57a7ebce27c2b64d1c15cb2e1d396ba4249d01a114c05c5712082a112"
+      }
+    },
+    {
+      "id": "abc350_e",
+      "difficulty": "hard",
+      "retrieved": [
+        {
+          "index": 1,
+          "score": 0.26428
+        }
+      ],
+      "vanilla": {
+        "outcome": "failed",
+        "test_groups_passed": 2,
+        "test_groups_total": 3,
+        "tokens": 118484,
+        "agent_seconds": 126.8,
+        "tool_calls": 9,
+        "tool_errors": null,
+        "result_sha256": "35048b91faf1e78ef8e37ecdfaf0205056534ce2300c9269e15550b22b880c55"
+      },
+      "reasoningbank": {
+        "outcome": "failed",
+        "test_groups_passed": 2,
+        "test_groups_total": 3,
+        "tokens": 46517,
+        "agent_seconds": 80.7,
+        "tool_calls": 4,
+        "tool_errors": null,
+        "result_sha256": "4672606f6c0a186ddb13450ef8939e8de9e28592e3603a3b322d5ff1ce3a03f8"
+      }
+    }
+  ]
+}

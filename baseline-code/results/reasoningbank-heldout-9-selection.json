@@ -1,0 +1,53 @@
+{
+  "revision": "0fe84c3912ea0c4d4a78037083943e8f0c4dd505",
+  "policy": "First eligible official test IDs per difficulty, in release shard and row order",
+  "quotas": {
+    "easy": 3,
+    "medium": 3,
+    "hard": 3
+  },
+  "tasks": [
+    {
+      "id": "abc320_c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "abc322_c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "abc324_a",
+      "difficulty": "easy"
+    },
+    {
+      "id": "abc325_e",
+      "difficulty": "hard"
+    },
+    {
+      "id": "abc327_c",
+      "difficulty": "medium"
+    },
+    {
+      "id": "abc327_e",
+      "difficulty": "hard"
+    },
+    {
+      "id": "abc328_b",
+      "difficulty": "easy"
+    },
+    {
+      "id": "abc330_a",
+      "difficulty": "easy"
+    },
+    {
+      "id": "abc350_e",
+      "difficulty": "hard"
+    }
+  ],
+  "data_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+  "excluded": [
+    "abc319_c",
+    "abc320_a",
+    "abc324_f"
+  ]
+}

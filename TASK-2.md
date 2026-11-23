@@ -14,6 +14,8 @@
 
 ## 用任务一的记忆做离线回放
 
+扩样后，新增九题的离线工作流验证均通过。两组都有正式判题的八道题也另行回放，重建提示的 SHA-256 均与模型原会话一致。两种离线验证均调用模型 0 次。 [九题工作流与八题回放](task2/README.md#新增九题工作流验证)
+
 循环每轮处理一道题，从任务一冻结的 8 条记忆中选出最相近的一条，重建提示并记录 SHA-256。三道题的检索结果和提示哈希均与任务一一致。回放复用原判题记录，模型调用为 0。加入回放后，隔离测试共 14 项，全部通过。 [回放补丁](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/task2/rsi-flow-skills-replay.patch) · [逐题回放与测试结果](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/task2/skill-replay-results.json)
 
 [设计、验收与复现步骤](https://github.com/156281529-bit/evoagentbench-qwen35plus/blob/1da29f9d461379ca2e03c3c876efa54d98ade090/task2/README.md) · [仓库首页](README.md) · [任务一说明](TASK-1.md) · [提交 PR](https://github.com/156281529-bit/evoagentbench-qwen35plus/pull/1)

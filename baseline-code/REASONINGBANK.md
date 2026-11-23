@@ -59,6 +59,17 @@ python -X utf8 run_reasoning_bank.py report
 
 固定版本判题器逐行比较字符串或 `Decimal` 精确值，遇到首个不匹配即提前停止。表中的组数只统计实际执行到的组。四条首个失败记录的差值均落在 AtCoder 原题给出的容差以内。主表保留原判分，后续未执行到的用例没有复判。[固定版本判题逻辑](https://github.com/LiveCodeBench/LiveCodeBench/blob/28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24/lcb_runner/evaluation/testing_util.py#L389-L424) · [abc319_c 原题](https://atcoder.jp/contests/abc319/tasks/abc319_c?lang=en) · [abc324_f 原题](https://atcoder.jp/contests/abc324/tasks/abc324_f?lang=en)
 
+## 九题扩样
+
+扩样预先冻结官方测试划分中易、中、难各三题，排除原先三道试跑题，沿用同一冻结记忆库。2026-11-23 每道题按原协议用 Vanilla 和 ReasoningBank 各尝试一次，实际执行了 18 次模型评测和 17 次正式判题。
+
+| 组别 | 尝试 | 通过 | 判题失败 | 未进入判题 |
+|---|---:|---:|---:|---:|
+| Vanilla | 9 | 7 | 2 | 0 |
+| ReasoningBank | 9 | 7 | 1 | 1 |
+
+两组在 8 道均有判分的题上均通过 7 题，且通过的是同一批题。两组都未通过 `abc350_e`。Vanilla 还未通过 `abc327_e`，ReasoningBank 在该题的模型停止原因是 `length`，未进入官方判题。完整九题增益留空。 [九题选题记录](results/reasoningbank-heldout-9-selection.json) · [逐题结果与原始结果文件哈希](results/reasoningbank-heldout-9-comparison.json)
+
 ```powershell
 python -X utf8 -m pytest test_pi_adapter.py test_reasoning_bank.py -q
 ```
