@@ -1,0 +1,35 @@
+{
+  "task": "abc327_e",
+  "arm": "reasoningbank",
+  "model": "thingo/qwen3.5-plus",
+  "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+  "prompt_sha256": "eb8e0069c0a36b5be7570eb1349550f8bbb140a3905477082d72c3eaff78f881",
+  "original_comparison_sha256": "ffe58bb094521c45693370dab5f181acf1cc06d0078541dbc21fc1fe67ebc028",
+  "supplemental_attempt": {
+    "outcome": "infrastructure_error",
+    "test_groups_passed": 0,
+    "test_groups_total": 0,
+    "tokens": 14560,
+    "agent_seconds": 132.6,
+    "tool_calls": 0,
+    "tool_errors": null,
+    "result_sha256": "f73a3076926419da866f69919b8035a61cf07e49d8fa9395c4a8afc7763c5d13"
+  },
+  "judge_executed": false,
+  "post_recovery_comparison": {
+    "tasks": 9,
+    "vanilla_passed": 7,
+    "reasoningbank_passed": 7,
+    "complete": false,
+    "gain_percentage_points": null,
+    "includes_supplemental_attempt": true
+  },
+  "model_stop_reason": "length",
+  "confirmed_passes_over_planned_tasks": {
+    "denominator": 9,
+    "vanilla": 7,
+    "reasoningbank": 7,
+    "difference_percentage_points": 0.0,
+    "unjudged_task_treatment": "zero confirmed passes; no official verdict assigned"
+  }
+}

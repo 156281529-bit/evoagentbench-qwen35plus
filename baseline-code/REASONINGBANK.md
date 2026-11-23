@@ -70,6 +70,10 @@ python -X utf8 run_reasoning_bank.py report
 
 两组在 8 道均有判分的题上均通过 7 题，且通过的是同一批题。两组都未通过 `abc350_e`。Vanilla 还未通过 `abc327_e`，ReasoningBank 在该题的模型停止原因是 `length`，未进入官方判题。完整九题增益留空。 [九题选题记录](results/reasoningbank-heldout-9-selection.json) · [逐题结果与原始结果文件哈希](results/reasoningbank-heldout-9-comparison.json)
 
+按原模型、记忆库和逐字一致的提示单独补跑了 ReasoningBank 的 `abc327_e`。模型在 132.6 秒后再次以 `length` 停止，仍没有正式判题。若按九道计划题中取得正式通过的比例衡量，两组均为 7/9（77.8%），相差 0 个百分点。完整九题的正式配对增益仍留空。 [单题补跑记录](results/reasoningbank-heldout-9-recovery.json)
+
+另做了一次仅用于取得正式判分的补充运行。保持模型、题目、冻结记忆与判题器不变，关闭工具并要求直接给出 Python 代码。模型正常输出后，原版 LiveCodeBench 判题器从第一个观察到的测试组判定未通过（reward 0）。用该判分补齐九题后，两组均为 7/9，补充对照差值为 0 个百分点。首轮固定配置的九题增益仍留空。 [正式判分及补充对照](results/reasoningbank-abc327-e-official-verdict.json)
+
 ```powershell
 python -X utf8 -m pytest test_pi_adapter.py test_reasoning_bank.py -q
 ```
