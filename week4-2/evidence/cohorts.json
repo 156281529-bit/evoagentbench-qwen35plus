@@ -1,0 +1,74 @@
+[
+  {
+    "name": "pilot.json",
+    "sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8",
+    "ids": [
+      "abc319_c",
+      "abc320_a",
+      "abc324_f"
+    ]
+  },
+  {
+    "name": "heldout.json",
+    "sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+    "ids": [
+      "abc320_c",
+      "abc322_c",
+      "abc324_a",
+      "abc325_e",
+      "abc327_c",
+      "abc327_e",
+      "abc328_b",
+      "abc330_a",
+      "abc350_e"
+    ]
+  },
+  {
+    "name": "recovery-source.json",
+    "sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "ids": [
+      "arc184_c",
+      "abc376_e",
+      "abc376_g",
+      "arc186_c",
+      "arc186_d",
+      "arc186_e",
+      "abc378_d",
+      "arc188_d",
+      "abc382_g",
+      "arc189_c",
+      "3638",
+      "arc190_d",
+      "3687",
+      "abc390_f",
+      "3762",
+      "abc394_g",
+      "arc195_d",
+      "abc400_g",
+      "abc374_c",
+      "abc374_d",
+      "abc378_c",
+      "abc384_c",
+      "abc389_d",
+      "abc390_c",
+      "abc391_d",
+      "abc392_d",
+      "abc395_c",
+      "arc194_a",
+      "abc374_a",
+      "abc375_b",
+      "abc379_b",
+      "abc380_a",
+      "abc381_b",
+      "abc383_a",
+      "abc385_a",
+      "abc387_a",
+      "abc387_b",
+      "abc388_a",
+      "abc394_a",
+      "abc396_b",
+      "abc397_a",
+      "abc400_b"
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "numeric-comparator-conflict",
+    "title": "核对原题容差与固定判题口径",
+    "source": "11 月 20 日三题对照与 11 月 23 日九题对照中的小数不匹配轨迹",
+    "condition": "固定判题拒绝有限小数，但观察到的误差满足原题明示容差",
+    "action": "保留固定判分，记录误差和原题容差，交给人判断"
+  },
+  {
+    "id": "stdout-debug-line",
+    "title": "清理混入答案的调试行",
+    "source": "任务一冻结经验 Incremental Testing Strategy 中的清理测试代码步骤",
+    "condition": "公开样例实际输出只多出一条显式 DEBUG: 行，源码存在对应的独立字面量 print",
+    "action": "移除唯一可定位的调试输出，保持算法不变，重跑公开样例和固定判题"
+  }
+]

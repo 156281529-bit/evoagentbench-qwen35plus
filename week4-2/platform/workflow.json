@@ -1,0 +1,26 @@
+{
+  "id": "context-experience-repair-v1",
+  "entry": "baseline",
+  "maxRepairs": 1,
+  "nodes": [
+    {"id":"baseline","label":"固定判题","x":24,"y":46},
+    {"id":"public","label":"复跑公开样例","x":213,"y":46},
+    {"id":"match","label":"匹配一条经验","x":420,"y":46},
+    {"id":"repair","label":"自动修订一次","x":627,"y":46},
+    {"id":"verify","label":"复跑样例与判题","x":627,"y":179},
+    {"id":"human","label":"记录并转人工","x":420,"y":318},
+    {"id":"record","label":"保存判分与轨迹","x":24,"y":318}
+  ],
+  "edges": [
+    {"from":"baseline","outcome":"passed","to":"record","label":"通过"},
+    {"from":"baseline","outcome":"failed","to":"public","label":"失败"},
+    {"from":"baseline","outcome":"error","to":"human","label":"判题异常"},
+    {"from":"public","outcome":"observed","to":"match","label":"诊断"},
+    {"from":"match","outcome":"eligible","to":"repair","label":"错误已定位"},
+    {"from":"match","outcome":"handoff","to":"human","label":"缺少依据或规则冲突"},
+    {"from":"repair","outcome":"revised","to":"verify","label":"复核"},
+    {"from":"verify","outcome":"passed","to":"record","label":"通过"},
+    {"from":"verify","outcome":"failed","to":"human","label":"仍失败"},
+    {"from":"human","outcome":"recorded","to":"record","label":"登记"}
+  ]
+}

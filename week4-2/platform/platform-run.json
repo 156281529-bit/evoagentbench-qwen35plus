@@ -1,0 +1,793 @@
+{
+  "workflow": "context-experience-repair-v1",
+  "run_at": "2026-11-27T07:53:24.544636+00:00",
+  "cases": 23,
+  "before_pass": 19,
+  "before_fail": 4,
+  "verified_repairs": 0,
+  "repair_rate": 0.0,
+  "automatic_attempts": 0,
+  "human_handoffs": 4,
+  "results": [
+    {
+      "id": "abc319_c",
+      "candidate_sha256": "66c8b4a3d3bb4a126567e8165dc0b028da5a231c642b8e1141929168c24fea82",
+      "historic_result_sha256": "4c223cad017d777b73993700bac87608d9f057ec43edc6b9e4f379a58248c6e8",
+      "attempts": 0,
+      "handoffs": 1,
+      "experience": "numeric-comparator-conflict",
+      "reason": "statement_judge_tolerance_conflict",
+      "after": null,
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "failed"
+        },
+        {
+          "node": "public",
+          "outcome": "observed"
+        },
+        {
+          "node": "match",
+          "outcome": "handoff"
+        },
+        {
+          "node": "human",
+          "outcome": "recorded"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "fail",
+        "passed": 0,
+        "groups_reached": 1,
+        "error_code": -2
+      },
+      "public_before": {
+        "status": "fail",
+        "passed": 0,
+        "groups_reached": 1,
+        "error_code": -2
+      },
+      "tolerance_evidence": {
+        "absolute_error": "6.6666666666667E-17",
+        "tolerance": "1e-8",
+        "relative_allowed": false
+      }
+    },
+    {
+      "id": "abc320_a",
+      "candidate_sha256": "8c9d1225da0ec9a6466d91bae29af56102413b70ae39a76312ea4bf6cb1c381b",
+      "historic_result_sha256": "cbe667a3b88db8fd5867c39fbd157f201880c8558b01e2d67a0d032a45c47368",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 9,
+        "groups_reached": 9,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 9,
+        "groups_reached": 9,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc324_f",
+      "candidate_sha256": "76e3316c1898a5810ba8d3202d9d1b554b6fccfa97f4d467e0165234bb0a2d74",
+      "historic_result_sha256": "4fa9387d9c85fe92d2fef81b048c7f6d42d8ff3c97d91e667b6c75adf279506f",
+      "attempts": 0,
+      "handoffs": 1,
+      "experience": null,
+      "reason": "no_match_with_concrete_public_fix",
+      "after": null,
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "failed"
+        },
+        {
+          "node": "public",
+          "outcome": "observed"
+        },
+        {
+          "node": "match",
+          "outcome": "handoff"
+        },
+        {
+          "node": "human",
+          "outcome": "recorded"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "fail",
+        "passed": 6,
+        "groups_reached": 7,
+        "error_code": -3
+      },
+      "public_before": {
+        "status": "pass",
+        "passed": 3,
+        "groups_reached": 3,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc320_c",
+      "candidate_sha256": "040bf7d0a30d23373a16a8406d71efb00cdd5c6ccf1087e2ad916670160e7120",
+      "historic_result_sha256": "d7f24469a49fa6d49f5fe0e16f54abf574de4ea4ffa9740bdc70dc3b304d0aa8",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc322_c",
+      "candidate_sha256": "265ce63ea20c3e41704c016d1cac6f0daaafa4cd688c26ab8ce5ce123845429a",
+      "historic_result_sha256": "de1cb415b2f6f2e39a9a74bf7ebd6c6082fe980821c03dc5b5eb539dc09aebc6",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 14,
+        "groups_reached": 14,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 14,
+        "groups_reached": 14,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc324_a",
+      "candidate_sha256": "eafb9ef73c2fe03c45c309d9ea492718d9e61c7683942aecc724785e2fdfea63",
+      "historic_result_sha256": "247290144041f172be7836ffec75cb9c147b885207533b205864f6498b67be55",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc325_e",
+      "candidate_sha256": "846357cbb3c7aa5f14b615377b01f511b3a3580ad34f0e4a7796227588242ef2",
+      "historic_result_sha256": "589223d5dabb47c94b722795fd953eb23a977a9d91276282a5e92863a1f89d58",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc327_c",
+      "candidate_sha256": "03e216ce6ce240023ec60c2a1e2e05ba831fac185ad57b3da4694b18eeaf45a7",
+      "historic_result_sha256": "404e121ddea737cf990f6759cbd6b7c07f569608f75f2179e12607d7fa7e7dba",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc327_e",
+      "candidate_sha256": "acc55dc95099fcbad4cc1acc6fe97ed7bbd9fcdc273cc4b377effa733f01dbfd",
+      "historic_result_sha256": "1bc5ebecae730f687e7492746cc8da3f3a8a0518ade2e0e209f7ceb0796a7707",
+      "attempts": 0,
+      "handoffs": 1,
+      "experience": "numeric-comparator-conflict",
+      "reason": "statement_judge_tolerance_conflict",
+      "after": null,
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "failed"
+        },
+        {
+          "node": "public",
+          "outcome": "observed"
+        },
+        {
+          "node": "match",
+          "outcome": "handoff"
+        },
+        {
+          "node": "human",
+          "outcome": "recorded"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "fail",
+        "passed": 0,
+        "groups_reached": 1,
+        "error_code": -2
+      },
+      "public_before": {
+        "status": "fail",
+        "passed": 0,
+        "groups_reached": 1,
+        "error_code": -2
+      },
+      "tolerance_evidence": {
+        "absolute_error": "2.29E-13",
+        "tolerance": "1e-6",
+        "relative_allowed": true
+      }
+    },
+    {
+      "id": "abc328_b",
+      "candidate_sha256": "a029e1067cab0b2780f3cd82a75e9f3f8f57861b089c9c7f8c318ef94867bc81",
+      "historic_result_sha256": "79b2772baa245abe7617d683785429ce5a6d3c18f04b6d3d55f3b2dfe087cce5",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc330_a",
+      "candidate_sha256": "d3c3ce4c156b2b7d21785c458db40fb97bb0445d159d68f551fee7b02fa30dc2",
+      "historic_result_sha256": "809508e1a18a4dc84b26dd1aee4d47ae352e583e094e9205f2141e382c887497",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc350_e",
+      "candidate_sha256": "d8e1f90e6057b39a2f0e39a14d515852a9be1b998435413919144e2a2ae244e8",
+      "historic_result_sha256": "35048b91faf1e78ef8e37ecdfaf0205056534ce2300c9269e15550b22b880c55",
+      "attempts": 0,
+      "handoffs": 1,
+      "experience": "numeric-comparator-conflict",
+      "reason": "statement_judge_tolerance_conflict",
+      "after": null,
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "failed"
+        },
+        {
+          "node": "public",
+          "outcome": "observed"
+        },
+        {
+          "node": "match",
+          "outcome": "handoff"
+        },
+        {
+          "node": "human",
+          "outcome": "recorded"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "fail",
+        "passed": 2,
+        "groups_reached": 3,
+        "error_code": -2
+      },
+      "public_before": {
+        "status": "fail",
+        "passed": 2,
+        "groups_reached": 3,
+        "error_code": -2
+      },
+      "tolerance_evidence": {
+        "absolute_error": "4.9157715E-8",
+        "tolerance": "1e-6",
+        "relative_allowed": true
+      }
+    },
+    {
+      "id": "abc352_e",
+      "candidate_sha256": "74cb3d771cfea808c74ee9c67a248935a8165f96ec57e85d3fdc61f5bf027e23",
+      "historic_result_sha256": "be1a0fa3033662cdef2614169f8673f6d306abffbbef573ab58813084270800e",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 28,
+        "groups_reached": 28,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 28,
+        "groups_reached": 28,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc327_d",
+      "candidate_sha256": "21125238f75869953533dbb807a2abdbab86ecb041b76c747f0b29bea2eb94e2",
+      "historic_result_sha256": "e9aa9d23d2840b0bdf1fa45b0604176f41314b820e4c356e2ace72f0ad0049b9",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 16,
+        "groups_reached": 16,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 16,
+        "groups_reached": 16,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc335_c",
+      "candidate_sha256": "eb005104bb77e6f849394db33ee2191b4c8978a849b10bf27a32d8cec85c112d",
+      "historic_result_sha256": "04f4811d5c2546fc00726b6660a7202ca17bd5dc3b081fbb6342b3174e2f8eb6",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 13,
+        "groups_reached": 13,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 13,
+        "groups_reached": 13,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc339_b",
+      "candidate_sha256": "f8dd7f30bb7cdc43c55ead1a1064664a599772be668d833a0a3e72082652882b",
+      "historic_result_sha256": "e68082ff58c963d229d8f77a5c7d69c064fd8188b861dccb83f24f1f53ba806c",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc339_d",
+      "candidate_sha256": "889ead63222098f59b4128f3656ebd1d6686a69c3a6b6f0246e068f3680d7a4c",
+      "historic_result_sha256": "592ab39a5ffddcd8e8dfa9decac4151af508f76d2eecc60fa624f7502ccc58f5",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc336_b",
+      "candidate_sha256": "c996ba3f394f0c4e81c662ff7e1d0f51ded302d4bf97da3ff5dfabaff78c6e80",
+      "historic_result_sha256": "3ae654340edcd64858066f0008bee878aa42a9bdcb6e690af07c2a9541a8e19f",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc338_a",
+      "candidate_sha256": "73d9d29c942eb8ff9db73a53c679142c2c248ac6efc3b3b7110779246d724ac7",
+      "historic_result_sha256": "4785506bdf6e69b83a7b3ef78d09604cf5267a20816c5a066c47513fa4b84451",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 16,
+        "groups_reached": 16,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 16,
+        "groups_reached": 16,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc338_b",
+      "candidate_sha256": "4d270a51344edd0b3927a41b9e970ee8f016375b3b84ce3d85ae0842c3d2680d",
+      "historic_result_sha256": "669803bd363190f9e56c1f194ee6799c82065d84a335fd413b3b19d93269f5a2",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 11,
+        "groups_reached": 11,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 11,
+        "groups_reached": 11,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc353_b",
+      "candidate_sha256": "08e625df57ec044e7d5f8456dfbc3e9ee87ec9a0a81587e13fe1a9b0e95fd8be",
+      "historic_result_sha256": "471c5755b1f1870ddaa4b541a15abbbddaf27c47266440d062c0a6e75df6b313",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc353_a",
+      "candidate_sha256": "ea15f4e1d0c327594c18d3f3999d596bf894ec26c2a6361d91d4066aa77a8738",
+      "historic_result_sha256": "8963022f9ea781fad088cde1fb9982984d6540c321826dc0ed7f0d3579ca6d5b",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 15,
+        "groups_reached": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc354_b",
+      "candidate_sha256": "d94f92b89bd5b8432962f2a02a6501247de38fa7a7720e32108a0710039f2376",
+      "historic_result_sha256": "5a79d8e0572c6addaf7d4ecaf88b19582cbc0129fb1dcce1bbbbd5edca7dce63",
+      "attempts": 0,
+      "handoffs": 0,
+      "experience": null,
+      "reason": null,
+      "after": {
+        "status": "pass",
+        "passed": 14,
+        "groups_reached": 14,
+        "error_code": null
+      },
+      "trace": [
+        {
+          "node": "baseline",
+          "outcome": "passed"
+        },
+        {
+          "node": "record",
+          "outcome": "saved"
+        }
+      ],
+      "before": {
+        "status": "pass",
+        "passed": 14,
+        "groups_reached": 14,
+        "error_code": null
+      }
+    }
+  ]
+}

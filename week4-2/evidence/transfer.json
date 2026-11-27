@@ -1,0 +1,31 @@
+{
+  "frozen_cohort": {
+    "abc319_c": "numeric_comparator",
+    "abc324_f": "numeric_comparator",
+    "abc327_e": "numeric_comparator",
+    "abc350_e": "numeric_comparator",
+    "arc184_c": "public_mismatch",
+    "abc376_g": "counterexample",
+    "arc186_c": "counterexample",
+    "arc186_d": "counterexample",
+    "arc186_e": "public_mismatch",
+    "arc188_d": "public_mismatch"
+  },
+  "reserve": {
+    "id": "abc382_g",
+    "public": [
+      {
+        "input_sha256": "f967724eccc47646cf88905b7364f7e5c91b87a33a2921db1741d735ce2f365b",
+        "seconds": 0.031,
+        "execution": "ok",
+        "exact": true,
+        "statement": true,
+        "input": "3\n3 -2 1 4 -1\n4 8 8 0 2\n5 -1000000000000 -1000000000000 1000000000000 1000000000000",
+        "expected": "4\n4\n800000000000",
+        "output": "4\r\n4\r\n800000000000"
+      }
+    ],
+    "diagnosis": "needs_counterexample",
+    "action": "human_review_no_frozen_repair"
+  }
+}

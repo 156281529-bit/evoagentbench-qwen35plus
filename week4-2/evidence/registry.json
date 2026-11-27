@@ -1,0 +1,275 @@
+[
+  {
+    "id": "abc319_c",
+    "title": "False Hope",
+    "frozen": true,
+    "data_sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8",
+    "before_sha256": "5dc417375d81502b7dc52483f5a08e03534a56ecaed8690cbb4fe29cece5ee0a",
+    "result_sha256": "4c223cad017d777b73993700bac87608d9f057ec43edc6b9e4f379a58248c6e8",
+    "cohort": "reasoningbank-pilot",
+    "first_failure_public": true,
+    "groups_passed": 0,
+    "groups_reached": 1,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3 1 9\n2 5 6\n2 7 1\n",
+        "expected": "0.666666666666666666666666666667\n"
+      },
+      {
+        "input": "7 7 6\n8 6 8\n7 7 6\n",
+        "expected": "0.004982363315696649029982363316\n"
+      },
+      {
+        "input": "3 6 7\n1 9 7\n5 7 5\n",
+        "expected": "0.4\n"
+      }
+    ]
+  },
+  {
+    "id": "abc324_f",
+    "title": "Beautiful Path",
+    "frozen": true,
+    "data_sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8",
+    "before_sha256": "9d76fae26a729f481ae8e64ce6eb84bf37482cf12db3468664dd8de52a01f155",
+    "result_sha256": "4fa9387d9c85fe92d2fef81b048c7f6d42d8ff3c97d91e667b6c75adf279506f",
+    "cohort": "reasoningbank-pilot",
+    "first_failure_public": false,
+    "groups_passed": 6,
+    "groups_reached": 7,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "5 7\n1 2 3 6\n1 3 9 5\n2 3 1 5\n2 4 5 3\n2 5 1 9\n3 4 4 8\n4 5 2 7\n",
+        "expected": "0.7500000000000000\n"
+      },
+      {
+        "input": "3 3\n1 3 1 1\n1 3 2 1\n1 3 3 1\n",
+        "expected": "3.0000000000000000\n"
+      },
+      {
+        "input": "10 20\n3 4 1 2\n7 9 4 5\n2 4 4 5\n4 5 1 4\n6 9 4 1\n9 10 3 2\n6 10 5 5\n5 6 1 2\n5 6 5 2\n2 3 2 3\n6 10 4 4\n4 6 3 4\n4 8 4 1\n3 5 3 2\n2 4 3 2\n3 5 4 2\n1 5 3 4\n1 2 4 2\n3 7 2 2\n7 8 1 3\n",
+        "expected": "1.8333333333333333\n"
+      }
+    ]
+  },
+  {
+    "id": "abc327_e",
+    "title": "Maximize Rating",
+    "frozen": true,
+    "data_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+    "before_sha256": "fcae4dfee6bb496a15f22d1043f2f3d9fca8714a0370fd0c12558af04142759c",
+    "result_sha256": "1bc5ebecae730f687e7492746cc8da3f3a8a0518ade2e0e209f7ceb0796a7707",
+    "cohort": "heldout-9",
+    "first_failure_public": true,
+    "groups_passed": 0,
+    "groups_reached": 1,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3\n1000 600 1200\n",
+        "expected": "256.735020470879931\n"
+      },
+      {
+        "input": "3\n600 1000 1200\n",
+        "expected": "261.423219407873376\n"
+      },
+      {
+        "input": "1\n100\n",
+        "expected": "-1100.000000000000000\n"
+      }
+    ]
+  },
+  {
+    "id": "abc350_e",
+    "title": "Toward 0",
+    "frozen": true,
+    "data_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+    "before_sha256": "500634144efaafefbadccfaaca40de1ffbecc8c9216eb6ed09e212b3f9a5c18b",
+    "result_sha256": "35048b91faf1e78ef8e37ecdfaf0205056534ce2300c9269e15550b22b880c55",
+    "cohort": "heldout-9",
+    "first_failure_public": true,
+    "groups_passed": 2,
+    "groups_reached": 3,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3 2 10 20\n",
+        "expected": "20.000000000000000\n"
+      },
+      {
+        "input": "3 2 20 20\n",
+        "expected": "32.000000000000000\n"
+      },
+      {
+        "input": "314159265358979323 4 223606797 173205080\n",
+        "expected": "6418410657.7408381\n"
+      }
+    ]
+  },
+  {
+    "id": "arc184_c",
+    "title": "Mountain and Valley Folds",
+    "frozen": true,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "41189b2e4e22101d705778b469e22e0b0267ecca6093c558362fc36f84e95c7c",
+    "result_sha256": "af3aab176ea96e8d7cd3ac9f5e6daa97a9d50fb3ad220ee6b6969162a35dbb6a",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": true,
+    "groups_passed": 1,
+    "groups_reached": 2,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "4\n0 1 2 3",
+        "expected": "3"
+      },
+      {
+        "input": "6\n0 2 3 5 7 8",
+        "expected": "4"
+      }
+    ]
+  },
+  {
+    "id": "abc376_g",
+    "title": "Treasure Hunting",
+    "frozen": true,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "fb46f9c677e9fdadbacb2173883f32f61d6315d4ed854e3eca799cd46a508d41",
+    "result_sha256": "b84623fff472cc42af29ee3e3b6dbf3b338d276c8de497ac536ddf6d3855b3f1",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": false,
+    "groups_passed": 1,
+    "groups_reached": 2,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3\n3\n0 0 1\n1 2 3\n5\n0 1 0 0 0\n8 6 5 1 7\n10\n0 1 1 3 3 1 4 7 5 4\n43 39 79 48 92 90 76 30 16 30\n",
+        "expected": "166374061\n295776107\n680203339\n"
+      }
+    ]
+  },
+  {
+    "id": "arc186_c",
+    "title": "Ball and Box",
+    "frozen": true,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "c552f961cc3bc609fe70ac322a3bfe1a3d0f92483a7cc0b5f092128a500db4a8",
+    "result_sha256": "051f8ab5d9dd5cf44bb69e9ad0ad2cde4c8eb56b464b325131cd1589469de62f",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": false,
+    "groups_passed": 1,
+    "groups_reached": 2,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3\n3 2\n1 1000000000\n3 1\n3 1\n1 300000\n1000000000 1\n10 4\n22 5\n26 45\n72 21\n47 39\n97 2\n75 35\n82 24\n17 46\n32 22\n28 67",
+        "expected": "2\n0\n28"
+      }
+    ]
+  },
+  {
+    "id": "arc186_d",
+    "title": "Polish Mania",
+    "frozen": true,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "f352e84f880e0662912f1c350b560b0fd826efe270367d3f254014477c902746",
+    "result_sha256": "08a4c5899d67d1e7e13b9930be1d336d7b3e5beca4e323b5d57483a8ff6c1353",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": false,
+    "groups_passed": 36,
+    "groups_reached": 37,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "6\n1 1 1 2 0 0",
+        "expected": "2"
+      },
+      {
+        "input": "11\n3 3 4 4 5 5 6 6 7 7 8",
+        "expected": "13002"
+      },
+      {
+        "input": "19\n18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18",
+        "expected": "477638700"
+      },
+      {
+        "input": "4\n1 1 0 0",
+        "expected": "0"
+      }
+    ]
+  },
+  {
+    "id": "arc186_e",
+    "title": "Missing Subsequence",
+    "frozen": true,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "ed0cabf032588d361ed1edb667c667fde1dc510c7eb779833b427068be8ca6e5",
+    "result_sha256": "bbf3718b4def573a139b1cd44e6df4913b599e50e2c9bd2959257b1e8f9a6b1c",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": true,
+    "groups_passed": 1,
+    "groups_reached": 2,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "5 2 3\n1 1",
+        "expected": "4"
+      },
+      {
+        "input": "400 3 9\n1 8 6",
+        "expected": "417833302"
+      },
+      {
+        "input": "29 3 10\n3 3 3",
+        "expected": "495293602"
+      },
+      {
+        "input": "29 3 10\n3 3 4",
+        "expected": "0"
+      }
+    ]
+  },
+  {
+    "id": "arc188_d",
+    "title": "Mirror and Order",
+    "frozen": true,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "4b14a56b176ee8243daf5a9599e686fcd19a4ba83df6dda0d499c461e83d77fc",
+    "result_sha256": "e346257a10a8a02a22745b7aae0ee1d384ace0ef8519ffed33137fbb43a04b42",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": true,
+    "groups_passed": 1,
+    "groups_reached": 2,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3\n2 3 6\n-1 1 -1",
+        "expected": "1"
+      },
+      {
+        "input": "15\n5 16 1 12 30 20 4 13 9 8 24 21 26 28 17\n-1 -1 6 -1 -1 -1 -1 -1 -1 -1 -1 29 -1 -1 -1",
+        "expected": "758094847"
+      }
+    ]
+  },
+  {
+    "id": "abc382_g",
+    "title": "Tile Distance 3",
+    "frozen": false,
+    "data_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+    "before_sha256": "953fe8273524c14f15c970230299c6c31a63b7f4717a9623f5786c35d9598df7",
+    "result_sha256": "37abbd36a304055b8f43010ef519ab4c38748699d080f4f55335aab343aa0882",
+    "cohort": "evoagentbench-six-new-failures",
+    "first_failure_public": false,
+    "groups_passed": 1,
+    "groups_reached": 2,
+    "error_code": -2,
+    "samples": [
+      {
+        "input": "3\n3 -2 1 4 -1\n4 8 8 0 2\n5 -1000000000000 -1000000000000 1000000000000 1000000000000",
+        "expected": "4\n4\n800000000000"
+      }
+    ]
+  }
+]

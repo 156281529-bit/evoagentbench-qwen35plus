@@ -1,0 +1,72 @@
+{
+  "abc319_c": {
+    "id": "FP-01",
+    "symptom": "基线在第一个样例把 2/3 输出为二进制浮点的短十进制表示。",
+    "action": "按已揭示格子的集合累加合法顺序，保留整数分子，最后做一次高精度除法。",
+    "scope": "同一分母下能精确计数、最后一步才需要小数的概率题。",
+    "reference": "https://atcoder.jp/contests/abc319/tasks/abc319_c"
+  },
+  "abc324_f": {
+    "id": "FP-02",
+    "symptom": "原候选用浮点二分反复计算路径收益，大图的历史运行还出现过超时。",
+    "action": "将每轮 DAG 最长路比较写成整数差 Bq−Cp，用获胜路径的实际分数更新比率。",
+    "scope": "可对路径上的两个可加量做分式优化、且图可按拓扑序遍历。",
+    "reference": "https://atcoder.jp/contests/abc324/tasks/abc324_f"
+  },
+  "abc327_e": {
+    "id": "FP-03",
+    "symptom": "加权分母的闭式公式在接近值相减时损失精度，样例 1 的末位与参考不同。",
+    "action": "分母随参赛次数执行 d ← 1 + 0.9d，保留倒序更新的最优分子。",
+    "scope": "带指数衰减的平均值，尤其是很小的样本数。",
+    "reference": "https://atcoder.jp/contests/abc327/tasks/abc327_e"
+  },
+  "abc350_e": {
+    "id": "FP-04",
+    "symptom": "带自环的期望递推已消去自环，较大期望从 binary64 输出到固定小数位时，与参考舍入不同。",
+    "action": "以 Decimal 计算两种操作的期望并取最小值，按 17 位有效数字输出。",
+    "scope": "金额或概率反复参与乘除且题面允许绝对或相对误差。",
+    "reference": "https://atcoder.jp/contests/abc350/tasks/abc350_e"
+  },
+  "arc184_c": {
+    "id": "INV-01",
+    "symptom": "基线仅按最低置位的位置奇偶判断山折，漏掉同层折痕交替的方向。",
+    "action": "按移位余数 mod 4 确定奇数位置，剩余偶数位置除二递归。",
+    "scope": "二进制自相似序列中需要同时保留层数和方向。",
+    "reference": "https://atcoder.jp/contests/arc184/editorial/11008"
+  },
+  "abc376_g": {
+    "id": "ORD-01",
+    "symptom": "只挑当前可取节点中权重最大的，会推迟解锁高权重子节点。",
+    "action": "比较整个块的权重与长度之比，用堆选块，并向父块合并。",
+    "scope": "树上有先后约束且目标为加权完成时间；须先验证块交换条件。",
+    "reference": "https://atcoder.jp/contests/abc376/editorial/11199"
+  },
+  "arc186_c": {
+    "id": "ORD-02",
+    "symptom": "只对正的 V−P 排序会忽略无法兑现的 M−1 个最大容量箱子及其买入成本。",
+    "action": "降序扫描容量分界，堆维护前部最小购置成本，后部累加正收益。",
+    "scope": "收益只有在资源达到容量阈值后才兑现，要显式计算保留的库存。",
+    "reference": "https://atcoder.jp/contests/arc186/editorial/11254"
+  },
+  "arc186_d": {
+    "id": "INV-02",
+    "symptom": "基线在最后一位把部分多余待填子树也计为可结束，三项序列即可复现。",
+    "action": "保留既有组合计数，只在最后尚余一个槽位时允许放入叶子。",
+    "scope": "先序度数、括号和有终止边界的计数 DP。",
+    "reference": "https://atcoder.jp/contests/arc186/editorial/11255"
+  },
+  "arc186_e": {
+    "id": "INV-03",
+    "symptom": "缺失子序列的计数忽略相邻目标字符是否相同，两个覆盖条件被混为一类。",
+    "action": "按第一次遇见目标字符切段，对相邻字符相等和不同分别建立转移。",
+    "scope": "删除或排除一个指定模式时，需以模式的符号关系区分转移。",
+    "reference": "https://atcoder.jp/contests/arc186/editorial/11256"
+  },
+  "arc188_d": {
+    "id": "INV-04",
+    "symptom": "基线仅禁止数值相邻的配对，没有检查一圈中间项大小关系是否矛盾。",
+    "action": "把固定边收缩成单色或混色路径，拒绝单色闭环，计算合法成环的排列数。",
+    "scope": "局部比较能连成环时，必须检查全局可排序性。",
+    "reference": "https://atcoder.jp/contests/arc188/editorial/11435"
+  }
+}

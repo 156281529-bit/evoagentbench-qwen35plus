@@ -1,0 +1,1495 @@
+{
+  "workflow": "context-experience-repair-v1",
+  "time": "2026-11-27T12:51:50.647946+00:00",
+  "graph_sha256": "9dabd24c2373007df454b5adff88fde58fcf827cdddb4e6bdb0065ec59ddd5f9",
+  "rows": [
+    {
+      "id": "abc319_c",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "FP-01",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "5dc417375d81502b7dc52483f5a08e03534a56ecaed8690cbb4fe29cece5ee0a",
+      "after_sha256": "9abd7ec58a09df90eff14df45f9eed017930629d29e2a193b50946688018fbd8",
+      "before": {
+        "passed": 0,
+        "reached": 1,
+        "result_sha256": "4c223cad017d777b73993700bac87608d9f057ec43edc6b9e4f379a58248c6e8"
+      },
+      "public_before": [
+        {
+          "input_sha256": "39d23dcb51122bb15e84ccc21787995ca2944af26ebd8160032b03c362f43b62",
+          "seconds": 1.453,
+          "execution": "ok",
+          "exact": false,
+          "statement": true,
+          "input": "3 1 9\n2 5 6\n2 7 1\n",
+          "expected": "0.666666666666666666666666666667\n",
+          "output": "0.6666666666666666"
+        },
+        {
+          "input_sha256": "cb858f62f6dc6bc1a25fa3ae9f9d8ec5efa40277b2d61bcc632f565a6f23e584",
+          "seconds": 0.75,
+          "execution": "ok",
+          "exact": false,
+          "statement": true,
+          "input": "7 7 6\n8 6 8\n7 7 6\n",
+          "expected": "0.004982363315696649029982363316\n",
+          "output": "0.0049823633156966494"
+        },
+        {
+          "input_sha256": "88d15bb3e971bc3de842fedcd0835dbdb2858c7f526cf9644f3a38e9f47701aa",
+          "seconds": 1.297,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 6 7\n1 9 7\n5 7 5\n",
+          "expected": "0.4\n",
+          "output": "0.4"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "39d23dcb51122bb15e84ccc21787995ca2944af26ebd8160032b03c362f43b62",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 1 9\n2 5 6\n2 7 1\n",
+          "expected": "0.666666666666666666666666666667\n",
+          "output": "0.666666666666666666666666666667"
+        },
+        {
+          "input_sha256": "cb858f62f6dc6bc1a25fa3ae9f9d8ec5efa40277b2d61bcc632f565a6f23e584",
+          "seconds": 0.046,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "7 7 6\n8 6 8\n7 7 6\n",
+          "expected": "0.004982363315696649029982363316\n",
+          "output": "0.004982363315696649029982363316"
+        },
+        {
+          "input_sha256": "88d15bb3e971bc3de842fedcd0835dbdb2858c7f526cf9644f3a38e9f47701aa",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 6 7\n1 9 7\n5 7 5\n",
+          "expected": "0.4\n",
+          "output": "0.400000000000000000000000000000"
+        }
+      ],
+      "private_local": {
+        "tested": 12,
+        "passed": 12,
+        "statement": 12
+      },
+      "fixed_after": {
+        "passed": 15,
+        "total": 15,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "abc319_c",
+        "after_sha256": "9abd7ec58a09df90eff14df45f9eed017930629d29e2a193b50946688018fbd8",
+        "dataset_sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8",
+        "groups_available": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc324_f",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "FP-02",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "9d76fae26a729f481ae8e64ce6eb84bf37482cf12db3468664dd8de52a01f155",
+      "after_sha256": "afc4843dfbe4495299da27c3a7fb1af4aefa43d389466aa0f745051f4088cff9",
+      "before": {
+        "passed": 6,
+        "reached": 7,
+        "result_sha256": "4fa9387d9c85fe92d2fef81b048c7f6d42d8ff3c97d91e667b6c75adf279506f"
+      },
+      "public_before": [
+        {
+          "input_sha256": "45922b26b7abc64a6d2211a23c9195bd13595f29fbe2b957bf98c19d27f4a452",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "5 7\n1 2 3 6\n1 3 9 5\n2 3 1 5\n2 4 5 3\n2 5 1 9\n3 4 4 8\n4 5 2 7\n",
+          "expected": "0.7500000000000000\n",
+          "output": "0.7500000000000000"
+        },
+        {
+          "input_sha256": "3cd1f281d9a2c404bf1c35db6287efb9d98c4313a20e8592ff60d5d1371e8448",
+          "seconds": 0.046,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 3\n1 3 1 1\n1 3 2 1\n1 3 3 1\n",
+          "expected": "3.0000000000000000\n",
+          "output": "3.0000000000000000"
+        },
+        {
+          "input_sha256": "7e0545bf34a99dc6444d995cc76bef041c9b7357029b90dfb9f05728db7a20a5",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "10 20\n3 4 1 2\n7 9 4 5\n2 4 4 5\n4 5 1 4\n6 9 4 1\n9 10 3 2\n6 10 5 5\n5 6 1 2\n5 6 5 2\n2 3 2 3\n6 10 4 4\n4 6 3 4\n4 8 4 1\n3 5 3 2\n2 4 3 2\n3 5 4 2\n1 5 3 4\n1 2 4 2\n3 7 2 2\n7 8 1 3\n",
+          "expected": "1.8333333333333333\n",
+          "output": "1.8333333333333333"
+        },
+        {
+          "input_sha256": "ef6e4526b89bdec14306d2344e85bfc83040ab40c61d2d4d556a6ad742112688",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": false,
+          "statement": true,
+          "input": "2 1\n1 2 8 3\n",
+          "expected": "2.6666666666666667",
+          "output": "2.6666666666666670"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "45922b26b7abc64a6d2211a23c9195bd13595f29fbe2b957bf98c19d27f4a452",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "5 7\n1 2 3 6\n1 3 9 5\n2 3 1 5\n2 4 5 3\n2 5 1 9\n3 4 4 8\n4 5 2 7\n",
+          "expected": "0.7500000000000000\n",
+          "output": "0.7500000000000000"
+        },
+        {
+          "input_sha256": "3cd1f281d9a2c404bf1c35db6287efb9d98c4313a20e8592ff60d5d1371e8448",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 3\n1 3 1 1\n1 3 2 1\n1 3 3 1\n",
+          "expected": "3.0000000000000000\n",
+          "output": "3.0000000000000000"
+        },
+        {
+          "input_sha256": "7e0545bf34a99dc6444d995cc76bef041c9b7357029b90dfb9f05728db7a20a5",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "10 20\n3 4 1 2\n7 9 4 5\n2 4 4 5\n4 5 1 4\n6 9 4 1\n9 10 3 2\n6 10 5 5\n5 6 1 2\n5 6 5 2\n2 3 2 3\n6 10 4 4\n4 6 3 4\n4 8 4 1\n3 5 3 2\n2 4 3 2\n3 5 4 2\n1 5 3 4\n1 2 4 2\n3 7 2 2\n7 8 1 3\n",
+          "expected": "1.8333333333333333\n",
+          "output": "1.8333333333333333"
+        },
+        {
+          "input_sha256": "ef6e4526b89bdec14306d2344e85bfc83040ab40c61d2d4d556a6ad742112688",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "2 1\n1 2 8 3\n",
+          "expected": "2.6666666666666667",
+          "output": "2.6666666666666667"
+        }
+      ],
+      "private_local": {
+        "tested": 12,
+        "passed": 12,
+        "statement": 12
+      },
+      "fixed_after": {
+        "passed": 15,
+        "total": 15,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "abc324_f",
+        "after_sha256": "afc4843dfbe4495299da27c3a7fb1af4aefa43d389466aa0f745051f4088cff9",
+        "dataset_sha256": "ca5565bfdef582dbcbffc8fc9778aa52cbeb2768f44f6ed1dbfa9549c093c3a8",
+        "groups_available": 15,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc327_e",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "failed"
+        ],
+        [
+          "human",
+          "recorded"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "FP-03",
+      "attempts": 1,
+      "handoffs": 1,
+      "before_sha256": "fcae4dfee6bb496a15f22d1043f2f3d9fca8714a0370fd0c12558af04142759c",
+      "after_sha256": "1c3bdf01347d45dd8e9f857da9184aaa8fe4e175b12f9574691971f3c5caf0c5",
+      "before": {
+        "passed": 0,
+        "reached": 1,
+        "result_sha256": "1bc5ebecae730f687e7492746cc8da3f3a8a0518ade2e0e209f7ceb0796a7707"
+      },
+      "public_before": [
+        {
+          "input_sha256": "3771f91e8eb83dae5e05f2875b4787901ec78314abfd743a3656dd29810826b6",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": false,
+          "statement": true,
+          "input": "3\n1000 600 1200\n",
+          "expected": "256.735020470879931\n",
+          "output": "256.73502047088016"
+        },
+        {
+          "input_sha256": "83c1f2b33b4bd8a1a73a860dd32551527fc3e2bcd783caf965033e2e08e6d70d",
+          "seconds": 0.016,
+          "execution": "ok",
+          "exact": false,
+          "statement": true,
+          "input": "3\n600 1000 1200\n",
+          "expected": "261.423219407873376\n",
+          "output": "261.4232194078737"
+        },
+        {
+          "input_sha256": "89ecad28e25479d2eb946d14e8d4633847426160e819333dbfb8ae7417515d06",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "1\n100\n",
+          "expected": "-1100.000000000000000\n",
+          "output": "-1100.0"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "3771f91e8eb83dae5e05f2875b4787901ec78314abfd743a3656dd29810826b6",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n1000 600 1200\n",
+          "expected": "256.735020470879931\n",
+          "output": "256.735020470879931"
+        },
+        {
+          "input_sha256": "83c1f2b33b4bd8a1a73a860dd32551527fc3e2bcd783caf965033e2e08e6d70d",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n600 1000 1200\n",
+          "expected": "261.423219407873376\n",
+          "output": "261.423219407873376"
+        },
+        {
+          "input_sha256": "89ecad28e25479d2eb946d14e8d4633847426160e819333dbfb8ae7417515d06",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "1\n100\n",
+          "expected": "-1100.000000000000000\n",
+          "output": "-1100.000000000000000"
+        }
+      ],
+      "private_local": {
+        "tested": 12,
+        "passed": 11,
+        "statement": 12
+      },
+      "fixed_after": {
+        "passed": 8,
+        "total": 9,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          -2
+        ],
+        "reward": 0.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "abc327_e",
+        "after_sha256": "1c3bdf01347d45dd8e9f857da9184aaa8fe4e175b12f9574691971f3c5caf0c5",
+        "dataset_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+        "groups_available": 15,
+        "error_code": -2
+      },
+      "reason": "fixed_judge_failure"
+    },
+    {
+      "id": "abc350_e",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "failed"
+        ],
+        [
+          "human",
+          "recorded"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "FP-04",
+      "attempts": 1,
+      "handoffs": 1,
+      "before_sha256": "500634144efaafefbadccfaaca40de1ffbecc8c9216eb6ed09e212b3f9a5c18b",
+      "after_sha256": "035748dd64d63edf0f364ca1d3ffb7ecec78a7c7ecc97f8a189562f91edaaf4a",
+      "before": {
+        "passed": 2,
+        "reached": 3,
+        "result_sha256": "35048b91faf1e78ef8e37ecdfaf0205056534ce2300c9269e15550b22b880c55"
+      },
+      "public_before": [
+        {
+          "input_sha256": "793656df51fd5ba9ee80a74500d3fd55ba3424a27c04ba0672d58733d8d72be4",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 2 10 20\n",
+          "expected": "20.000000000000000\n",
+          "output": "20.000000000000000"
+        },
+        {
+          "input_sha256": "6466074c2536025098522f63f0c7741c99cebba00ce6814c9182deadb0404d8a",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 2 20 20\n",
+          "expected": "32.000000000000000\n",
+          "output": "32.000000000000000"
+        },
+        {
+          "input_sha256": "6ef597c64d4cafad2afb693f3aea78869a377131f30aa2b1b4658b09e6d73700",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": false,
+          "statement": true,
+          "input": "314159265358979323 4 223606797 173205080\n",
+          "expected": "6418410657.7408381\n",
+          "output": "6418410657.740838050842285"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "793656df51fd5ba9ee80a74500d3fd55ba3424a27c04ba0672d58733d8d72be4",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 2 10 20\n",
+          "expected": "20.000000000000000\n",
+          "output": "20"
+        },
+        {
+          "input_sha256": "6466074c2536025098522f63f0c7741c99cebba00ce6814c9182deadb0404d8a",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3 2 20 20\n",
+          "expected": "32.000000000000000\n",
+          "output": "32"
+        },
+        {
+          "input_sha256": "6ef597c64d4cafad2afb693f3aea78869a377131f30aa2b1b4658b09e6d73700",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "314159265358979323 4 223606797 173205080\n",
+          "expected": "6418410657.7408381\n",
+          "output": "6418410657.7408381"
+        }
+      ],
+      "private_local": {
+        "tested": 20,
+        "passed": 10,
+        "statement": 20
+      },
+      "fixed_after": {
+        "passed": 5,
+        "total": 6,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          -2
+        ],
+        "reward": 0.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "abc350_e",
+        "after_sha256": "035748dd64d63edf0f364ca1d3ffb7ecec78a7c7ecc97f8a189562f91edaaf4a",
+        "dataset_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+        "groups_available": 23,
+        "error_code": -2
+      },
+      "reason": "fixed_judge_failure"
+    },
+    {
+      "id": "arc184_c",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "INV-01",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "41189b2e4e22101d705778b469e22e0b0267ecca6093c558362fc36f84e95c7c",
+      "after_sha256": "43771ef8153f37357319ac9ef93a0a9abcbaa5d1ac5b68fcced7cd4b23cb1e1d",
+      "before": {
+        "passed": 1,
+        "reached": 2,
+        "result_sha256": "af3aab176ea96e8d7cd3ac9f5e6daa97a9d50fb3ad220ee6b6969162a35dbb6a"
+      },
+      "public_before": [
+        {
+          "input_sha256": "1939ac02b3e3a4200d2e58caa21f8b8c90a90c4e77b6dc86f95c8b39a97d84ba",
+          "seconds": 0.235,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "4\n0 1 2 3",
+          "expected": "3",
+          "output": "3"
+        },
+        {
+          "input_sha256": "ea87c8b0575639d50494522b49804c3f34ae24ba11c0e15fcbbe723bd00c2edb",
+          "seconds": 0.312,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "6\n0 2 3 5 7 8",
+          "expected": "4",
+          "output": "5"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "1939ac02b3e3a4200d2e58caa21f8b8c90a90c4e77b6dc86f95c8b39a97d84ba",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "4\n0 1 2 3",
+          "expected": "3",
+          "output": "3"
+        },
+        {
+          "input_sha256": "ea87c8b0575639d50494522b49804c3f34ae24ba11c0e15fcbbe723bd00c2edb",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "6\n0 2 3 5 7 8",
+          "expected": "4",
+          "output": "4"
+        }
+      ],
+      "private_local": {
+        "tested": 40,
+        "passed": 40,
+        "statement": 40
+      },
+      "fixed_after": {
+        "passed": 42,
+        "total": 42,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "arc184_c",
+        "after_sha256": "43771ef8153f37357319ac9ef93a0a9abcbaa5d1ac5b68fcced7cd4b23cb1e1d",
+        "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+        "groups_available": 42,
+        "error_code": null
+      }
+    },
+    {
+      "id": "abc376_g",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "ORD-01",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "fb46f9c677e9fdadbacb2173883f32f61d6315d4ed854e3eca799cd46a508d41",
+      "after_sha256": "341ff621311f97e12b96b728c2d68109ce802bd1678375d7005f741689bab52a",
+      "before": {
+        "passed": 1,
+        "reached": 2,
+        "result_sha256": "b84623fff472cc42af29ee3e3b6dbf3b338d276c8de497ac536ddf6d3855b3f1"
+      },
+      "public_before": [
+        {
+          "input_sha256": "43ddcf3921b12ce3c990ce1f684ef850f23ba80cfacfbc5869e49b540ee5529f",
+          "seconds": 0.063,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n3\n0 0 1\n1 2 3\n5\n0 1 0 0 0\n8 6 5 1 7\n10\n0 1 1 3 3 1 4 7 5 4\n43 39 79 48 92 90 76 30 16 30\n",
+          "expected": "166374061\n295776107\n680203339\n",
+          "output": "166374061\r\n295776107\r\n680203339"
+        },
+        {
+          "input_sha256": "5b1b5465d68a8a0a015939d3be5a9ca653b3b6657252ecae2fb31c99340135cc",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "1\n3\n0 0 1\n1 2 9\n",
+          "expected": "582309208",
+          "output": "83187032"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "43ddcf3921b12ce3c990ce1f684ef850f23ba80cfacfbc5869e49b540ee5529f",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n3\n0 0 1\n1 2 3\n5\n0 1 0 0 0\n8 6 5 1 7\n10\n0 1 1 3 3 1 4 7 5 4\n43 39 79 48 92 90 76 30 16 30\n",
+          "expected": "166374061\n295776107\n680203339\n",
+          "output": "166374061\r\n295776107\r\n680203339"
+        },
+        {
+          "input_sha256": "5b1b5465d68a8a0a015939d3be5a9ca653b3b6657252ecae2fb31c99340135cc",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "1\n3\n0 0 1\n1 2 9\n",
+          "expected": "582309208",
+          "output": "582309208"
+        }
+      ],
+      "private_local": {
+        "tested": 38,
+        "passed": 38,
+        "statement": 38
+      },
+      "fixed_after": {
+        "passed": 39,
+        "total": 39,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "abc376_g",
+        "after_sha256": "341ff621311f97e12b96b728c2d68109ce802bd1678375d7005f741689bab52a",
+        "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+        "groups_available": 39,
+        "error_code": null
+      }
+    },
+    {
+      "id": "arc186_c",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "ORD-02",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "c552f961cc3bc609fe70ac322a3bfe1a3d0f92483a7cc0b5f092128a500db4a8",
+      "after_sha256": "3f2707fa392a84159acf5a7ffc343d475e3bcde130715fe0c4ad4a063c1c4394",
+      "before": {
+        "passed": 1,
+        "reached": 2,
+        "result_sha256": "051f8ab5d9dd5cf44bb69e9ad0ad2cde4c8eb56b464b325131cd1589469de62f"
+      },
+      "public_before": [
+        {
+          "input_sha256": "757c0a27a11e86f7dbcbc92be7d284082682e71b0906ed1f88846e4502adbf36",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n3 2\n1 1000000000\n3 1\n3 1\n1 300000\n1000000000 1\n10 4\n22 5\n26 45\n72 21\n47 39\n97 2\n75 35\n82 24\n17 46\n32 22\n28 67",
+          "expected": "2\n0\n28",
+          "output": "2\r\n0\r\n28"
+        },
+        {
+          "input_sha256": "1dee3f0aab74c9120e1d937bb2123458f002af5da3c7fbb0cbed0400c828508a",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "1\n2 2\n3 1\n9 8\n",
+          "expected": "0",
+          "output": "1"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "757c0a27a11e86f7dbcbc92be7d284082682e71b0906ed1f88846e4502adbf36",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n3 2\n1 1000000000\n3 1\n3 1\n1 300000\n1000000000 1\n10 4\n22 5\n26 45\n72 21\n47 39\n97 2\n75 35\n82 24\n17 46\n32 22\n28 67",
+          "expected": "2\n0\n28",
+          "output": "2\r\n0\r\n28"
+        },
+        {
+          "input_sha256": "1dee3f0aab74c9120e1d937bb2123458f002af5da3c7fbb0cbed0400c828508a",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "1\n2 2\n3 1\n9 8\n",
+          "expected": "0",
+          "output": "0"
+        }
+      ],
+      "private_local": {
+        "tested": 1,
+        "passed": 1,
+        "statement": 1
+      },
+      "fixed_after": {
+        "passed": 2,
+        "total": 2,
+        "results": [
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "arc186_c",
+        "after_sha256": "3f2707fa392a84159acf5a7ffc343d475e3bcde130715fe0c4ad4a063c1c4394",
+        "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+        "groups_available": 2,
+        "error_code": null
+      }
+    },
+    {
+      "id": "arc186_d",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "INV-02",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "f352e84f880e0662912f1c350b560b0fd826efe270367d3f254014477c902746",
+      "after_sha256": "4012677c180b8166f5e1da75c3d744e8f5e20736a4c0e041dc9be25f0505ce62",
+      "before": {
+        "passed": 36,
+        "reached": 37,
+        "result_sha256": "08a4c5899d67d1e7e13b9930be1d336d7b3e5beca4e323b5d57483a8ff6c1353"
+      },
+      "public_before": [
+        {
+          "input_sha256": "37ea8881cfffd30923149949478c4fc5d0a400d4dda04c0b45e009bd4a8eb5b7",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "6\n1 1 1 2 0 0",
+          "expected": "2",
+          "output": "2"
+        },
+        {
+          "input_sha256": "eaa90a75be2664821560837e2587a475b5cd26fb916960f469c692bb4bd5b032",
+          "seconds": 0.016,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "11\n3 3 4 4 5 5 6 6 7 7 8",
+          "expected": "13002",
+          "output": "13002"
+        },
+        {
+          "input_sha256": "2dce8a1daf90a3ca1cbc53aaaea09c578e6728b98aa4a17582f8d9f49c7af95d",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "19\n18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18",
+          "expected": "477638700",
+          "output": "477638700"
+        },
+        {
+          "input_sha256": "74859239214b71e7b48d3d9ea551602f4f7d79562325130c8d09b03cd40bcbe0",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "4\n1 1 0 0",
+          "expected": "0",
+          "output": "0"
+        },
+        {
+          "input_sha256": "a20f0106d96db39a599a85486d6af5d99fb9a01276ff610b8ae470fd8dda3240",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "3\n2 1 2\n",
+          "expected": "2",
+          "output": "3"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "37ea8881cfffd30923149949478c4fc5d0a400d4dda04c0b45e009bd4a8eb5b7",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "6\n1 1 1 2 0 0",
+          "expected": "2",
+          "output": "2"
+        },
+        {
+          "input_sha256": "eaa90a75be2664821560837e2587a475b5cd26fb916960f469c692bb4bd5b032",
+          "seconds": 0.046,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "11\n3 3 4 4 5 5 6 6 7 7 8",
+          "expected": "13002",
+          "output": "13002"
+        },
+        {
+          "input_sha256": "2dce8a1daf90a3ca1cbc53aaaea09c578e6728b98aa4a17582f8d9f49c7af95d",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "19\n18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18",
+          "expected": "477638700",
+          "output": "477638700"
+        },
+        {
+          "input_sha256": "74859239214b71e7b48d3d9ea551602f4f7d79562325130c8d09b03cd40bcbe0",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "4\n1 1 0 0",
+          "expected": "0",
+          "output": "0"
+        },
+        {
+          "input_sha256": "a20f0106d96db39a599a85486d6af5d99fb9a01276ff610b8ae470fd8dda3240",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n2 1 2\n",
+          "expected": "2",
+          "output": "2"
+        }
+      ],
+      "private_local": {
+        "tested": 40,
+        "passed": 40,
+        "statement": 40
+      },
+      "fixed_after": {
+        "passed": 44,
+        "total": 44,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "arc186_d",
+        "after_sha256": "4012677c180b8166f5e1da75c3d744e8f5e20736a4c0e041dc9be25f0505ce62",
+        "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+        "groups_available": 44,
+        "error_code": null
+      }
+    },
+    {
+      "id": "arc186_e",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "INV-03",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "ed0cabf032588d361ed1edb667c667fde1dc510c7eb779833b427068be8ca6e5",
+      "after_sha256": "1a7b704a7504ff4e152f724db522b0e27b58da0ffd446e7e9d615b24cad3cba3",
+      "before": {
+        "passed": 1,
+        "reached": 2,
+        "result_sha256": "bbf3718b4def573a139b1cd44e6df4913b599e50e2c9bd2959257b1e8f9a6b1c"
+      },
+      "public_before": [
+        {
+          "input_sha256": "6a25b5fae9e5e1f3575122964426d2a4dcf7c7b601c6072c60c72d692d5f34f4",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "5 2 3\n1 1",
+          "expected": "4",
+          "output": "4"
+        },
+        {
+          "input_sha256": "c3e9db7dcd886342c55e2b7d97ef79207bdd33eab7c35d767c15f0ca6a5f11df",
+          "seconds": 0.578,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "400 3 9\n1 8 6",
+          "expected": "417833302",
+          "output": "912271155"
+        },
+        {
+          "input_sha256": "4ddfe2e12fc4cf21a5d66ce61260a7a9713cbb08fb3d8af332435153cb052159",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "29 3 10\n3 3 3",
+          "expected": "495293602",
+          "output": "495293602"
+        },
+        {
+          "input_sha256": "9a96dfb25110524384c763e5aa16c4adb8367550e653355c9dbd4c8ccdfa0e38",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "29 3 10\n3 3 4",
+          "expected": "0",
+          "output": "0"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "6a25b5fae9e5e1f3575122964426d2a4dcf7c7b601c6072c60c72d692d5f34f4",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "5 2 3\n1 1",
+          "expected": "4",
+          "output": "4"
+        },
+        {
+          "input_sha256": "c3e9db7dcd886342c55e2b7d97ef79207bdd33eab7c35d767c15f0ca6a5f11df",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "400 3 9\n1 8 6",
+          "expected": "417833302",
+          "output": "417833302"
+        },
+        {
+          "input_sha256": "4ddfe2e12fc4cf21a5d66ce61260a7a9713cbb08fb3d8af332435153cb052159",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "29 3 10\n3 3 3",
+          "expected": "495293602",
+          "output": "495293602"
+        },
+        {
+          "input_sha256": "9a96dfb25110524384c763e5aa16c4adb8367550e653355c9dbd4c8ccdfa0e38",
+          "seconds": 0.016,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "29 3 10\n3 3 4",
+          "expected": "0",
+          "output": "0"
+        }
+      ],
+      "private_local": {
+        "tested": 40,
+        "passed": 40,
+        "statement": 40
+      },
+      "fixed_after": {
+        "passed": 44,
+        "total": 44,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "arc186_e",
+        "after_sha256": "1a7b704a7504ff4e152f724db522b0e27b58da0ffd446e7e9d615b24cad3cba3",
+        "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+        "groups_available": 44,
+        "error_code": null
+      }
+    },
+    {
+      "id": "arc188_d",
+      "trace": [
+        [
+          "baseline",
+          "failed"
+        ],
+        [
+          "public",
+          "observed"
+        ],
+        [
+          "match",
+          "eligible"
+        ],
+        [
+          "repair",
+          "revised"
+        ],
+        [
+          "verify",
+          "passed"
+        ],
+        [
+          "record",
+          "saved"
+        ]
+      ],
+      "recipe": "INV-04",
+      "attempts": 1,
+      "handoffs": 0,
+      "before_sha256": "4b14a56b176ee8243daf5a9599e686fcd19a4ba83df6dda0d499c461e83d77fc",
+      "after_sha256": "99d279f3fa9b76b6b80a68f6106b1d1ccf63a85b9f16484d2688dda7293b5b19",
+      "before": {
+        "passed": 1,
+        "reached": 2,
+        "result_sha256": "e346257a10a8a02a22745b7aae0ee1d384ace0ef8519ffed33137fbb43a04b42"
+      },
+      "public_before": [
+        {
+          "input_sha256": "bac52b69e726ecff8f9476a018a85be0d8c2e43e90a6af056ddada396c90fd25",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n2 3 6\n-1 1 -1",
+          "expected": "1",
+          "output": "1"
+        },
+        {
+          "input_sha256": "6d18c7863d9fccb701c1ac7e6e09eb444c0e209b88cb27925242118899c6c36d",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "15\n5 16 1 12 30 20 4 13 9 8 24 21 26 28 17\n-1 -1 6 -1 -1 -1 -1 -1 -1 -1 -1 29 -1 -1 -1",
+          "expected": "758094847",
+          "output": "231709392"
+        }
+      ],
+      "public_after": [
+        {
+          "input_sha256": "bac52b69e726ecff8f9476a018a85be0d8c2e43e90a6af056ddada396c90fd25",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n2 3 6\n-1 1 -1",
+          "expected": "1",
+          "output": "1"
+        },
+        {
+          "input_sha256": "6d18c7863d9fccb701c1ac7e6e09eb444c0e209b88cb27925242118899c6c36d",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "15\n5 16 1 12 30 20 4 13 9 8 24 21 26 28 17\n-1 -1 6 -1 -1 -1 -1 -1 -1 -1 -1 29 -1 -1 -1",
+          "expected": "758094847",
+          "output": "758094847"
+        }
+      ],
+      "private_local": {
+        "tested": 40,
+        "passed": 40,
+        "statement": 40
+      },
+      "fixed_after": {
+        "passed": 42,
+        "total": 42,
+        "results": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "reward": 1.0,
+        "judge_platform": "Linux",
+        "judge_python": "3.12.16",
+        "id": "arc188_d",
+        "after_sha256": "99d279f3fa9b76b6b80a68f6106b1d1ccf63a85b9f16484d2688dda7293b5b19",
+        "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+        "groups_available": 42,
+        "error_code": null
+      }
+    }
+  ]
+}
