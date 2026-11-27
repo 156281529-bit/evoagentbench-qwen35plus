@@ -1,0 +1,37 @@
+{
+  "registration": {
+    "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+    "assembled": true,
+    "WEEK4_DIAGNOSE": true,
+    "WEEK4_ROUTE": true
+  },
+  "input": {
+    "task": "abc382_g",
+    "public": [
+      {
+        "input_sha256": "f967724eccc47646cf88905b7364f7e5c91b87a33a2921db1741d735ce2f365b",
+        "seconds": 0.031,
+        "execution": "ok",
+        "exact": true,
+        "statement": true,
+        "input": "3\n3 -2 1 4 -1\n4 8 8 0 2\n5 -1000000000000 -1000000000000 1000000000000 1000000000000",
+        "expected": "4\n4\n800000000000",
+        "output": "4\r\n4\r\n800000000000"
+      }
+    ],
+    "probes": []
+  },
+  "response": {
+    "task": "abc382_g",
+    "tag": "needs_counterexample",
+    "invocation": "918e8e6a-2ef8-43bf-9dd9-2f6ec4441da3",
+    "started": "2026-11-27T13:20:16.867Z",
+    "nodes": [
+      "WEEK4_DIAGNOSE",
+      "WEEK4_ROUTE"
+    ],
+    "outcome": "handoff",
+    "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+    "completed": "2026-11-27T13:20:16.868Z"
+  }
+}
