@@ -1,0 +1,439 @@
+{
+  "candidates": {
+    "before": {
+      "public": [
+        {
+          "input_sha256": "f967724eccc47646cf88905b7364f7e5c91b87a33a2921db1741d735ce2f365b",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n3 -2 1 4 -1\n4 8 8 0 2\n5 -1000000000000 -1000000000000 1000000000000 1000000000000",
+          "expected": "4\n4\n800000000000",
+          "output": "4\r\n4\r\n800000000000"
+        }
+      ],
+      "private": [
+        {
+          "input_sha256": "a589a241c1b66c4c622b4d92b288a84b6bee62ef663e7d0f5f6c59c8132aa5d4",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": false,
+          "statement": false
+        }
+      ]
+    },
+    "after": {
+      "public": [
+        {
+          "input_sha256": "f967724eccc47646cf88905b7364f7e5c91b87a33a2921db1741d735ce2f365b",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "3\n3 -2 1 4 -1\n4 8 8 0 2\n5 -1000000000000 -1000000000000 1000000000000 1000000000000",
+          "expected": "4\n4\n800000000000",
+          "output": "4\r\n4\r\n800000000000"
+        }
+      ],
+      "private": [
+        {
+          "input_sha256": "a589a241c1b66c4c622b4d92b288a84b6bee62ef663e7d0f5f6c59c8132aa5d4",
+          "seconds": 0.047,
+          "execution": "ok",
+          "exact": true,
+          "statement": true
+        }
+      ]
+    }
+  },
+  "suites": {
+    "grid": {
+      "total": 1250,
+      "before_pass": 764,
+      "after_pass": 1250
+    },
+    "far": {
+      "total": 1273,
+      "before_pass": 157,
+      "after_pass": 1273
+    },
+    "limits": {
+      "total": 544,
+      "before_pass": 202,
+      "after_pass": 544
+    },
+    "polish": {
+      "total": 89,
+      "before_pass": 87,
+      "after_pass": 89
+    }
+  },
+  "counterexamples": {
+    "grid": [
+      [
+        [
+          2,
+          -1,
+          0,
+          0,
+          0
+        ],
+        1,
+        2,
+        1
+      ],
+      [
+        [
+          2,
+          0,
+          0,
+          -1,
+          0
+        ],
+        1,
+        2,
+        1
+      ],
+      [
+        [
+          3,
+          -1,
+          0,
+          0,
+          0
+        ],
+        1,
+        3,
+        1
+      ],
+      [
+        [
+          3,
+          0,
+          0,
+          -1,
+          0
+        ],
+        1,
+        3,
+        1
+      ]
+    ],
+    "far": [
+      [
+        [
+          2,
+          1,
+          1,
+          1,
+          9
+        ],
+        6,
+        4,
+        6
+      ],
+      [
+        [
+          2,
+          -2,
+          0,
+          0,
+          11
+        ],
+        8,
+        6,
+        8
+      ],
+      [
+        [
+          2,
+          0,
+          0,
+          -4,
+          9
+        ],
+        8,
+        6,
+        8
+      ],
+      [
+        [
+          3,
+          0,
+          0,
+          0,
+          13
+        ],
+        9,
+        5,
+        9
+      ]
+    ],
+    "limits": [
+      [
+        [
+          1000000000000,
+          -1,
+          0,
+          0,
+          0
+        ],
+        1,
+        1000000000000,
+        1
+      ],
+      [
+        [
+          10000000000000000,
+          -1,
+          0,
+          0,
+          0
+        ],
+        1,
+        10000000000000000,
+        1
+      ],
+      [
+        [
+          1000000000000,
+          -1,
+          1,
+          0,
+          1
+        ],
+        1,
+        999999999999,
+        1
+      ],
+      [
+        [
+          10000000000000000,
+          -1,
+          1,
+          0,
+          1
+        ],
+        1,
+        9999999999999999,
+        1
+      ]
+    ],
+    "polish": [
+      [
+        [
+          1,
+          2,
+          2
+        ],
+        1,
+        2,
+        1
+      ],
+      [
+        [
+          2,
+          1,
+          2
+        ],
+        2,
+        3,
+        2
+      ]
+    ]
+  },
+  "candidate_hashes": {
+    "week4-2/before/abc382_g.py": "953fe8273524c14f15c970230299c6c31a63b7f4717a9623f5786c35d9598df7",
+    "week4-2-supplement/abc382_g.py": "88eabfcddec90c220f9e91f195370516b52a9359650cb53e3cbce7c6f94a30a7",
+    "week4-2/before/arc186_d.py": "f352e84f880e0662912f1c350b560b0fd826efe270367d3f254014477c902746",
+    "week4-2/after/arc186_d.py": "4012677c180b8166f5e1da75c3d744e8f5e20736a4c0e041dc9be25f0505ce62"
+  },
+  "dataset_sha256": "824342507a11d2d31073999a0dc02cdb406550337e0136bce41b8b274310868c",
+  "native": {
+    "registration": {
+      "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+      "assembled": true,
+      "WEEK4_DIAGNOSE": true,
+      "WEEK4_ROUTE": true
+    },
+    "pairs": {
+      "abc382_g": {
+        "public": [
+          {
+            "input_sha256": "f967724eccc47646cf88905b7364f7e5c91b87a33a2921db1741d735ce2f365b",
+            "seconds": 0.031,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "3\n3 -2 1 4 -1\n4 8 8 0 2\n5 -1000000000000 -1000000000000 1000000000000 1000000000000",
+            "expected": "4\n4\n800000000000",
+            "output": "4\r\n4\r\n800000000000"
+          }
+        ],
+        "passing_probe": {
+          "input_sha256": "9e0e197a3b5577375d3aad21c14e2acd148d8b11a504d210d48acf3152f4d8e4",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "1\n2 0 0 0 0\n",
+          "expected": "0",
+          "output": "0"
+        },
+        "failing_probe": {
+          "input_sha256": "b224a160347f65f6e27e1ce0e3a214ce4cd07e11011308e3a781a605fcbfb8e2",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "1\n2 -1 0 0 0\n",
+          "expected": "1",
+          "output": "2"
+        },
+        "public_only": {
+          "task": "abc382_g",
+          "tag": "needs_counterexample",
+          "invocation": "97815735-28a5-4c1a-a362-5230ce31ab1c",
+          "started": "2026-11-27T17:20:31.112Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "handoff",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T17:20:31.113Z"
+        },
+        "plus_passing": {
+          "task": "abc382_g",
+          "tag": "needs_counterexample",
+          "invocation": "900579e6-75bf-4831-9c5a-12a29e5c76ef",
+          "started": "2026-11-27T17:20:31.130Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "handoff",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T17:20:31.131Z"
+        },
+        "plus_failing": {
+          "task": "abc382_g",
+          "tag": "counterexample",
+          "invocation": "a74e91fd-3f10-4428-b62a-95188faac37c",
+          "started": "2026-11-27T17:20:31.135Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "eligible",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T17:20:31.135Z"
+        }
+      },
+      "arc186_d": {
+        "public": [
+          {
+            "input_sha256": "37ea8881cfffd30923149949478c4fc5d0a400d4dda04c0b45e009bd4a8eb5b7",
+            "seconds": 0.032,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "6\n1 1 1 2 0 0",
+            "expected": "2",
+            "output": "2"
+          },
+          {
+            "input_sha256": "eaa90a75be2664821560837e2587a475b5cd26fb916960f469c692bb4bd5b032",
+            "seconds": 0.031,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "11\n3 3 4 4 5 5 6 6 7 7 8",
+            "expected": "13002",
+            "output": "13002"
+          },
+          {
+            "input_sha256": "2dce8a1daf90a3ca1cbc53aaaea09c578e6728b98aa4a17582f8d9f49c7af95d",
+            "seconds": 0.031,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "19\n18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18 18",
+            "expected": "477638700",
+            "output": "477638700"
+          },
+          {
+            "input_sha256": "74859239214b71e7b48d3d9ea551602f4f7d79562325130c8d09b03cd40bcbe0",
+            "seconds": 0.031,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "4\n1 1 0 0",
+            "expected": "0",
+            "output": "0"
+          }
+        ],
+        "passing_probe": {
+          "input_sha256": "5d90ef7fc0d040fd56a1e48697cfa99e0dfaf4fd803aefefc3b5053ec1d36aea",
+          "seconds": 0.031,
+          "execution": "ok",
+          "exact": true,
+          "statement": true,
+          "input": "1\n0\n",
+          "expected": "1",
+          "output": "1"
+        },
+        "failing_probe": {
+          "input_sha256": "e929b2be8ed00f7081f930714253488700ee4279bddd4a40cd19f0c8a9670093",
+          "seconds": 0.032,
+          "execution": "ok",
+          "exact": false,
+          "statement": false,
+          "input": "3\n1 2 2\n",
+          "expected": "1",
+          "output": "2"
+        },
+        "public_only": {
+          "task": "arc186_d",
+          "tag": "needs_counterexample",
+          "invocation": "6014d001-4c7f-4a81-93f1-2945a9d5e172",
+          "started": "2026-11-27T17:20:31.348Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "handoff",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T17:20:31.349Z"
+        },
+        "plus_passing": {
+          "task": "arc186_d",
+          "tag": "needs_counterexample",
+          "invocation": "e8b8e910-677c-4707-bbdd-ef1ac743b4f7",
+          "started": "2026-11-27T17:20:31.378Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "handoff",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T17:20:31.379Z"
+        },
+        "plus_failing": {
+          "task": "arc186_d",
+          "tag": "counterexample",
+          "invocation": "3b9d391f-2087-4146-826f-b51fcf721ea9",
+          "started": "2026-11-27T17:20:31.393Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "eligible",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T17:20:31.393Z"
+        }
+      }
+    }
+  }
+}
