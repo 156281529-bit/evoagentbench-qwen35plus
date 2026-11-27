@@ -2,6 +2,10 @@
 
 第四周个人任务 4.2 · 2026 年 11 月 27 日 · 原生 Skill 调度版
 
+**11 月 28 日正式复判更新。** 原冻结批修复 8/10 道，扩展批修复 2/2 道，按题号去重累计正式修复 **10 道**。扩展批使用真实历史会话的完整中间错解，`abc335_c` 修订后通过 13/13 组，`abc320_c` 通过 15/15 组。两道题的修复前后均由原版 Linux 判题器复判。
+
+[十页汇报 PDF](Week4-2-Ten-Repairs.pdf) · [四份正式判分回执](additional-official-pairs.json) · [下载修复代码、选例对照与复现材料](Week4-2-Ten-Repairs.zip)
+
 **11 月 28 日补充实验。** 两道公开样例全过的失败题完成了六次原生流程调用，验证一条可独立验算的反例能改变诊断路由。另附 3,156 条构造测试、修订代码及复现实验脚本。[阅读补充报告](../week4-2-supplement/README.md) · [下载完整实验包](../week4-2-supplement/Week4-2-Research-20261128.zip)
 
 **教学视频要求的注册与调度已实测。** 在负责人确认的“匹配经验”步骤中注册两个 RSI-Flow 原生节点。平台将每题的公开观测交给引擎，再依据引擎返回的分流结果决定是否修订。浏览器十题产生十个独立调用号；保留题另行调用同一流程，返回转人工。[注册代码、调度步骤与实测证据](NATIVE-SKILL.md)
@@ -82,4 +86,5 @@ python batch_service.py --dataset PILOT --dataset HELDOUT --dataset RECOVERY_SOU
 Linux 检出版本为 `28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24`，原镜像为 `pi-lcb-submission:py312`。每组限时 6 秒，容器限 2 CPU、2 GiB 内存，关闭网络。镜像 ID 记录在正式回执中。平台复现时将 [context-repair 页面目录](platform/app/context-repair) 放入原 rsi-flow-platform 的 `app` 目录，启动上述执行器和平台开发服务，访问 `/context-repair/batch` 并点击“运行 10 题”。仅复现公开部分时，直接运行 `python batch_service.py`。
 
 负责人确认沿用已有图结构、选择目标仓库，并在本机启动正式判题。AI 协助提取运行记录、准备反例和修订实现、接入平台、复测和整理报告。题面与题解链接按题列在对照页。提交时可在[表单文案](submission.txt)中核对本人工作和 AI 分工。
+
 

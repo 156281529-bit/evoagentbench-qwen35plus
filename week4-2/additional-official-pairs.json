@@ -1,0 +1,104 @@
+{
+  "engine": "pi-lcb-submission:py312",
+  "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+  "livecodebench_commit": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+  "started": "2026-11-27T17:54:11.888817+00:00",
+  "rows": [
+    {
+      "results": [
+        -2
+      ],
+      "passed": 0,
+      "total": 1,
+      "reward": 0.0,
+      "judge_platform": "Linux",
+      "judge_python": "3.12.16",
+      "id": "abc335_c",
+      "side": "before",
+      "code_sha256": "9a5fb09b3a250982840d61c1bd86a8de0beeb3d4d413222c00498842ed54dab4",
+      "data_sha256": "17b1da9d34f2d2d7b86629ff4dd88fb79bb86f286b33958323782d3d08e5f799",
+      "available": 13,
+      "error_code": -2
+    },
+    {
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "passed": 13,
+      "total": 13,
+      "reward": 1.0,
+      "judge_platform": "Linux",
+      "judge_python": "3.12.16",
+      "id": "abc335_c",
+      "side": "after",
+      "code_sha256": "de48fdcced0b07f6eb29fdf190596e5c785ee85b5ab50cf5c895b928af970634",
+      "data_sha256": "17b1da9d34f2d2d7b86629ff4dd88fb79bb86f286b33958323782d3d08e5f799",
+      "available": 13,
+      "error_code": null
+    },
+    {
+      "results": [
+        1,
+        -2
+      ],
+      "passed": 1,
+      "total": 2,
+      "reward": 0.0,
+      "judge_platform": "Linux",
+      "judge_python": "3.12.16",
+      "id": "abc320_c",
+      "side": "before",
+      "code_sha256": "c239c0501f3ac7fd76bf815a505cd046b96e6ec3427373c86a2d9d44519eaaf8",
+      "data_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+      "available": 15,
+      "error_code": -2
+    },
+    {
+      "results": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "passed": 15,
+      "total": 15,
+      "reward": 1.0,
+      "judge_platform": "Linux",
+      "judge_python": "3.12.16",
+      "id": "abc320_c",
+      "side": "after",
+      "code_sha256": "bca662dc2be1b2822827700fe74ccb4c094cc6f4c84f3235919d4c7e0387bb11",
+      "data_sha256": "7d5d1fc079ae6f5d7edba68912a200b781b4d30e7ac636817b70204726806f1f",
+      "available": 15,
+      "error_code": null
+    }
+  ],
+  "complete": true,
+  "verified_repairs": [
+    "abc335_c",
+    "abc320_c"
+  ]
+}
