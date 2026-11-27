@@ -49,4 +49,3 @@ python -X utf8 run_experiment.py --variant v2
 
 代码包保留上游许可、固定版本信息、模型原始提交和证据哈希。11 项适配器测试覆盖独立工作空间、中文 stdin、Windows npm 启动、超时、Token 统计和重试策略。详见 [LICENSE](baseline-code/LICENSE)、[第三方声明](baseline-code/THIRD_PARTY_NOTICES.md) 和 [sources.json](baseline-code/sources.json)。
 
-本仓库当前为私有，查看者需要仓库访问权限。
