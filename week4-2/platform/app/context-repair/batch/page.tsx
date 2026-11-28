@@ -15,9 +15,17 @@ type Edge = { from: string; to: string; outcome: string; label: string };
 type Definition = { id: string; nodes: Node[]; edges: Edge[] };
 type Setup = { definition: Definition; cases: string[] };
 type Row = { id: string; before: { passed: number; reached: number };
+  native?: { tag: string; invocation: string; nodes: string[] };
   private_local?: { passed: number; tested: number }; fixed_after?: { passed?: number; total?: number; reward?: number };
   public_after?: {exact: boolean}[]; recipe: string | null; trace: [string, string][]; handoffs: number };
-type Run = { rows: Row[] };
+type Run = { rows: Row[]; native_registration?: { flow: string } };
+
+function batchUrl(latest = false) {
+  const url = new URL("/context-repair/batch/api", window.location.origin);
+  if (new URLSearchParams(window.location.search).get("native") === "1") url.searchParams.set("native", "1");
+  if (latest) url.searchParams.set("latest", "1");
+  return url;
+}
 
 function WorkflowNode({ element }: VisualElementProps) {
   return <div className={styles.node} data-stage={element.id}>{element.state.name}</div>;
@@ -62,14 +70,14 @@ export default function ContextRepairPage() {
   const [pending, setPending] = useState(false);
   useEffect(() => {
     const controller = new AbortController();
-    fetch("/context-repair/batch/api", { signal: controller.signal })
+    fetch(batchUrl(), { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw Error("本机编排执行器未就绪");
         return response.json();
       })
       .then(setSetup)
       .catch((failure) => { if (!controller.signal.aborted) setError(failure.message); });
-    fetch("/context-repair/batch/api?latest", { signal: controller.signal })
+    fetch(batchUrl(true), { signal: controller.signal })
       .then((response) => response.ok ? response.json() : null)
       .then((previous) => { if (previous?.rows) setRun(previous); })
       .catch(() => {});
@@ -89,7 +97,7 @@ export default function ContextRepairPage() {
       from: link.fromElementId, to: link.toElementId, outcome: link.id.split(":")[1],
     }));
     try {
-      const response = await fetch("/context-repair/batch/api", {
+      const response = await fetch(batchUrl(), {
         method: "POST", headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ workflow: view.id, edges }),
       });
@@ -109,6 +117,7 @@ export default function ContextRepairPage() {
       <div>
         <h1>第四周 · 十道失败题的修复对照</h1>
         <p>读取历史固定判分，同输入执行修复前后程序，按代码哈希核验 Linux 复判。</p>
+        <a href="?native=1">使用 RSI-Flow 原生诊断与分流</a>
       </div>
       <button type="button" disabled={!setup || pending} onClick={execute}>
         {pending ? "判题中…" : `运行${setup ? ` ${setup.cases.length} 题` : ""}`}
@@ -121,6 +130,7 @@ export default function ContextRepairPage() {
     </div>
     {run && <section className={styles.results} aria-label="实测结果">
       <h2>本次判题结果</h2>
+      {run.native_registration && <p>已注册流程 <code>{run.native_registration.flow}</code>，引擎返回 {run.rows.filter(r => r.native).length} 条调用回执。</p>}
       <p role="status">共 {run.rows.length} 题，公开对照通过 {run.rows.filter(r => r.public_after?.every(c => c.exact)).length} 题，
         Linux 正式修复 {run.rows.filter(r => r.fixed_after?.reward === 1).length} 题，转人工 {run.rows.reduce((n,r) => n+r.handoffs,0)} 题。</p>
       <table>
@@ -129,7 +139,8 @@ export default function ContextRepairPage() {
           <th scope="row">{row.id}</th><td>{row.before.passed}/{row.before.reached}，失败即停</td>
           <td>{row.private_local ? row.private_local.passed + "/" + row.private_local.tested : "未运行"}</td>
           <td>{row.fixed_after ? ((row.fixed_after.reward === 1 ? "通过 " : "未通过 ") + (row.fixed_after.passed ?? 0) + "/" + (row.fixed_after.total ?? 0)) : "等待复判"}</td>
-          <td><details><summary>{row.recipe ?? "待人工诊断"}</summary>{row.trace.map(([node]) => nodes.get(node)).join(" → ")}</details></td>
+          <td><details><summary>{row.recipe ?? "待人工诊断"}</summary>{row.trace.map(([node]) => nodes.get(node)).join(" → ")}
+            {row.native && <p>{row.native.nodes.join(" → ")}<br/>{row.native.tag}<br/>调用号 {row.native.invocation}</p>}</details></td>
         </tr>)}</tbody>
       </table>
     </section>}

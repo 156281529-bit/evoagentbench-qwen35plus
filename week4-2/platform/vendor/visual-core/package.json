@@ -1,0 +1,32 @@
+{
+  "name": "@horsecoder/visual-core",
+  "version": "0.3.12",
+  "description": "可视化核心",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "repository": "git@git.horsecoder.com:visual-core/visual-core.git",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21",
+    "rc-tooltip": "^5.1.0",
+    "react-inlinesvg": "^2.2.2",
+    "react-is": "^16.13.0",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "styled-components": "^5.2.1"
+  },
+  "publishConfig": {
+    "registry": "http://central.horsecoder.com:8081/repository/npm-private-horse-code/"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+  "name": "FAILURE_DIAGNOSIS",
+  "type": "flow",
+  "title": "第四周失败诊断",
+  "params": [
+    {
+      "name": "observations",
+      "type": "String",
+      "notnull": true
+    }
+  ],
+  "results": [
+    {
+      "name": "result",
+      "type": "String",
+      "notnull": true
+    }
+  ],
+  "nodes": [
+    {
+      "id": "DIAGNOSE",
+      "type": "event",
+      "reference": "WEEK4_DIAGNOSE",
+      "params": [
+        {
+          "name": "observations",
+          "type": "String",
+          "notnull": true
+        }
+      ],
+      "results": [
+        {
+          "name": "diagnosis",
+          "type": "String",
+          "notnull": true
+        }
+      ]
+    },
+    {
+      "id": "ROUTE",
+      "type": "event",
+      "reference": "WEEK4_ROUTE",
+      "params": [
+        {
+          "name": "diagnosis",
+          "type": "String",
+          "notnull": true
+        }
+      ],
+      "results": [
+        {
+          "name": "result",
+          "type": "String",
+          "notnull": true
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "source": "start",
+      "target": "DIAGNOSE"
+    },
+    {
+      "source": "DIAGNOSE",
+      "target": "ROUTE"
+    },
+    {
+      "source": "ROUTE",
+      "target": "end"
+    }
+  ]
+}

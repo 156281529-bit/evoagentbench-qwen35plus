@@ -7,6 +7,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 from replay import ROOT, load_datasets, sha, trial
+from native_client import dispatch, registration
 
 
 def read(name):
@@ -20,7 +21,7 @@ PROBES = read("evidence/probes.json")
 RECIPES = read("recipes.json")
 
 
-def run_case(r, private, formal, locks):
+def run_case(r, private, formal, locks, native_engine=None):
     task = r["id"]
     left = ROOT / "before" / (task + ".py")
     right = ROOT / "after" / (task + ".py")
@@ -41,7 +42,13 @@ def run_case(r, private, formal, locks):
             evidence["public_before"] = observations
             outcome = "observed"
         elif node == "match":
-            witnessed = any(not c["exact"] and c["execution"] == "ok" for c in observations)
+            if native_engine:
+                count = len(r["samples"])
+                result = dispatch(native_engine, task, observations[:count], observations[count:])
+                evidence["native"] = result
+                witnessed = result["outcome"] == "eligible"
+            else:
+                witnessed = any(not c["exact"] and c["execution"] == "ok" for c in observations)
             eligible = witnessed and task in RECIPES and locks.get(task) == after_hash
             if eligible:
                 evidence["recipe"] = RECIPES[task]["id"]
@@ -116,13 +123,18 @@ def serve(args):
                     return self.send(400,{"error":"画布与已确认的流程定义不一致"})
                 receipt = ROOT / "evidence/official-after.json"
                 formal = {r["id"]:r for r in json.loads(receipt.read_bytes())["rows"]} if receipt.is_file() else {}
-                rows = [run_case(r,private,formal,locks) for r in REGISTRY]
+                state = registration(args.native_engine) if args.native_engine else None
+                rows = [run_case(r,private,formal,locks,args.native_engine) for r in REGISTRY]
                 report = dict(workflow=GRAPH["id"], time=datetime.now(timezone.utc).isoformat(),
                     graph_sha256=sha((ROOT/"platform/workflow.json").read_bytes()), rows=rows)
+                if state:
+                    report["native_registration"] = state
                 temp = args.output.with_suffix(".tmp")
                 temp.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding="utf8")
                 temp.replace(args.output)
                 self.send(200,report)
+            except OSError as err:
+                self.send(503,{"error":str(err)})
             except (ValueError,KeyError,TypeError) as err:
                 self.send(400,{"error":str(err)})
             finally:
@@ -134,6 +146,7 @@ def serve(args):
 if __name__ == "__main__":
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--port",type=int,default=39913)
+    p.add_argument("--native-engine", help="URL of the RSI-Flow Spring service")
     p.add_argument("--dataset",type=Path,action="append",default=[])
     p.add_argument("--output",type=Path,default=ROOT / "evidence/platform-batch.json")
     serve(p.parse_args())

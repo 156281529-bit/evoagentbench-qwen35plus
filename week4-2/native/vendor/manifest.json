@@ -1,0 +1,106 @@
+{
+  "origin": "Original project Maven runtime dependencies, archived with the RSI backend",
+  "engine_version": "0.4.14",
+  "files": [
+    {
+      "path": "maven/cc/eamon/easyfile/0.0.3/easyfile-0.0.3.jar",
+      "sha256": "dccf5cb80cf0abe3ff501a7005bc9ab8d110fb11009e3cefe6c39cb2c3ec41da"
+    },
+    {
+      "path": "maven/cc/eamon/easyfile/0.0.3/easyfile-0.0.3.pom",
+      "sha256": "5111bfb1a41afa66e645b638192f701ea08949e919a30f33a3ead982f7e37ae3"
+    },
+    {
+      "path": "maven/cc/eamon/open/auto-config/1.0.6/auto-config-1.0.6.jar",
+      "sha256": "5ff23f1a57346c9b1c83f292b3005163134fde3e9ff3556bbfa19ea06d7034dd"
+    },
+    {
+      "path": "maven/cc/eamon/open/auto-config/1.0.6/auto-config-1.0.6.pom",
+      "sha256": "206e034228169a39ffde44733b2d2bbbb141948f1971f30ebd6e8c63752a9f01"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow/0.4.14/flow-0.4.14.pom",
+      "sha256": "63c1273463101f718f02daf893c95b7d4bcf37e2b0b7fada3999ffc856d2dc8e"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-config/0.4.11/flow-config-0.4.11.pom",
+      "sha256": "acd62db99f52c836a92438e0fb0a45595a44477d9c93113b40288f6990f433ae"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-config/0.4.14/flow-config-0.4.14.jar",
+      "sha256": "c487a51b94f021e33dc30b1415a93f2fd1d5ec728029c66657d4ceb6e1158ede"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-config/0.4.14/flow-config-0.4.14.pom",
+      "sha256": "7fd2a35409aec3b9f674f465119cefda0978641ecd4f2b75c10e159eb37c78af"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-core/0.4.14/flow-core-0.4.14.jar",
+      "sha256": "d328a9edeb408ba5094e5b1e240f42e186bcec8937e830429fd08db8c73622e4"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-core/0.4.14/flow-core-0.4.14.pom",
+      "sha256": "af8ccc12f2cbd1c0faef3a9d8d83b40fd4b5906a65bdcf9c936eacfbf724dcb3"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-model/0.4.14/flow-model-0.4.14.jar",
+      "sha256": "391f3a87d33cfed7beb3eaa8aa2574cbb88d151441604ee589b2cc35f7668a45"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-model/0.4.14/flow-model-0.4.14.pom",
+      "sha256": "6c64a6c3ee784e9f3e77e00d6fa9dabcccb1e2f6d52ede7bfb8786eee7207616"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-remote/0.4.14/flow-remote-0.4.14.jar",
+      "sha256": "def737ae49ee49c7ee74791e2632acfeb7ff7fb320847d9bbcdc000326685a8e"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-remote/0.4.14/flow-remote-0.4.14.pom",
+      "sha256": "09541f7017a283b0a362ea0626d1e93c453d80120a74efc9b7c004c5a212e70e"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-route/0.4.14/flow-route-0.4.14.jar",
+      "sha256": "77cab7752c9b3e1c624a1c281cdf06083403db85263c0fa4f700fa278b7cc96a"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-route/0.4.14/flow-route-0.4.14.pom",
+      "sha256": "81ef559fa4de439016e2230e29a344f37dd6a43f3f2582c906460dc9f0590117"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-spring-boot-starter/0.4.14/flow-spring-boot-starter-0.4.14.jar",
+      "sha256": "7c24c650e0c5dc7689425ad7e565d34e46cfdf72317a630a9d2f344c155b1413"
+    },
+    {
+      "path": "maven/cc/eamon/open/flow-spring-boot-starter/0.4.14/flow-spring-boot-starter-0.4.14.pom",
+      "sha256": "3bc057d1f82f44e3728695fe32d44767b152f2db80d8a48cc7a4c924bed516e3"
+    },
+    {
+      "path": "maven/cn/edu/whu/zhuyuhan/scheduler/0.1.2/scheduler-0.1.2.pom",
+      "sha256": "4bdbd2133edc87d3a1a7bc1fb388dfcd72dca3c45748aaf6fe9db2293bb4465c"
+    },
+    {
+      "path": "maven/cn/edu/whu/zhuyuhan/scheduler-core/0.1.2/scheduler-core-0.1.2.jar",
+      "sha256": "042baef052033f3445d47f5b0cc69035fbe4330954fd5b48a1c75d7e9fc51aed"
+    },
+    {
+      "path": "maven/cn/edu/whu/zhuyuhan/scheduler-core/0.1.2/scheduler-core-0.1.2.pom",
+      "sha256": "d20f30aada833f8459d4c02458f55348e182d8f57358c924aee38803fa21e712"
+    },
+    {
+      "path": "maven/cn/edu/whu/zhuyuhan/scheduler-data/0.1.2/scheduler-data-0.1.2.jar",
+      "sha256": "06cc15774f7801084d95c69adbcdb15ec1fa01a72ef1b2015ee42b5eb0cd8f2d"
+    },
+    {
+      "path": "maven/cn/edu/whu/zhuyuhan/scheduler-data/0.1.2/scheduler-data-0.1.2.pom",
+      "sha256": "39ab84716ef94e3b47e0023a124abc052a096c01495f86cc29c8ad3025a55634"
+    },
+    {
+      "path": "maven/com/horsecoder/common/0.1.15/common-0.1.15.jar",
+      "sha256": "3c16eaf42c0788d90ddcea02f5e60e71b4350f813722a5d7beffd207ae3a9f7e"
+    },
+    {
+      "path": "maven/com/horsecoder/common/0.1.15/common-0.1.15.pom",
+      "sha256": "26174dd9d48602059dd3ef8ec361ef4009d06b4509a683f5922e2cdb60468c2e"
+    }
+  ]
+}

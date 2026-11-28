@@ -2,6 +2,8 @@
 
 第四周个人任务 4.2 · 2026 年 11 月 27 日 · 原生 Skill 调度版
 
+**启动入口。** 前端项目位于 [platform](platform)，原生后端节点位于 [native](native)，执行器入口为 batch_service.py。首次运行请按 [REPRODUCE.md](REPRODUCE.md) 安装依赖和启动服务。
+
 **11 月 28 日新跑扩展更新。** 使用 Qwen3.5-Plus 新跑得到的四个最终错误候选已修复并通过同一 Linux 固定判题。累计正式修复 **14 个不同题号**，由原冻结批 8 道、历史中间错解扩展 2 道、本次新跑 4 道构成。本批按负责人要求结束在 4 道。
 
 | 新增题号 | 原版 Linux 已判组 | 修订后完整测试 |
@@ -15,7 +17,7 @@
 
 **此前十道成果。** 原冻结批修复 8/10 道，扩展批修复 2/2 道，按题号去重累计正式修复 **10 道**。扩展批使用真实历史会话的完整中间错解，`abc335_c` 修订后通过 13/13 组，`abc320_c` 通过 15/15 组。两道题的修复前后均由原版 Linux 判题器复判。
 
-[十页汇报 PDF](Week4-2-Ten-Repairs.pdf) · [四份正式判分回执](additional-official-pairs.json) · [下载修复代码、选例对照与复现材料](Week4-2-Ten-Repairs.zip)
+[启动与复现说明](REPRODUCE.md) · [十页汇报 PDF](Week4-2-Ten-Repairs.pdf) · [四份正式判分回执](additional-official-pairs.json)
 
 **11 月 28 日补充实验。** 两道公开样例全过的失败题完成了六次原生流程调用，验证一条可独立验算的反例能改变诊断路由。另附 3,156 条构造测试、修订代码及复现实验脚本。[阅读补充报告](../week4-2-supplement/README.md) · [下载完整实验包](../week4-2-supplement/Week4-2-Research-20261128.zip)
 
@@ -100,3 +102,7 @@ Linux 检出版本为 `28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24`，原镜像为 
 
 
 
+
+## 项目启动验收
+
+前端位于 platform，独立 Spring 后端及节点位于 native，公开重放和 Python 执行器位于本目录。生产前端和独立后端均已构建启动并调用验证，详见 [环境、启动、验证范围与限制](REPRODUCE.md)。旧打包输出已清理，源码与必要证据直接在目录中查阅。
