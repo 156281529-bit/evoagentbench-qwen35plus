@@ -1,3 +1,5 @@
+第四周任务 4.2 已累计正式修复十四个不同题号，新增四题均已取得 Linux 正式回执。[十四道成果与汇报 PDF](week4-2/README.md)
+
 **作业说明**　[任务一 · 数据集与基线实验](TASK-1.md)　·　[任务二 · 循环实现与回放验证](TASK-2.md)
 
 # evoagentbench-qwen35plus

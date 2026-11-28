@@ -1,0 +1,73 @@
+{
+  "id": "abc400_g",
+  "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+  "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+  "data_sha256": "79ee6ef656a18e2d4b35e4e6fe1f8ef23c69427e091c52269c4c52f577875ec2",
+  "model": "thingo/qwen3.5-plus",
+  "after_author": "Codex-assisted revision",
+  "before_sha256": "3d2d274cee3df3742c35674c8e550a5faf86f3a65160b56a575450b8d59a5d2d",
+  "after_sha256": "419b72814cb0b6ca5ac00c04cbfe766e615abf3f142eb7f9b7e3429389dcbc13",
+  "invocation": "206b8ea5-c0f7-4ad6-a05e-cd9f961648cb",
+  "before_receipt_sha256": "857c73f542e314728f1dfdc5bf97af9074635719fc185e7af125e5b424b4b5a2",
+  "before": {
+    "reward": 0.0,
+    "passed": 2,
+    "total": 3,
+    "results": [
+      1,
+      1,
+      -2
+    ],
+    "judge_platform": "Linux",
+    "judge_python": "3.12.16"
+  },
+  "after": {
+    "reward": 1.0,
+    "passed": 6,
+    "total": 6,
+    "results": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "judge_platform": "Linux",
+    "judge_python": "3.12.16"
+  },
+  "public_after": [
+    {
+      "input_sha256": "0611de745888a1fb9fc2937ca934863c24a667f0f6719f9cfa334551614e7b5b",
+      "seconds": 0.063,
+      "execution": "ok",
+      "exact": true,
+      "statement": true,
+      "input": "1\n3 1\n6 3 8\n3 5 0\n2 7 3",
+      "expected": "12",
+      "output": "12"
+    },
+    {
+      "input_sha256": "aec0e859ed2828f71346f9a0743cb908927f9e09c2a07ca76ba85faca8bb0b54",
+      "seconds": 0.062,
+      "execution": "ok",
+      "exact": true,
+      "statement": true,
+      "input": "2\n5 2\n1 2 3\n1 2 3\n1 2 3\n1 2 3\n100 100 200\n6 2\n21 74 25\n44 71 80\n46 28 96\n1 74 24\n81 83 16\n55 31 1",
+      "expected": "209\n333",
+      "output": "209\r\n333"
+    },
+    {
+      "input_sha256": "de58a9cf7e96ce67363f203caf5483e249ed963875f25dac5980fd619c2df4db",
+      "seconds": 0.063,
+      "execution": "ok",
+      "exact": true,
+      "statement": true,
+      "input": "1\n4 2\n0 1 3\n2 0 1\n1 4 0\n0 2 2\n",
+      "expected": "10",
+      "output": "10"
+    }
+  ],
+  "available": 6,
+  "verified": true
+}

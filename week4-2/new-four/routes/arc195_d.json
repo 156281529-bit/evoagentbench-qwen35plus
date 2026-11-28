@@ -1,0 +1,61 @@
+{
+  "id": "arc195_d",
+  "data_sha256": "d3d6af3b1cf9cb10b3e12b5719cc8c3932e10904e1b3aeee132231feea00241c",
+  "baseline": {
+    "id": "arc195_d",
+    "status": "wrong_answer",
+    "stop": "stop",
+    "completion": "completed",
+    "passed": 1,
+    "total": 2,
+    "reward": 0.0,
+    "error_code": -2,
+    "baseline_sha256": "3e37c2f66a721958509b21d6f820012866186cbc89850212437104567519cf1f",
+    "session_sha256": "60e56c1bfd25edafadbb1e3352bc31f5cbc3d996eae513d700e047ec65130a65",
+    "receipt_sha256": "c689d3e776d2ef94e9c3ab96275aefe9752561b8aacc2bc399161f7673b9409a",
+    "run": "run-20261127T181907Z"
+  },
+  "registration": {
+    "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+    "assembled": true,
+    "WEEK4_DIAGNOSE": true,
+    "WEEK4_ROUTE": true
+  },
+  "public": [
+    {
+      "input_sha256": "40cc1d3eac180b5d664470886fb832dbea5d6c444f0a1686c9c24dfe2b77626d",
+      "seconds": 0.063,
+      "execution": "ok",
+      "exact": true,
+      "statement": true,
+      "input": "3\n5\n1 1 2 1 2\n4\n4 2 1 3\n11\n1 2 1 2 1 2 1 2 1 2 1",
+      "expected": "3\n4\n8",
+      "output": "3\r\n4\r\n8"
+    }
+  ],
+  "probes": [
+    {
+      "input_sha256": "a6370a143c62d315f456fc5fd7f60252ca24df5c0591ca9abf15146b59021ef2",
+      "seconds": 0.047,
+      "execution": "ok",
+      "exact": false,
+      "statement": false,
+      "input": "1\n3\n1 2 1\n",
+      "expected": "3",
+      "output": "2"
+    }
+  ],
+  "route": {
+    "task": "arc195_d",
+    "tag": "counterexample",
+    "invocation": "7eb2d731-93be-42fb-8a66-dc1beab31248",
+    "started": "2026-11-27T19:15:19.241Z",
+    "nodes": [
+      "WEEK4_DIAGNOSE",
+      "WEEK4_ROUTE"
+    ],
+    "outcome": "eligible",
+    "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+    "completed": "2026-11-27T19:15:19.244Z"
+  }
+}

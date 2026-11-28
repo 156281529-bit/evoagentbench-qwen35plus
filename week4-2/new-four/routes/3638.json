@@ -1,0 +1,73 @@
+{
+  "id": "3638",
+  "data_sha256": "e706b68d2d5af5a2d39e4bc12156094b958a0e7933f813d77427016f3935d8dc",
+  "baseline": {
+    "id": "3638",
+    "status": "wrong_answer",
+    "stop": "stop",
+    "completion": "completed",
+    "passed": 5,
+    "total": 6,
+    "reward": 0.0,
+    "error_code": -2,
+    "baseline_sha256": "38be6defd2e2458a6788c1efdd2fe4f3b13e87fdc61d56d4fec46835994af977",
+    "session_sha256": "7d7a4f8e775b450cc75697d06119a1e27541f4dcec6e6f288da3a7225d49f053",
+    "receipt_sha256": "e721878d249e9c4cd2ee8cd8aa2b95f39a190e95217bb8d3cc2812aab7393145",
+    "run": "run-20261127T181907Z"
+  },
+  "registration": {
+    "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+    "assembled": true,
+    "WEEK4_DIAGNOSE": true,
+    "WEEK4_ROUTE": true
+  },
+  "public": [
+    {
+      "input": "\"acab\"",
+      "expected": "1",
+      "execution": "ok",
+      "output": "1",
+      "exact": true,
+      "statement": true
+    },
+    {
+      "input": "\"wddw\"",
+      "expected": "0",
+      "execution": "ok",
+      "output": "0",
+      "exact": true,
+      "statement": true
+    },
+    {
+      "input": "\"aaabc\"",
+      "expected": "2",
+      "execution": "ok",
+      "output": "2",
+      "exact": true,
+      "statement": true
+    }
+  ],
+  "probes": [
+    {
+      "input": "\"abbccc\"",
+      "expected": "1",
+      "execution": "ok",
+      "output": "2",
+      "exact": false,
+      "statement": false
+    }
+  ],
+  "route": {
+    "task": "3638",
+    "tag": "counterexample",
+    "invocation": "97ca6109-8fe9-4720-94d7-f5c8a39b07c3",
+    "started": "2026-11-27T18:39:17.109Z",
+    "nodes": [
+      "WEEK4_DIAGNOSE",
+      "WEEK4_ROUTE"
+    ],
+    "outcome": "eligible",
+    "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+    "completed": "2026-11-27T18:39:17.112Z"
+  }
+}

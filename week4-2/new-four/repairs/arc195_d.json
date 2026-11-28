@@ -1,0 +1,58 @@
+{
+  "id": "arc195_d",
+  "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+  "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+  "data_sha256": "d3d6af3b1cf9cb10b3e12b5719cc8c3932e10904e1b3aeee132231feea00241c",
+  "model": "thingo/qwen3.5-plus",
+  "after_author": "Codex-assisted revision",
+  "before_sha256": "3e37c2f66a721958509b21d6f820012866186cbc89850212437104567519cf1f",
+  "after_sha256": "2ff84a075a845b396e8fa1b000819472f85ba399f2b85ada17e95655deb3d611",
+  "invocation": "7eb2d731-93be-42fb-8a66-dc1beab31248",
+  "before_receipt_sha256": "c689d3e776d2ef94e9c3ab96275aefe9752561b8aacc2bc399161f7673b9409a",
+  "before": {
+    "reward": 0.0,
+    "passed": 1,
+    "total": 2,
+    "results": [
+      1,
+      -2
+    ],
+    "judge_platform": "Linux",
+    "judge_python": "3.12.16"
+  },
+  "after": {
+    "reward": 1.0,
+    "passed": 2,
+    "total": 2,
+    "results": [
+      1,
+      1
+    ],
+    "judge_platform": "Linux",
+    "judge_python": "3.12.16"
+  },
+  "public_after": [
+    {
+      "input_sha256": "40cc1d3eac180b5d664470886fb832dbea5d6c444f0a1686c9c24dfe2b77626d",
+      "seconds": 0.094,
+      "execution": "ok",
+      "exact": true,
+      "statement": true,
+      "input": "3\n5\n1 1 2 1 2\n4\n4 2 1 3\n11\n1 2 1 2 1 2 1 2 1 2 1",
+      "expected": "3\n4\n8",
+      "output": "3\r\n4\r\n8"
+    },
+    {
+      "input_sha256": "a6370a143c62d315f456fc5fd7f60252ca24df5c0591ca9abf15146b59021ef2",
+      "seconds": 0.047,
+      "execution": "ok",
+      "exact": true,
+      "statement": true,
+      "input": "1\n3\n1 2 1\n",
+      "expected": "3",
+      "output": "3"
+    }
+  ],
+  "available": 2,
+  "verified": true
+}

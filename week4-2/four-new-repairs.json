@@ -1,0 +1,674 @@
+{
+  "date": "2026-11-28",
+  "total_new": 4,
+  "total_verified": 14,
+  "stopped_target": 8,
+  "records": [
+    {
+      "receipt": {
+        "id": "3638",
+        "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+        "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+        "data_sha256": "e706b68d2d5af5a2d39e4bc12156094b958a0e7933f813d77427016f3935d8dc",
+        "model": "thingo/qwen3.5-plus",
+        "after_author": "Codex-assisted revision",
+        "before_sha256": "38be6defd2e2458a6788c1efdd2fe4f3b13e87fdc61d56d4fec46835994af977",
+        "after_sha256": "b1b51b1c026e6199063623bef556a8fdc1d41637e1a347ad4806aa63059b39c2",
+        "invocation": "97ca6109-8fe9-4720-94d7-f5c8a39b07c3",
+        "before_receipt_sha256": "e721878d249e9c4cd2ee8cd8aa2b95f39a190e95217bb8d3cc2812aab7393145",
+        "before": {
+          "reward": 0.0,
+          "passed": 5,
+          "total": 6,
+          "results": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "after": {
+          "reward": 1.0,
+          "passed": 43,
+          "total": 43,
+          "results": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "public_after": [
+          {
+            "input": "\"acab\"",
+            "expected": "1",
+            "execution": "ok",
+            "output": "1",
+            "exact": true,
+            "statement": true
+          },
+          {
+            "input": "\"wddw\"",
+            "expected": "0",
+            "execution": "ok",
+            "output": "0",
+            "exact": true,
+            "statement": true
+          },
+          {
+            "input": "\"aaabc\"",
+            "expected": "2",
+            "execution": "ok",
+            "output": "2",
+            "exact": true,
+            "statement": true
+          },
+          {
+            "input": "\"abbccc\"",
+            "expected": "1",
+            "execution": "ok",
+            "output": "1",
+            "exact": true,
+            "statement": true
+          }
+        ],
+        "available": 43,
+        "verified": true
+      },
+      "route": {
+        "id": "3638",
+        "data_sha256": "e706b68d2d5af5a2d39e4bc12156094b958a0e7933f813d77427016f3935d8dc",
+        "baseline": {
+          "id": "3638",
+          "status": "wrong_answer",
+          "stop": "stop",
+          "completion": "completed",
+          "passed": 5,
+          "total": 6,
+          "reward": 0.0,
+          "error_code": -2,
+          "baseline_sha256": "38be6defd2e2458a6788c1efdd2fe4f3b13e87fdc61d56d4fec46835994af977",
+          "session_sha256": "7d7a4f8e775b450cc75697d06119a1e27541f4dcec6e6f288da3a7225d49f053",
+          "receipt_sha256": "e721878d249e9c4cd2ee8cd8aa2b95f39a190e95217bb8d3cc2812aab7393145",
+          "run": "run-20261127T181907Z"
+        },
+        "registration": {
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "assembled": true,
+          "WEEK4_DIAGNOSE": true,
+          "WEEK4_ROUTE": true
+        },
+        "public": [
+          {
+            "input": "\"acab\"",
+            "expected": "1",
+            "execution": "ok",
+            "output": "1",
+            "exact": true,
+            "statement": true
+          },
+          {
+            "input": "\"wddw\"",
+            "expected": "0",
+            "execution": "ok",
+            "output": "0",
+            "exact": true,
+            "statement": true
+          },
+          {
+            "input": "\"aaabc\"",
+            "expected": "2",
+            "execution": "ok",
+            "output": "2",
+            "exact": true,
+            "statement": true
+          }
+        ],
+        "probes": [
+          {
+            "input": "\"abbccc\"",
+            "expected": "1",
+            "execution": "ok",
+            "output": "2",
+            "exact": false,
+            "statement": false
+          }
+        ],
+        "route": {
+          "task": "3638",
+          "tag": "counterexample",
+          "invocation": "97ca6109-8fe9-4720-94d7-f5c8a39b07c3",
+          "started": "2026-11-27T18:39:17.109Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "eligible",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T18:39:17.112Z"
+        }
+      },
+      "before": "class Solution:\n    def makeStringGood(self, s: str) -> int:\n        from collections import Counter\n        \n        n = len(s)\n        count = Counter(s)\n        \n        min_ops = float('inf')\n        \n        for f in range(1, n + 1):\n            for k in range(1, 27):\n                # Calculate contribution of each character (capped at f)\n                contribs = []\n                for c in range(26):\n                    char = chr(ord('a') + c)\n                    contribs.append((min(count.get(char, 0), f), c))\n                \n                # Sort descending by contribution\n                contribs.sort(reverse=True)\n                \n                # Top k characters\n                selected = set(c for _, c in contribs[:k])\n                sum_contrib = sum(contrib for contrib, c in contribs[:k])\n                \n                # Base cost = deletions + insertions\n                base_cost = n + k * f - 2 * sum_contrib\n                \n                # Calculate excess and deficit for selected characters only\n                excess = [0] * 26\n                deficit = [0] * 26\n                for c in range(26):\n                    if c in selected:\n                        char = chr(ord('a') + c)\n                        cnt = count.get(char, 0)\n                        if cnt > f:\n                            excess[c] = cnt - f\n                        elif cnt < f:\n                            deficit[c] = f - cnt\n                \n                # Calculate max changes (only between adjacent selected chars)\n                # Change can convert excess at position c to help deficit at c+1\n                changes = 0\n                carry = 0\n                for c in range(26):\n                    if c in selected:\n                        available = carry + excess[c]\n                        can_use = min(available, deficit[c])\n                        changes += can_use\n                        carry = available - can_use\n                    else:\n                        carry = 0  # Reset carry when encountering non-selected char\n                \n                total_cost = base_cost - changes\n                min_ops = min(min_ops, total_cost)\n        \n        return min_ops",
+      "after": "from collections import Counter\n\n\nclass Solution:\n    def makeStringGood(self, s: str) -> int:\n        counts = Counter(s)\n        freq = [counts[chr(ord(\"a\") + i)] for i in range(26)]\n        best = len(s)\n        for target in range(1, max(freq) + 1):\n            # Each letter ends at either zero or target. A surplus at i can\n            # replace an insertion at i+1. Longer moves cost at least as\n            # much as deleting and reinserting.\n            previous_goals = (0, target)\n            costs = [freq[0], abs(freq[0] - target)]\n            for left, right in zip(freq, freq[1:]):\n                next_costs = []\n                for goal in previous_goals:\n                    missing = max(0, goal - right)\n                    options = (cost - min(max(0, left - old_goal), missing)\n                               for old_goal, cost in zip(previous_goals, costs))\n                    next_costs.append(abs(right - goal) + min(options))\n                costs = next_costs\n            best = min(best, *costs)\n        return best\n"
+    },
+    {
+      "receipt": {
+        "id": "arc195_d",
+        "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+        "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+        "data_sha256": "d3d6af3b1cf9cb10b3e12b5719cc8c3932e10904e1b3aeee132231feea00241c",
+        "model": "thingo/qwen3.5-plus",
+        "after_author": "Codex-assisted revision",
+        "before_sha256": "3e37c2f66a721958509b21d6f820012866186cbc89850212437104567519cf1f",
+        "after_sha256": "2ff84a075a845b396e8fa1b000819472f85ba399f2b85ada17e95655deb3d611",
+        "invocation": "7eb2d731-93be-42fb-8a66-dc1beab31248",
+        "before_receipt_sha256": "c689d3e776d2ef94e9c3ab96275aefe9752561b8aacc2bc399161f7673b9409a",
+        "before": {
+          "reward": 0.0,
+          "passed": 1,
+          "total": 2,
+          "results": [
+            1,
+            -2
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "after": {
+          "reward": 1.0,
+          "passed": 2,
+          "total": 2,
+          "results": [
+            1,
+            1
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "public_after": [
+          {
+            "input_sha256": "40cc1d3eac180b5d664470886fb832dbea5d6c444f0a1686c9c24dfe2b77626d",
+            "seconds": 0.094,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "3\n5\n1 1 2 1 2\n4\n4 2 1 3\n11\n1 2 1 2 1 2 1 2 1 2 1",
+            "expected": "3\n4\n8",
+            "output": "3\r\n4\r\n8"
+          },
+          {
+            "input_sha256": "a6370a143c62d315f456fc5fd7f60252ca24df5c0591ca9abf15146b59021ef2",
+            "seconds": 0.047,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "1\n3\n1 2 1\n",
+            "expected": "3",
+            "output": "3"
+          }
+        ],
+        "available": 2,
+        "verified": true
+      },
+      "route": {
+        "id": "arc195_d",
+        "data_sha256": "d3d6af3b1cf9cb10b3e12b5719cc8c3932e10904e1b3aeee132231feea00241c",
+        "baseline": {
+          "id": "arc195_d",
+          "status": "wrong_answer",
+          "stop": "stop",
+          "completion": "completed",
+          "passed": 1,
+          "total": 2,
+          "reward": 0.0,
+          "error_code": -2,
+          "baseline_sha256": "3e37c2f66a721958509b21d6f820012866186cbc89850212437104567519cf1f",
+          "session_sha256": "60e56c1bfd25edafadbb1e3352bc31f5cbc3d996eae513d700e047ec65130a65",
+          "receipt_sha256": "c689d3e776d2ef94e9c3ab96275aefe9752561b8aacc2bc399161f7673b9409a",
+          "run": "run-20261127T181907Z"
+        },
+        "registration": {
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "assembled": true,
+          "WEEK4_DIAGNOSE": true,
+          "WEEK4_ROUTE": true
+        },
+        "public": [
+          {
+            "input_sha256": "40cc1d3eac180b5d664470886fb832dbea5d6c444f0a1686c9c24dfe2b77626d",
+            "seconds": 0.063,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "3\n5\n1 1 2 1 2\n4\n4 2 1 3\n11\n1 2 1 2 1 2 1 2 1 2 1",
+            "expected": "3\n4\n8",
+            "output": "3\r\n4\r\n8"
+          }
+        ],
+        "probes": [
+          {
+            "input_sha256": "a6370a143c62d315f456fc5fd7f60252ca24df5c0591ca9abf15146b59021ef2",
+            "seconds": 0.047,
+            "execution": "ok",
+            "exact": false,
+            "statement": false,
+            "input": "1\n3\n1 2 1\n",
+            "expected": "3",
+            "output": "2"
+          }
+        ],
+        "route": {
+          "task": "arc195_d",
+          "tag": "counterexample",
+          "invocation": "7eb2d731-93be-42fb-8a66-dc1beab31248",
+          "started": "2026-11-27T19:15:19.241Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "eligible",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T19:15:19.244Z"
+        }
+      },
+      "before": "import sys\nfrom collections import defaultdict\n\ndef solve():\n    input = sys.stdin.read\n    data = input().split()\n    \n    idx = 0\n    T = int(data[idx])\n    idx += 1\n    \n    results = []\n    \n    for _ in range(T):\n        N = int(data[idx])\n        idx += 1\n        A = [int(data[idx + i]) for i in range(N)]\n        idx += N\n        \n        # Count the number of runs of each value\n        run_counts = defaultdict(int)\n        if N > 0:\n            current_run_value = A[0]\n            for i in range(1, N):\n                if A[i] != current_run_value:\n                    run_counts[current_run_value] += 1\n                    current_run_value = A[i]\n            run_counts[current_run_value] += 1\n        \n        num_runs = sum(run_counts.values())\n        \n        # Find the maximum floor((number of runs of value v) / 2)\n        max_savings = 0\n        for value in run_counts:\n            savings = run_counts[value] // 2\n            if savings > max_savings:\n                max_savings = savings\n        \n        # Answer\n        answer = num_runs - max_savings\n        results.append(str(answer))\n    \n    print('\\n'.join(results))\n\nif __name__ == \"__main__\":\n    solve()",
+      "after": "\"\"\"Disjoint-swap characterization: https://atcoder.jp/contests/arc195/editorial/12528\"\"\"\nimport sys\n\n\ndef minimum_operations(values):\n    # A prefix ends with a single unchanged element or a reversed adjacent pair.\n    # The cost is swaps plus the number of equal-value runs in the resulting prefix.\n    empty = {None: 0}\n    previous = {values[0]: 1}\n    two_back = empty\n    for left, right in zip(values, values[1:]):\n        current = {right: min(cost + (tail != right) for tail, cost in previous.items())}\n        if left != right:\n            # Append the pair as right, left: one swap and one internal run boundary.\n            current[left] = 2 + min(cost + (tail != right) for tail, cost in two_back.items())\n        two_back, previous = previous, current\n    return min(previous.values())\n\n\nif __name__ == \"__main__\":\n    numbers = iter(map(int, sys.stdin.buffer.read().split()))\n    answers = []\n    for _ in range(next(numbers)):\n        size = next(numbers)\n        answers.append(str(minimum_operations([next(numbers) for _ in range(size)])))\n    print(\"\\n\".join(answers))\n"
+    },
+    {
+      "receipt": {
+        "id": "abc400_g",
+        "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+        "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+        "data_sha256": "79ee6ef656a18e2d4b35e4e6fe1f8ef23c69427e091c52269c4c52f577875ec2",
+        "model": "thingo/qwen3.5-plus",
+        "after_author": "Codex-assisted revision",
+        "before_sha256": "3d2d274cee3df3742c35674c8e550a5faf86f3a65160b56a575450b8d59a5d2d",
+        "after_sha256": "419b72814cb0b6ca5ac00c04cbfe766e615abf3f142eb7f9b7e3429389dcbc13",
+        "invocation": "206b8ea5-c0f7-4ad6-a05e-cd9f961648cb",
+        "before_receipt_sha256": "857c73f542e314728f1dfdc5bf97af9074635719fc185e7af125e5b424b4b5a2",
+        "before": {
+          "reward": 0.0,
+          "passed": 2,
+          "total": 3,
+          "results": [
+            1,
+            1,
+            -2
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "after": {
+          "reward": 1.0,
+          "passed": 6,
+          "total": 6,
+          "results": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "public_after": [
+          {
+            "input_sha256": "0611de745888a1fb9fc2937ca934863c24a667f0f6719f9cfa334551614e7b5b",
+            "seconds": 0.063,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "1\n3 1\n6 3 8\n3 5 0\n2 7 3",
+            "expected": "12",
+            "output": "12"
+          },
+          {
+            "input_sha256": "aec0e859ed2828f71346f9a0743cb908927f9e09c2a07ca76ba85faca8bb0b54",
+            "seconds": 0.062,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "2\n5 2\n1 2 3\n1 2 3\n1 2 3\n1 2 3\n100 100 200\n6 2\n21 74 25\n44 71 80\n46 28 96\n1 74 24\n81 83 16\n55 31 1",
+            "expected": "209\n333",
+            "output": "209\r\n333"
+          },
+          {
+            "input_sha256": "de58a9cf7e96ce67363f203caf5483e249ed963875f25dac5980fd619c2df4db",
+            "seconds": 0.063,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "1\n4 2\n0 1 3\n2 0 1\n1 4 0\n0 2 2\n",
+            "expected": "10",
+            "output": "10"
+          }
+        ],
+        "available": 6,
+        "verified": true
+      },
+      "route": {
+        "id": "abc400_g",
+        "data_sha256": "79ee6ef656a18e2d4b35e4e6fe1f8ef23c69427e091c52269c4c52f577875ec2",
+        "baseline": {
+          "id": "abc400_g",
+          "status": "wrong_answer",
+          "stop": "stop",
+          "completion": "completed",
+          "passed": 2,
+          "total": 3,
+          "reward": 0.0,
+          "error_code": -2,
+          "baseline_sha256": "3d2d274cee3df3742c35674c8e550a5faf86f3a65160b56a575450b8d59a5d2d",
+          "session_sha256": "af5ec522ab73aa12a1c082fde68560ab563315ca2e43dfc0ad379ae5a2732e80",
+          "receipt_sha256": "857c73f542e314728f1dfdc5bf97af9074635719fc185e7af125e5b424b4b5a2",
+          "run": "run-20261127T181907Z"
+        },
+        "registration": {
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "assembled": true,
+          "WEEK4_DIAGNOSE": true,
+          "WEEK4_ROUTE": true
+        },
+        "public": [
+          {
+            "input_sha256": "0611de745888a1fb9fc2937ca934863c24a667f0f6719f9cfa334551614e7b5b",
+            "seconds": 0.031,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "1\n3 1\n6 3 8\n3 5 0\n2 7 3",
+            "expected": "12",
+            "output": "12"
+          },
+          {
+            "input_sha256": "aec0e859ed2828f71346f9a0743cb908927f9e09c2a07ca76ba85faca8bb0b54",
+            "seconds": 0.031,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "2\n5 2\n1 2 3\n1 2 3\n1 2 3\n1 2 3\n100 100 200\n6 2\n21 74 25\n44 71 80\n46 28 96\n1 74 24\n81 83 16\n55 31 1",
+            "expected": "209\n333",
+            "output": "209\r\n333"
+          }
+        ],
+        "probes": [
+          {
+            "input_sha256": "de58a9cf7e96ce67363f203caf5483e249ed963875f25dac5980fd619c2df4db",
+            "seconds": 0.032,
+            "execution": "ok",
+            "exact": false,
+            "statement": false,
+            "input": "1\n4 2\n0 1 3\n2 0 1\n1 4 0\n0 2 2\n",
+            "expected": "10",
+            "output": "9"
+          }
+        ],
+        "route": {
+          "task": "abc400_g",
+          "tag": "counterexample",
+          "invocation": "206b8ea5-c0f7-4ad6-a05e-cd9f961648cb",
+          "started": "2026-11-27T19:29:41.920Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "eligible",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T19:29:41.922Z"
+        }
+      },
+      "before": "import sys\n\ndef solve() -> None:\n    input_data = sys.stdin.read().split()\n    idx = 0\n    \n    T = int(input_data[idx])\n    idx += 1\n    \n    results = []\n    \n    for _ in range(T):\n        N = int(input_data[idx])\n        K = int(input_data[idx + 1])\n        idx += 2\n        \n        cakes = []\n        for i in range(N):\n            X = int(input_data[idx])\n            Y = int(input_data[idx + 1])\n            Z = int(input_data[idx + 2])\n            idx += 3\n            cakes.append((X, Y, Z))\n        \n        # Pre-sort options by value descending\n        options = []\n        for i, (X, Y, Z) in enumerate(cakes):\n            options.append((X, 0, i))\n            options.append((Y, 1, i))\n            options.append((Z, 2, i))\n        options.sort(reverse=True)\n        \n        best_total = 0\n        \n        # Enumerate over all possible splits (k1, k2, k3) where k1 + k2 + k3 = K\n        for k1 in range(K + 1):\n            for k2 in range(K + 1 - k1):\n                k3 = K - k1 - k2\n                \n                n1 = 2 * k1\n                n2 = 2 * k2\n                n3 = 2 * k3\n                total_cakes = n1 + n2 + n3\n                \n                # Greedy assignment using pre-sorted options\n                assigned_cakes = set()\n                dim_count = [0, 0, 0]\n                dim_limit = [n1, n2, n3]\n                total = 0\n                \n                for value, dim, cake_idx in options:\n                    if cake_idx in assigned_cakes:\n                        continue\n                    if dim_count[dim] >= dim_limit[dim]:\n                        continue\n                    assigned_cakes.add(cake_idx)\n                    dim_count[dim] += 1\n                    total += value\n                    \n                    if len(assigned_cakes) == total_cakes:\n                        break\n                \n                if len(assigned_cakes) == total_cakes:\n                    best_total = max(best_total, total)\n        \n        results.append(best_total)\n    \n    for r in results:\n        print(r)\n\nif __name__ == \"__main__\":\n    solve()",
+      "after": "\"\"\"Parity DP using the exchange bound in https://atcoder.jp/contests/abc400/editorial/12637.\"\"\"\nimport sys\n\n\ndef best_price(cakes, pairs):\n    cakes.sort(key=max, reverse=True)\n    needed = 2 * pairs\n    impossible = (-10**18,) * 4\n    # best[gap][mask]: selected min(processed, needed) - gap cakes.\n    # Bits track parity of X and Y; the selected count determines Z's parity.\n    best = [(0, *impossible[1:]), impossible, impossible]\n    for index, (x, y, z) in enumerate(cakes):\n        new = []\n        for gap in range(3):\n            if index < needed:\n                take = best[gap]\n                skip = best[gap - 1] if gap else impossible\n            else:\n                take = best[gap + 1] if gap < 2 else impossible\n                skip = best[gap]\n            new.append(tuple(max(skip[mask], take[mask] + z, take[mask ^ 1] + x, take[mask ^ 2] + y)\n                             for mask in range(4)))\n        best = new\n    return best[0][0]\n\n\nif __name__ == \"__main__\":\n    data = iter(map(int, sys.stdin.buffer.read().split()))\n    answers = []\n    for _ in range(next(data)):\n        n, k = next(data), next(data)\n        rows = [(next(data), next(data), next(data)) for _ in range(n)]\n        answers.append(str(best_price(rows, k)))\n    print(\"\\n\".join(answers))\n"
+    },
+    {
+      "receipt": {
+        "id": "abc374_d",
+        "image_id": "sha256:3ad394053adde58380477fb4d8dac6329b4559fd28c3af96fe77ae83a630919b",
+        "judge_revision": "28fef95ea8c9f7a547c8329f2cd3d32b92c1fa24",
+        "data_sha256": "23d99df784e83ad38f3358a9b98594dd330dbf3f3b72ba7878eee0453a9ff62b",
+        "model": "thingo/qwen3.5-plus",
+        "after_author": "Codex-assisted revision",
+        "before_sha256": "c4d8fae816d1748ea9894f78b94206f652ea45c3e8a2185b5e74da4864eda119",
+        "after_sha256": "d411c5fca07f6a10656d1168a8057e22fa0f5a765c304bf1647a8fb7fce5707d",
+        "invocation": "5dba0be9-14c3-48df-bd0b-c0aa2e2d20e8",
+        "before_receipt_sha256": "b30fa939cf28d19d7939280b0c82cab459d4eb72b40306019c0154f9debdce57",
+        "before": {
+          "reward": 0.0,
+          "passed": 0,
+          "total": 1,
+          "results": [
+            -2
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "after": {
+          "reward": 1.0,
+          "passed": 44,
+          "total": 44,
+          "results": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "judge_platform": "Linux",
+          "judge_python": "3.12.16"
+        },
+        "public_after": [
+          {
+            "input_sha256": "2736df34c550578a20c559a1e6a97c6a3e8910ffa52975ea15d40577c04f6fee",
+            "seconds": 0.093,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "3 2 1\n1 3 2 1\n0 2 0 0\n3 0 2 0\n",
+            "expected": "6.44317475868633722080\n",
+            "output": "6.44317475868633722080"
+          },
+          {
+            "input_sha256": "f88ea411a6033a287b7da7022c2cdb048688977f3bc1279a97a01bf64941de4a",
+            "seconds": 0.063,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "2 1 1\n0 0 10 10\n0 2 2 0\n",
+            "expected": "20.97056274847714058517\n",
+            "output": "20.97056274847714058517"
+          },
+          {
+            "input_sha256": "564325add9e8fec441b4a3a477a7edab47de85467de87498f2531a855b9cfcaa",
+            "seconds": 0.062,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "6 3 2\n-1000 -1000 1000 1000\n1000 -1000 -1000 1000\n-1000 -1000 1000 1000\n1000 -1000 -1000 1000\n1000 1000 -1000 -1000\n-1000 1000 1000 -1000\n",
+            "expected": "9623.35256169626864153344\n",
+            "output": "9623.35256169626864153344"
+          },
+          {
+            "input_sha256": "e8ed838e913650e4d81e0eb57fe67dd3f28e7ed9e7fd65bb0665da3edc12e5ea",
+            "seconds": 0.063,
+            "execution": "ok",
+            "exact": true,
+            "statement": true,
+            "input": "6 10 8\n1000 1000 -1000 -1000\n1000 -1000 -1000 -1000\n-1000 1000 1000 1000\n-1000 1000 -1000 -1000\n1000 1000 1000 -1000\n1000 -1000 -1000 1000\n",
+            "expected": "2048.52813742385702910909\n",
+            "output": "2048.52813742385702910909"
+          }
+        ],
+        "available": 44,
+        "verified": true
+      },
+      "route": {
+        "id": "abc374_d",
+        "data_sha256": "23d99df784e83ad38f3358a9b98594dd330dbf3f3b72ba7878eee0453a9ff62b",
+        "baseline": {
+          "id": "abc374_d",
+          "status": "wrong_answer",
+          "stop": "stop",
+          "completion": "completed",
+          "passed": 0,
+          "total": 1,
+          "reward": 0.0,
+          "error_code": -2,
+          "baseline_sha256": "c4d8fae816d1748ea9894f78b94206f652ea45c3e8a2185b5e74da4864eda119",
+          "session_sha256": "2c057ef37f8d7b9890d976409efa7db89433421facd7635fe47c89cdd81a4fe0",
+          "receipt_sha256": "b30fa939cf28d19d7939280b0c82cab459d4eb72b40306019c0154f9debdce57",
+          "run": "run-20261127T181907Z"
+        },
+        "registration": {
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "assembled": true,
+          "WEEK4_DIAGNOSE": true,
+          "WEEK4_ROUTE": true
+        },
+        "public": [
+          {
+            "input_sha256": "2736df34c550578a20c559a1e6a97c6a3e8910ffa52975ea15d40577c04f6fee",
+            "seconds": 0.047,
+            "execution": "ok",
+            "exact": false,
+            "statement": true,
+            "input": "3 2 1\n1 3 2 1\n0 2 0 0\n3 0 2 0\n",
+            "expected": "6.44317475868633722080\n",
+            "output": "6.44317475868633771086"
+          },
+          {
+            "input_sha256": "f88ea411a6033a287b7da7022c2cdb048688977f3bc1279a97a01bf64941de4a",
+            "seconds": 0.015,
+            "execution": "ok",
+            "exact": false,
+            "statement": true,
+            "input": "2 1 1\n0 0 10 10\n0 2 2 0\n",
+            "expected": "20.97056274847714058517\n",
+            "output": "20.97056274847714263387"
+          },
+          {
+            "input_sha256": "564325add9e8fec441b4a3a477a7edab47de85467de87498f2531a855b9cfcaa",
+            "seconds": 0.141,
+            "execution": "ok",
+            "exact": false,
+            "statement": true,
+            "input": "6 3 2\n-1000 -1000 1000 1000\n1000 -1000 -1000 1000\n-1000 -1000 1000 1000\n1000 -1000 -1000 1000\n1000 1000 -1000 -1000\n-1000 1000 1000 -1000\n",
+            "expected": "9623.35256169626864153344\n",
+            "output": "9623.35256169627064082306"
+          },
+          {
+            "input_sha256": "e8ed838e913650e4d81e0eb57fe67dd3f28e7ed9e7fd65bb0665da3edc12e5ea",
+            "seconds": 0.141,
+            "execution": "ok",
+            "exact": false,
+            "statement": true,
+            "input": "6 10 8\n1000 1000 -1000 -1000\n1000 -1000 -1000 -1000\n-1000 1000 1000 1000\n-1000 1000 -1000 -1000\n1000 1000 1000 -1000\n1000 -1000 -1000 1000\n",
+            "expected": "2048.52813742385702910909\n",
+            "output": "2048.52813742385706063942"
+          }
+        ],
+        "probes": [],
+        "route": {
+          "task": "abc374_d",
+          "tag": "numeric_comparator",
+          "invocation": "5dba0be9-14c3-48df-bd0b-c0aa2e2d20e8",
+          "started": "2026-11-27T19:32:15.721Z",
+          "nodes": [
+            "WEEK4_DIAGNOSE",
+            "WEEK4_ROUTE"
+          ],
+          "outcome": "eligible",
+          "flow": "@week4.evoagentbench/FAILURE_DIAGNOSIS",
+          "completed": "2026-11-27T19:32:15.722Z"
+        }
+      },
+      "before": "import math\nfrom itertools import permutations, product\n\ndef solve():\n    # Read input\n    line1 = input().split()\n    N = int(line1[0])\n    S = int(line1[1])\n    T = int(line1[2])\n    \n    segments = []\n    for i in range(N):\n        line = input().split()\n        A, B, C, D = int(line[0]), int(line[1]), int(line[2]), int(line[3])\n        segments.append(((A, B), (C, D)))\n    \n    def dist(p1, p2):\n        return math.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2)\n    \n    def segment_length(seg):\n        return dist(seg[0], seg[1])\n    \n    min_time = float('inf')\n    \n    # Try all permutations of segments\n    for perm in permutations(range(N)):\n        # Try all combinations of starting endpoints (0 = first endpoint, 1 = second endpoint)\n        for starts in product([0, 1], repeat=N):\n            current_pos = (0, 0)\n            total_time = 0.0\n            \n            for i in range(N):\n                seg_idx = perm[i]\n                seg = segments[seg_idx]\n                \n                # Choose starting and ending endpoints based on starts[i]\n                if starts[i] == 0:\n                    start_ep = seg[0]\n                    end_ep = seg[1]\n                else:\n                    start_ep = seg[1]\n                    end_ep = seg[0]\n                \n                # Time to move from current position to starting endpoint (without laser)\n                move_time = dist(current_pos, start_ep) / S\n                total_time += move_time\n                \n                # Time to print the segment (with laser)\n                print_time = segment_length(seg) / T\n                total_time += print_time\n                \n                # Update current position to ending endpoint\n                current_pos = end_ep\n            \n            if total_time < min_time:\n                min_time = total_time\n    \n    print(f\"{min_time:.20f}\")\n\nif __name__ == \"__main__\":\n    solve()",
+      "after": "\"\"\"Compute a shortest laser route with the 64-bit significand of extended precision.\"\"\"\nimport sys\nfrom decimal import Decimal, localcontext\nfrom functools import lru_cache\nfrom math import frexp\n\n\n@lru_cache(maxsize=64)\ndef unit(exponent):\n    return Decimal(2) ** exponent\n\n\ndef extended(value):\n    if not value:\n        return value\n    exponent = frexp(float(value))[1] - 1\n    if value < unit(exponent):\n        exponent -= 1\n    step = unit(exponent - 63)\n    return (value / step).to_integral_value() * step\n\n\ndef optimum(segments, speed, laser):\n    points = [p for seg in segments for p in seg] + [(0, 0)]\n    n = len(segments)\n    lengths = [[extended(Decimal((x-u)**2 + (y-v)**2).sqrt())\n                for u, v in points] for x, y in points]\n    transit = [[extended(distance / speed) for distance in row] for row in lengths]\n    drawing = [extended(lengths[2*i][2*i+1] / laser) for i in range(n)]\n    # After a subset is printed only the current endpoint affects future travel.\n    states = [{} for _ in range(1 << n)]\n    states[0][2*n] = Decimal(0)\n    for mask, endpoints in enumerate(states):\n        for endpoint, elapsed in endpoints.items():\n            for i, draw in enumerate(drawing):\n                if mask & (1 << i):\n                    continue\n                target = states[mask | (1 << i)]\n                for start in (2*i, 2*i+1):\n                    time = extended(extended(elapsed + transit[endpoint][start]) + draw)\n                    finish = start ^ 1\n                    if finish not in target or time < target[finish]:\n                        target[finish] = time\n    return min(states[-1].values())\n\n\nif __name__ == \"__main__\":\n    data = iter(map(int, sys.stdin.buffer.read().split()))\n    size, speed, laser = next(data), next(data), next(data)\n    segments = [((next(data), next(data)), (next(data), next(data))) for _ in range(size)]\n    with localcontext() as context:\n        context.prec = 100\n        print(f\"{optimum(segments, speed, laser):.20f}\")\n"
+    }
+  ]
+}
