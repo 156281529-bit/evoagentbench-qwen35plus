@@ -1,3 +1,17 @@
+## 十条案例的固定格式项目入口
+
+我的后端项目：https://github.com/156281529-bit/rsi-data-spring-boot
+
+我的前端项目：https://github.com/156281529-bit/rsi-data-platform
+
+前端编排框架和后端 RSI 编排框架沿用提供版本，实现未修改。
+
+两个项目均在提供的原工程中接入十条案例。前端 JSON 在前端 public/cases/case1.json—case10.json，后端 JSON 在后端 core-flow/src/main/resources/flow/week4-case/case1.json—case10.json。实际运行结果在后端 case-workbench/results/result1.json—result10.json，逐条分析在 analysis/why1.md—why10.md。原前端页面已实际显示 10/10，原后端通过原 FlowEngineController 和 FlowEngineService 执行。
+
+后端依赖提供方 SDK 的本机安装或授权 Maven 仓库。内部 JAR 未公开上传。框架运行依赖条件和启动兼容说明见后端 README。当前成果目录保留历史报告和证据，最新十条运行入口以上述固定名称项目为准。
+
+---
+
 # 从失败轨迹到一次修订：累计十四道正式修复
 
 第四周个人任务 4.2 · 2026 年 11 月 27 日 · 原生 Skill 调度版
